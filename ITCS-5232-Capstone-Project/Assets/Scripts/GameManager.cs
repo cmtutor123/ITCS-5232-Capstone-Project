@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
     public static bool managerExists = false;
     public static bool loadedData = false;
     public static GameState gameState = GameState.Title;
+    public static PlayerData playerData;
 
     void Start()
     {
@@ -26,7 +27,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadData()
     {
-
+        playerData = FileManager.LoadPlayerData();
     }
 
     public void SwitchToMainMenu()
@@ -41,4 +42,14 @@ public enum GameState
     Switching,
     Title,
     MainMenu
+}
+
+public enum PlayerClass
+{
+    Berserker,
+    Druid,
+    Necromancer,
+    Paladin,
+    Rogue,
+    Wizard
 }

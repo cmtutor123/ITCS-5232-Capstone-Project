@@ -18,7 +18,7 @@ public static class FileManager
             SavePlayerData(new PlayerData());
         }
         string json = System.IO.File.ReadAllText("playerData.json");
-        PlayerData loadedPlayerData = JsonUtility.FromJson<PlayerData>(json);
+        PlayerData loadedPlayerData = new PlayerData(JsonUtility.FromJson<PlayerData>(json));
         return loadedPlayerData;
     }
 }

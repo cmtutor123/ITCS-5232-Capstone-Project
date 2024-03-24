@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public static bool loadedData = false;
     public static GameState gameState = GameState.Title;
     public static PlayerData playerData;
+    public static List<MenuState> menuStates;
 
     void Start()
     {
@@ -17,12 +18,14 @@ public class GameManager : MonoBehaviour
         }
         managerExists = true;
         DontDestroyOnLoad(gameObject);
+        menuStates = new List<MenuState>();
+        SetMenu(MenuState.Title);
         if (!loadedData)
         {
             LoadData();
             loadedData = true;
         }
-        SwitchToMainMenu();
+        SetMenu(MenuState.MainMenu);
     }
 
     public void LoadData()
@@ -30,10 +33,42 @@ public class GameManager : MonoBehaviour
         playerData = FileManager.LoadPlayerData();
     }
 
-    public void SwitchToMainMenu()
+    public void SwitchMenu(MenuState menu)
     {
-        gameState = GameState.Switching;
-        gameState = GameState.MainMenu;
+        menuStates.Add(menu);
+        LoadMenu();
+    }
+
+    public void SetMenu(params MenuState[] menus)
+    {
+        menuStates.Clear();
+        foreach (MenuState menu in menus)
+        {
+            menuStates.Add(menu);
+        }
+        LoadMenu();
+    }
+
+    public MenuState GetMenu()
+    {
+        if (menuStates == null || menuStates.Count == 0) return MenuState.None;
+        else return menuStates[menuStates.Count - 1];
+    }
+
+    public void LoadMenu()
+    {
+        MenuState menu = GetMenu();
+        HideAllUI();
+        switch (menu)
+        {
+            case MenuState.Title:
+                break;
+        }
+    }
+
+    public void HideAllUI()
+    {
+
     }
 }
 
@@ -42,6 +77,20 @@ public enum GameState
     Switching,
     Title,
     MainMenu
+}
+
+public enum MenuState
+{
+    None,
+    Title,
+    MainMenu,
+    Options,
+    CharacterSelect,
+    StageSelect,
+    PerkSelect,
+    Match,
+    Results,
+    Pause
 }
 
 public enum PlayerClass

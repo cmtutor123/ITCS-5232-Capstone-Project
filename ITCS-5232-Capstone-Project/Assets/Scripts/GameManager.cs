@@ -6,9 +6,20 @@ public class GameManager : MonoBehaviour
 {
     public static bool managerExists = false;
     public static bool loadedData = false;
-    public static GameState gameState = GameState.Title;
     public static PlayerData playerData;
     public static List<MenuState> menuStates;
+
+    private Dictionary<MenuState, GameObject> menuUi = new Dictionary<MenuState, GameObject>();
+    [Header("Menu UI")]
+    public GameObject uiTitle;
+    public GameObject uiMainMenu;
+    public GameObject uiOptions;
+    public GameObject uiCharacterSelect;
+    public GameObject uiStageSelect;
+    public GameObject uiPerkSelect;
+    public GameObject uiMatch;
+    public GameObject uiResults;
+    public GameObject uiPause;
 
     void Start()
     {
@@ -18,6 +29,7 @@ public class GameManager : MonoBehaviour
         }
         managerExists = true;
         DontDestroyOnLoad(gameObject);
+        InitializeMenuUiDictionary();
         menuStates = new List<MenuState>();
         SetMenu(MenuState.Title);
         if (!loadedData)
@@ -59,24 +71,32 @@ public class GameManager : MonoBehaviour
     {
         MenuState menu = GetMenu();
         HideAllUI();
-        switch (menu)
+        if (menuUi.ContainsKey(menu))
         {
-            case MenuState.Title:
-                break;
+            menuUi[menu].SetActive(true);
         }
     }
 
     public void HideAllUI()
     {
-
+        foreach (GameObject menu in menuUi.Values)
+        {
+            menu.SetActive(false);
+        }
     }
-}
 
-public enum GameState
-{
-    Switching,
-    Title,
-    MainMenu
+    public void InitializeMenuUiDictionary()
+    {
+        menuUi.Add(MenuState.Title, uiTitle);
+        menuUi.Add(MenuState.MainMenu, uiMainMenu);
+        menuUi.Add(MenuState.Options, uiOptions);
+        menuUi.Add(MenuState.CharacterSelect, uiCharacterSelect);
+        menuUi.Add(MenuState.StageSelect, uiStageSelect);
+        menuUi.Add(MenuState.PerkSelect, uiPerkSelect);
+        menuUi.Add(MenuState.Match, uiMatch);
+        menuUi.Add(MenuState.Results, uiResults);
+        menuUi.Add(MenuState.Pause, uiPause);
+    }
 }
 
 public enum MenuState

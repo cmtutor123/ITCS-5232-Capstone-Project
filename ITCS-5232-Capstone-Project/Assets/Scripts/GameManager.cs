@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
 
     private Dictionary<MenuState, GameObject> menuUi = new Dictionary<MenuState, GameObject>();
     [Header("Menu UI")]
-    public GameObject uiTitle;
+    public GameObject uiLoad;
     public GameObject uiMainMenu;
     public GameObject uiOptions;
     public GameObject uiCharacterSelect;
@@ -31,7 +31,7 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         InitializeMenuUiDictionary();
         menuStates = new List<MenuState>();
-        SetMenu(MenuState.Title);
+        SetMenu(MenuState.Load);
         if (!loadedData)
         {
             LoadData();
@@ -87,7 +87,7 @@ public class GameManager : MonoBehaviour
 
     public void InitializeMenuUiDictionary()
     {
-        menuUi.Add(MenuState.Title, uiTitle);
+        menuUi.Add(MenuState.Load, uiLoad);
         menuUi.Add(MenuState.MainMenu, uiMainMenu);
         menuUi.Add(MenuState.Options, uiOptions);
         menuUi.Add(MenuState.CharacterSelect, uiCharacterSelect);
@@ -102,7 +102,7 @@ public class GameManager : MonoBehaviour
 public enum MenuState
 {
     None,
-    Title,
+    Load,
     MainMenu,
     Options,
     CharacterSelect,

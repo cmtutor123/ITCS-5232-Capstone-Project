@@ -152,7 +152,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01995f557ea3a63459eb9b7e149cbb72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiTitle: {fileID: 1442312147}
+  uiLoad: {fileID: 1442312147}
   uiMainMenu: {fileID: 944791046}
   uiOptions: {fileID: 1115256390}
   uiCharacterSelect: {fileID: 1304137572}
@@ -1449,7 +1449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1442312148}
   m_Layer: 5
-  m_Name: Title
+  m_Name: Load
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

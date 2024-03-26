@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static bool managerExists = false;
+    public static GameManager instance;
     public static bool loadedData = false;
     public static PlayerData playerData;
     public static List<MenuState> menuStates;
@@ -23,11 +23,14 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        if (managerExists)
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
         {
             Destroy(gameObject);
         }
-        managerExists = true;
         DontDestroyOnLoad(gameObject);
         InitializeMenuUiDictionary();
         menuStates = new List<MenuState>();

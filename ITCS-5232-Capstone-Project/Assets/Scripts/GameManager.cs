@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
             LoadData();
             loadedData = true;
         }
+        InitializeButtonIndex();
         SetMenu(MenuState.MainMenu);
     }
 
@@ -109,6 +110,16 @@ public class GameManager : MonoBehaviour
     {
         menuStates.RemoveAt(menuStates.Count - 1);
         LoadMenu();
+    }
+
+    public void InitializeButtonIndex()
+    {
+        int index = 0;
+        foreach (EmblemButton button in characterButtons)
+        {
+            ButtonIndex buttonIndex = button.gameObject.AddComponent<ButtonIndex>();
+            buttonIndex.SetIndex(index++);
+        }
     }
 
     public void UpdateCharacterSelect()

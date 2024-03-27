@@ -5,10 +5,10 @@ using TMPro;
 
 public class TextButton : MonoBehaviour
 {
-    public TextMeshProUGUI tmp;
+    public TextMeshProUGUI tmpText;
 
     public void ChangeText(string newText)
     {
-        tmp.text = newText;
+        tmpText.text = newText;
     }
 }

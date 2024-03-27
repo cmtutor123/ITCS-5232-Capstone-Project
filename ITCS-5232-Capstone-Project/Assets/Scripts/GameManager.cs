@@ -101,6 +101,12 @@ public class GameManager : MonoBehaviour
         menuUi.Add(MenuState.Pause, uiPause);
     }
 
+    public void RemoveMenu()
+    {
+        menuStates.RemoveAt(menuStates.Count - 1);
+        LoadMenu();
+    }
+
     public void SetCurrentCharacter(int character)
     {
 

@@ -35,4 +35,9 @@ public class ButtonManager : MonoBehaviour
         GameManager.instance.SetCurrentDifficulty(difficulty);
         GameManager.instance.SwitchMenu(MenuState.PerkSelect);
     }
+
+    public void ButtonRemoveMenu()
+    {
+        GameManager.instance.RemoveMenu();
+    }
 }

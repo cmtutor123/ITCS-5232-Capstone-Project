@@ -13,5 +13,5 @@ public class EmblemButton : MonoBehaviour
 
     public void ChangeLevel(int newLevel) => classEmblem.ChangeLevel(newLevel);
 
-    public void ChangeColor(Color newColor) => classEmblem.ChangeColor(newColor);
+    public void ChangeColor(Color newFrontColor, Color newBackColor) => classEmblem.ChangeColor(newFrontColor, newBackColor);
 }

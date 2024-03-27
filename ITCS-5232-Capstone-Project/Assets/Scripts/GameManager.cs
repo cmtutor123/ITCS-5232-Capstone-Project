@@ -5,12 +5,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
-    public static bool loadedData = false;
-    public static PlayerData playerData;
-    public static List<MenuState> menuStates;
+    public bool loadedData = false;
+    public PlayerData playerData;
+    public List<MenuState> menuStates;
+
+    public List<ClassData> classData;
 
     private Dictionary<MenuState, GameObject> menuUi = new Dictionary<MenuState, GameObject>();
-    [Header("Menu UI")]
+    [Header("UI Canvas")]
     public GameObject uiLoad;
     public GameObject uiMainMenu;
     public GameObject uiOptions;
@@ -20,6 +22,8 @@ public class GameManager : MonoBehaviour
     public GameObject uiMatch;
     public GameObject uiResults;
     public GameObject uiPause;
+    [Header("UI Buttons")]
+    public List<EmblemButton> characterButtons;
 
     void Start()
     {
@@ -107,7 +111,28 @@ public class GameManager : MonoBehaviour
         LoadMenu();
     }
 
+    public void UpdateCharacterSelect()
+    {
+        for (int i = 0; i < 6; i++)
+        {
+            ClassData currentData = classData[i];
+            EmblemButton currentButton = characterButtons[i];
+            string currentName = currentData.className;
+            int currentLevel = playerData.level[i];
+            Color currentLightColor = currentData.classColorLight;
+            Color currentDarkColor = currentData.classColorDark;
+            currentButton.ChangeText(currentName);
+            currentButton.ChangeLevel(currentLevel);
+            currentButton.ChangeColor(currentLightColor, currentDarkColor);
+        }
+    }
+
     public void SetCurrentCharacter(int character)
+    {
+
+    }
+
+    public void UpdateStageSelect()
     {
 
     }
@@ -120,6 +145,11 @@ public class GameManager : MonoBehaviour
     public void SetCurrentDifficulty(int difficulty)
     {
 
+    }
+
+    public void UpdatePerkSelect()
+    {
+        
     }
 }
 

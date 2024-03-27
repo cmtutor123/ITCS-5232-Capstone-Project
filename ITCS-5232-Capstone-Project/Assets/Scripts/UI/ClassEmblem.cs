@@ -7,15 +7,16 @@ using UnityEngine.UI;
 public class ClassEmblem : MonoBehaviour
 {
     public TextMeshProUGUI tmpLevel;
-    public Image emblem;
+    public Image emblemFront, emblemBack;
 
     public void ChangeLevel(int newLevel)
     {
         tmpLevel.text = newLevel.ToString();
     }
 
-    public void ChangeColor(Color newColor)
+    public void ChangeColor(Color newFrontColor, Color newBackColor)
     {
-        emblem.color = newColor;
+        emblemFront.color = newFrontColor;
+        emblemBack.color = newBackColor;
     }
 }

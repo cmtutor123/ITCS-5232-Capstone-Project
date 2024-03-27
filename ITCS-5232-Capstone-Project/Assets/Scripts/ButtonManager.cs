@@ -6,6 +6,7 @@ public class ButtonManager : MonoBehaviour
 {
     public void ButtonStart()
     {
+        GameManager.instance.UpdateCharacterSelect();
         GameManager.instance.SwitchMenu(MenuState.CharacterSelect);
     }
 

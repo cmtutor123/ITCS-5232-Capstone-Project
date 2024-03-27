@@ -6,14 +6,18 @@ using System;
 [Serializable]
 public class PlayerData
 {
-    public int[] exp = new int[6];
-    public int[] level = new int[6];
-    public int[] points = new int[6];
-    public int[,] perks = new int[6, 60];
+    public static int CLASS_COUNT = 6;
+    public static int STAGE_COUNT = 3;
+
+    public int[] exp = new int[CLASS_COUNT];
+    public int[] level = new int[CLASS_COUNT];
+    public int[] points = new int[CLASS_COUNT];
+    public int[,] perks = new int[CLASS_COUNT, 60];
+    public int[,] stages = new int[CLASS_COUNT, STAGE_COUNT];
 
     public PlayerData()
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < CLASS_COUNT; i++)
         {
             level[i] = 1;
             for (int j = 0; j < 60; j++)
@@ -23,12 +27,16 @@ public class PlayerData
                     perks[i, j] = 1;
                 }
             }
+            for (int j = 0; j < STAGE_COUNT; j++)
+            {
+                stages[i, j] = 0;
+            }
         }
     }
 
     public PlayerData(PlayerData inputData)
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < CLASS_COUNT; i++)
         {
             exp[i] = inputData.exp[i];
             if (exp[i] < 0)
@@ -104,6 +112,10 @@ public class PlayerData
                     }
                     points[i] = levelPoints - 3;
                 }
+            }
+            for (int j = 0; j < STAGE_COUNT; j++)
+            {
+                stages[i, j] = inputData.stages[i, j];
             }
         }
     }

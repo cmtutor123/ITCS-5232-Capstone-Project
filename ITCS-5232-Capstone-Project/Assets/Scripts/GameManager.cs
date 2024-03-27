@@ -100,6 +100,21 @@ public class GameManager : MonoBehaviour
         menuUi.Add(MenuState.Results, uiResults);
         menuUi.Add(MenuState.Pause, uiPause);
     }
+
+    public void SetCurrentCharacter(int character)
+    {
+
+    }
+
+    public void SetCurrentStage(int stage)
+    {
+
+    }
+
+    public void SetCurrentDifficulty(int difficulty)
+    {
+
+    }
 }
 
 public enum MenuState

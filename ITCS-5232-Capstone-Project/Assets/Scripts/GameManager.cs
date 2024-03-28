@@ -29,6 +29,7 @@ public class GameManager : MonoBehaviour
     [Header("UI Buttons")]
     public List<EmblemButton> characterButtons;
     public ClassDescription classTooltip;
+    public List<LockableButton> stageButtons;
 
     void Start()
     {

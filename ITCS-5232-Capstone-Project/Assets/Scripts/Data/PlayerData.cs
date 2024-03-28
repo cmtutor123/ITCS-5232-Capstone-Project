@@ -29,8 +29,9 @@ public class PlayerData
             }
             for (int j = 0; j < STAGE_COUNT; j++)
             {
-                stages[i, j] = 0;
+                stages[i, j] = -1;
             }
+            stages[0, 0] = 0;
         }
     }
 

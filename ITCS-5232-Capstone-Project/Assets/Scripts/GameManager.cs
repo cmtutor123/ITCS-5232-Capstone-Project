@@ -24,6 +24,7 @@ public class GameManager : MonoBehaviour
     public GameObject uiPause;
     [Header("UI Buttons")]
     public List<EmblemButton> characterButtons;
+    public ClassDescription classTooltip;
 
     void Start()
     {
@@ -119,6 +120,7 @@ public class GameManager : MonoBehaviour
         {
             ButtonIndex buttonIndex = button.gameObject.AddComponent<ButtonIndex>();
             buttonIndex.SetIndex(index++);
+            button.gameObject.AddComponent<ClassTooltip>();
         }
     }
 
@@ -141,6 +143,20 @@ public class GameManager : MonoBehaviour
     public void SetCurrentCharacter(int character)
     {
 
+    }
+
+    public void ShowClassTooltip(int index)
+    {
+        ClassData currentData = classData[index];
+        classTooltip.ChangeSprite(currentData.classSprite);
+        classTooltip.ChangeName(currentData.className);
+        classTooltip.ChangeDescription(currentData.classDescription);
+        classTooltip.gameObject.SetActive(true);
+    }
+
+    public void HideClassTooltip()
+    {
+        classTooltip.gameObject.SetActive(false);
     }
 
     public void UpdateStageSelect()

@@ -13,6 +13,8 @@ public class GameManager : MonoBehaviour
 
     public List<ClassData> classData;
 
+    private int currentCharacter, currentStage, currentDifficulty;
+
     private Dictionary<MenuState, GameObject> menuUi = new Dictionary<MenuState, GameObject>();
     [Header("Fade")]
     public Image fade;
@@ -30,6 +32,12 @@ public class GameManager : MonoBehaviour
     public List<EmblemButton> characterButtons;
     public ClassDescription classTooltip;
     public List<LockableButton> stageButtons;
+    public List<LockableButton> difficultyButtons;
+    public TextButton stageBack;
+    public TextButton difficultyBack;
+    public EmblemButton stageEmblem;
+    [Header("Stage Info")]
+    public List<string> stageNames;
 
     void Start()
     {
@@ -155,27 +163,43 @@ public class GameManager : MonoBehaviour
             button.gameObject.AddComponent<ClassTooltip>();
             button.gameObject.GetComponentInChildren<Button>().onClick.AddListener(() => gameObject.GetComponent<ButtonManager>().ButtonSelectCharacter(buttonIndex.GetIndex()));
         }
+        index = 0;
+        foreach (LockableButton button in stageButtons)
+        {
+            ButtonIndex buttonIndex = button.gameObject.AddComponent<ButtonIndex>();
+            buttonIndex.SetIndex(index++);
+            button.gameObject.GetComponentInChildren<Button>().onClick.AddListener(() => gameObject.GetComponent<ButtonManager>().ButtonSelectStage(buttonIndex.GetIndex()));
+        }
+        index = 0;
+        foreach (LockableButton button in difficultyButtons)
+        {
+            ButtonIndex buttonIndex = button.gameObject.AddComponent<ButtonIndex>();
+            buttonIndex.SetIndex(index++);
+            button.gameObject.GetComponentInChildren<Button>().onClick.AddListener(() => gameObject.GetComponent<ButtonManager>().ButtonSelectDifficulty(buttonIndex.GetIndex()));
+        }
     }
 
     public void UpdateCharacterSelect()
     {
         for (int i = 0; i < 6; i++)
         {
-            ClassData currentData = classData[i];
-            EmblemButton currentButton = characterButtons[i];
-            string currentName = currentData.className;
-            int currentLevel = playerData.level[i];
-            Color currentLightColor = currentData.classColorLight;
-            Color currentDarkColor = currentData.classColorDark;
-            currentButton.ChangeText(currentName);
-            currentButton.ChangeLevel(currentLevel);
-            currentButton.ChangeColor(currentLightColor, currentDarkColor);
+            UpdateCharacterEmblem(characterButtons[i], i);
         }
+    }
+
+    public void UpdateCharacterEmblem(EmblemButton emblemButton, int characterIndex)
+    {
+        ClassData data = classData[characterIndex];
+        emblemButton.ChangeText(data.className);
+        emblemButton.ChangeLevel(playerData.level[characterIndex]);
+        emblemButton.ChangeColor(data.classColorLight, data.classColorDark);
     }
 
     public void SetCurrentCharacter(int character)
     {
-
+        currentCharacter = character;
+        UpdateCharacterEmblem(stageEmblem, character);
+        UpdateStageSelect();
     }
 
     public void ShowClassTooltip(int index)
@@ -194,10 +218,43 @@ public class GameManager : MonoBehaviour
 
     public void UpdateStageSelect()
     {
-
+        foreach (LockableButton button in difficultyButtons)
+        {
+            button.gameObject.SetActive(false);
+        }
+        difficultyBack.gameObject.SetActive(false);
+        stageBack.gameObject.SetActive(true);
+        foreach (LockableButton button in stageButtons)
+        {
+            button.gameObject.SetActive(true);
+            int stageIndex = button.GetComponent<ButtonIndex>().GetIndex();
+            if (stageIndex < PlayerData.STAGE_COUNT)
+            {
+                button.gameObject.SetActive(true);
+            }
+            else
+            {
+                button.gameObject.SetActive(false);
+                return;
+            }
+            int diffIndex = playerData.stages[currentCharacter, stageIndex];
+            if (diffIndex > -1)
+            {
+                button.SetUnlocked(stageNames[stageIndex]);
+            }
+            else
+            {
+                button.SetLocked();
+            }
+        }
     }
 
     public void SetCurrentStage(int stage)
+    {
+
+    }
+
+    public void UpdateDifficultySelect()
     {
 
     }

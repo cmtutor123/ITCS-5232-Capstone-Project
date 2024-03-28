@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -121,6 +122,7 @@ public class GameManager : MonoBehaviour
             ButtonIndex buttonIndex = button.gameObject.AddComponent<ButtonIndex>();
             buttonIndex.SetIndex(index++);
             button.gameObject.AddComponent<ClassTooltip>();
+            button.gameObject.GetComponentInChildren<Button>().onClick.AddListener(() => gameObject.GetComponent<ButtonManager>().ButtonSelectCharacter(buttonIndex.GetIndex()));
         }
     }
 

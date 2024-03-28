@@ -558,6 +558,34 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 69.05
       objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 159686000}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonSelectCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ButtonManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1167,6 +1195,34 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 69.05
       objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 159686000}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonSelectCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ButtonManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1503,6 +1559,34 @@ PrefabInstance:
     - target: {fileID: 6571095917197799878, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
       propertyPath: m_fontSize
       value: 69.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 159686000}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonSelectCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ButtonManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1898,6 +1982,34 @@ PrefabInstance:
       propertyPath: m_fontSize
       value: 69.05
       objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 159686000}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonSelectCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ButtonManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2104,6 +2216,34 @@ PrefabInstance:
     - target: {fileID: 6571095917197799878, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
       propertyPath: m_fontSize
       value: 69.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 159686000}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonSelectCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ButtonManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3354,6 +3494,34 @@ PrefabInstance:
     - target: {fileID: 6571095917197799878, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
       propertyPath: m_fontSize
       value: 69.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 159686000}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonSelectCharacter
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ButtonManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

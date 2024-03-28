@@ -31,7 +31,7 @@ public class PlayerData
             {
                 stages[i, j] = -1;
             }
-            stages[0, 0] = 0;
+            stages[i, 0] = 0;
         }
     }
 

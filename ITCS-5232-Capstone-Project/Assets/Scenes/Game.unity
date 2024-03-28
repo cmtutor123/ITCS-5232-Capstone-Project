@@ -243,7 +243,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1867813043405857442, guid: 8ed6fb58132873c42ad422156845663f, type: 3}
       propertyPath: m_Name
-      value: DifficultyButton3
+      value: DifficultyButton1
       objectReference: {fileID: 0}
     - target: {fileID: 1867813043405857442, guid: 8ed6fb58132873c42ad422156845663f, type: 3}
       propertyPath: m_IsActive
@@ -485,7 +485,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1867813043405857442, guid: 8ed6fb58132873c42ad422156845663f, type: 3}
       propertyPath: m_Name
-      value: DifficultyButton1
+      value: DifficultyButton2
       objectReference: {fileID: 0}
     - target: {fileID: 1867813043405857442, guid: 8ed6fb58132873c42ad422156845663f, type: 3}
       propertyPath: m_IsActive
@@ -742,6 +742,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 97d24db1f5078c14b9409a6583fa475c, type: 2}
   - {fileID: 11400000, guid: 96740d39f296d594393ad30332f9a216, type: 2}
   - {fileID: 11400000, guid: 7dc1efc4c85af5c4f855a4fef3eafc74, type: 2}
+  currentCharacter: 0
+  currentStage: 0
+  currentDifficulty: 0
   fade: {fileID: 3069151128633599443}
   uiLoad: {fileID: 1442312147}
   uiMainMenu: {fileID: 944791046}
@@ -767,9 +770,9 @@ MonoBehaviour:
   - {fileID: 1605863063}
   - {fileID: 1736553384}
   difficultyButtons:
+  - {fileID: 48045541}
   - {fileID: 58974688}
   - {fileID: 538891252}
-  - {fileID: 48045541}
   - {fileID: 1156775096}
   - {fileID: 1522479145}
   stageBack: {fileID: 1840249177}
@@ -842,9 +845,9 @@ RectTransform:
   - {fileID: 1736553383}
   - {fileID: 1840249176}
   - {fileID: 647792690}
+  - {fileID: 48045540}
   - {fileID: 58974687}
   - {fileID: 538891251}
-  - {fileID: 48045540}
   - {fileID: 1156775095}
   - {fileID: 1522479144}
   - {fileID: 1926891366}
@@ -1619,7 +1622,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1867813043405857442, guid: 8ed6fb58132873c42ad422156845663f, type: 3}
       propertyPath: m_Name
-      value: DifficultyButton2
+      value: DifficultyButton3
       objectReference: {fileID: 0}
     - target: {fileID: 1867813043405857442, guid: 8ed6fb58132873c42ad422156845663f, type: 3}
       propertyPath: m_IsActive
@@ -2091,8 +2094,40 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4079628055820607593, guid: 49e7861c2bcbe7349ac2404f3ba80031, type: 3}
+      propertyPath: m_text
+      value: Back
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079628055820607593, guid: 49e7861c2bcbe7349ac2404f3ba80031, type: 3}
       propertyPath: m_fontSize
       value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839701176805420127, guid: 49e7861c2bcbe7349ac2404f3ba80031, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839701176805420127, guid: 49e7861c2bcbe7349ac2404f3ba80031, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839701176805420127, guid: 49e7861c2bcbe7349ac2404f3ba80031, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 159686000}
+    - target: {fileID: 7839701176805420127, guid: 49e7861c2bcbe7349ac2404f3ba80031, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839701176805420127, guid: 49e7861c2bcbe7349ac2404f3ba80031, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonDifficultyBack
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839701176805420127, guid: 49e7861c2bcbe7349ac2404f3ba80031, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ButtonManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839701176805420127, guid: 49e7861c2bcbe7349ac2404f3ba80031, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4712,8 +4747,40 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4079628055820607593, guid: 49e7861c2bcbe7349ac2404f3ba80031, type: 3}
+      propertyPath: m_text
+      value: Back
+      objectReference: {fileID: 0}
+    - target: {fileID: 4079628055820607593, guid: 49e7861c2bcbe7349ac2404f3ba80031, type: 3}
       propertyPath: m_fontSize
       value: 64
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839701176805420127, guid: 49e7861c2bcbe7349ac2404f3ba80031, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839701176805420127, guid: 49e7861c2bcbe7349ac2404f3ba80031, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839701176805420127, guid: 49e7861c2bcbe7349ac2404f3ba80031, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 159686000}
+    - target: {fileID: 7839701176805420127, guid: 49e7861c2bcbe7349ac2404f3ba80031, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839701176805420127, guid: 49e7861c2bcbe7349ac2404f3ba80031, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonRemoveMenu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839701176805420127, guid: 49e7861c2bcbe7349ac2404f3ba80031, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: ButtonManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7839701176805420127, guid: 49e7861c2bcbe7349ac2404f3ba80031, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4859,6 +4926,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClassDisplay
       objectReference: {fileID: 0}
+    - target: {fileID: 712720933950199928, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_fontSize
+      value: 50.25
+      objectReference: {fileID: 0}
     - target: {fileID: 1335407499370266202, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
@@ -4954,6 +5025,10 @@ PrefabInstance:
     - target: {fileID: 4638600638107871655, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
       propertyPath: m_Color.r
       value: 0.2392157
+      objectReference: {fileID: 0}
+    - target: {fileID: 6571095917197799878, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_fontSize
+      value: 69.05
       objectReference: {fileID: 0}
     - target: {fileID: 6752551005227013198, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
       propertyPath: m_Enabled

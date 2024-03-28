@@ -11,12 +11,12 @@ public class LockableButton : MonoBehaviour
     public void SetLocked()
     {
         textButton.ChangeText("");
-        lockIcon.gameObject.SetActive(false);
+        lockIcon.gameObject.SetActive(true);
     }
 
     public void SetUnlocked(string newText)
     {
         textButton.ChangeText(newText);
-        lockIcon.gameObject.SetActive(true);
+        lockIcon.gameObject.SetActive(false);
     }
 }

@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
 
     public List<ClassData> classData;
 
-    private int currentCharacter, currentStage, currentDifficulty;
+    public int currentCharacter, currentStage, currentDifficulty;
 
     private Dictionary<MenuState, GameObject> menuUi = new Dictionary<MenuState, GameObject>();
     [Header("Fade")]
@@ -227,6 +227,7 @@ public class GameManager : MonoBehaviour
         foreach (LockableButton button in stageButtons)
         {
             button.gameObject.SetActive(true);
+            button.GetComponentInChildren<Button>().enabled = true;
             int stageIndex = button.GetComponent<ButtonIndex>().GetIndex();
             if (stageIndex < PlayerData.STAGE_COUNT)
             {
@@ -251,17 +252,41 @@ public class GameManager : MonoBehaviour
 
     public void SetCurrentStage(int stage)
     {
-
+        currentStage = stage;
+        UpdateDifficultySelect();
     }
 
     public void UpdateDifficultySelect()
     {
-
+        foreach (LockableButton button in stageButtons)
+        {
+            button.GetComponentInChildren<Button>().enabled = false;
+            if (button.GetComponent<ButtonIndex>().GetIndex() != currentStage)
+            {
+                button.gameObject.SetActive(false);
+            }
+        }
+        difficultyBack.gameObject.SetActive(true);
+        stageBack.gameObject.SetActive(false);
+        int diffIndex = playerData.stages[currentCharacter, currentStage];
+        foreach (LockableButton button in difficultyButtons)
+        {
+            button.gameObject.SetActive(true);
+            int index = button.GetComponent<ButtonIndex>().GetIndex();
+            if (index <= diffIndex)
+            {
+                button.SetUnlocked("Difficulty " + (index + 1).ToString());
+            }
+            else
+            {
+                button.SetLocked();
+            }
+        }
     }
 
     public void SetCurrentDifficulty(int difficulty)
     {
-
+        currentDifficulty = difficulty;
     }
 
     public void UpdatePerkSelect()

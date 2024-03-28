@@ -9,10 +9,13 @@ public class GameManager : MonoBehaviour
     public bool loadedData = false;
     public PlayerData playerData;
     public List<MenuState> menuStates;
+    public float fadeTime = 0.5f;
 
     public List<ClassData> classData;
 
     private Dictionary<MenuState, GameObject> menuUi = new Dictionary<MenuState, GameObject>();
+    [Header("Fade")]
+    public Image fade;
     [Header("UI Canvas")]
     public GameObject uiLoad;
     public GameObject uiMainMenu;
@@ -61,6 +64,26 @@ public class GameManager : MonoBehaviour
         LoadMenu();
     }
 
+    public IEnumerator FadeOut(float seconds)
+    {
+        for (float t = 0; t < 1; t += Time.deltaTime / seconds)
+        {
+            fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, Mathf.Lerp(0, 1, t));
+            yield return null;
+        }
+        fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, 1);
+    }
+
+    public IEnumerator FadeIn(float seconds)
+    {
+        for (float t = 0; t < 1; t += Time.deltaTime / seconds)
+        {
+            fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, Mathf.Lerp(1, 0, t));
+            yield return null;
+        }
+        fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, 0);
+    }
+
     public void SetMenu(params MenuState[] menus)
     {
         menuStates.Clear();
@@ -79,12 +102,19 @@ public class GameManager : MonoBehaviour
 
     public void LoadMenu()
     {
+        StartCoroutine(LoadMenuCoroutine());
+    }
+
+    public IEnumerator LoadMenuCoroutine()
+    {
+        yield return FadeOut(fadeTime);
         MenuState menu = GetMenu();
         HideAllUI();
         if (menuUi.ContainsKey(menu))
         {
             menuUi[menu].SetActive(true);
         }
+        StartCoroutine(FadeIn(fadeTime));
     }
 
     public void HideAllUI()

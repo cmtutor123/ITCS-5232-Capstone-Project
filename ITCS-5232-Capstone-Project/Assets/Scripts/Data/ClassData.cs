@@ -10,4 +10,10 @@ public class ClassData : ScriptableObject
     public Color classColorLight;
     public Color classColorDark;
     public Sprite classSprite;
+    [Header("Perks")]
+    public PerkData[] normalAbility = new PerkData[12];
+    public PerkData[] specialAbility = new PerkData[12];
+    public PerkData[] chargedAbility = new PerkData[12];
+    public PerkData[] passiveAbilityA = new PerkData[12];
+    public PerkData[] passiveAbilityB = new PerkData[12];
 }

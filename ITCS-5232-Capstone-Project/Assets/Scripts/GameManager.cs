@@ -41,6 +41,10 @@ public class GameManager : MonoBehaviour
     public PerkLoadout perkLoadout;
     public PerkSelection perkSelection;
     public EmblemButton perkEmblem;
+    [Header("Loadout Information")]
+    public int[,] loadoutData = new int[PlayerData.CLASS_COUNT, 10];
+    public string[] loadoutSlots = { "NormalMain", "NormalMod", "SpecialMain", "SpecialMod", "ChargedMain", "ChargedMod", "PassiveA1", "PassiveA2", "PassiveB1", "PassiveB1" };
+    public int[] loadoutDefaults = { 0, -1, 0, -1, 0, -1, -1, -1, -1, -1 };
 
     void Start()
     {
@@ -68,6 +72,115 @@ public class GameManager : MonoBehaviour
     public void LoadData()
     {
         playerData = FileManager.LoadPlayerData();
+        for (int c = 0; c < classData.Count; c++)
+        {
+            string className = classData[c].className;
+            for (int s = 0; s < loadoutSlots.Length; s++)
+            {
+                loadoutData[c, s] = PlayerPrefs.GetInt(className + loadoutSlots[s], loadoutDefaults[s]);
+            }
+        }
+        CheckLoadoutData();
+        SaveLoadoutData();
+    }
+
+    public void SaveLoadoutData()
+    {
+        for (int c = 0; c < classData.Count; c++)
+        {
+            string className = classData[c].className;
+            for (int s = 0; s < loadoutSlots.Length; s++)
+            {
+                PlayerPrefs.SetInt(className + loadoutSlots[s], loadoutData[c, s]);
+            }
+        }
+    }
+
+    public void CheckLoadoutData()
+    {
+        for (int c = 0; c < classData.Count; c++)
+        {
+            CheckLoadoutPerk(c, loadoutData[c, 0], 0, 0);
+            CheckLoadoutPerk(c, loadoutData[c, 1], 0, -1);
+            CheckLoadoutPerk(c, loadoutData[c, 2], 12, 0);
+            CheckLoadoutPerk(c, loadoutData[c, 3], 12, -1);
+            CheckLoadoutPerk(c, loadoutData[c, 4], 24, 0);
+            CheckLoadoutPerk(c, loadoutData[c, 5], 24, -1);
+            CheckLoadoutPerk(c, loadoutData[c, 6], 36, -1);
+            CheckLoadoutPerk(c, loadoutData[c, 7], 36, -1);
+            CheckLoadoutPerk(c, loadoutData[c, 8], 48, -1);
+            CheckLoadoutPerk(c, loadoutData[c, 9], 48, -1);
+        }
+    }
+
+    public void CheckLoadoutPerk(int cIndex, int sIndex, int pOffset, int defaultValue)
+    {
+        if (playerData.perks[cIndex, sIndex + pOffset] != 1)
+        {
+            loadoutData[cIndex, sIndex] = defaultValue;
+        }
+    }
+
+    public void UpdateLoadoutPerk(int loadoutIndex, int perkIndex)
+    {
+        if (loadoutIndex >= 0 && loadoutIndex <= 5)
+        {
+            UpdateLoadoutAbility(loadoutIndex, perkIndex);
+        }
+        else if (loadoutIndex >= 6 && loadoutIndex <= 9)
+        {
+            UpdateLoadoutPassive(loadoutIndex, perkIndex);
+        }
+    }
+
+    public void UpdateLoadoutAbility(int loadoutIndex, int perkIndex)
+    {
+        bool isSlotBase = loadoutIndex % 2 == 0;
+        bool isAbilityBase = perkIndex % 4 == 0;
+        int slotBase, slotMod;
+        if (isSlotBase)
+        {
+            slotBase = loadoutIndex;
+            slotMod = loadoutIndex + 1;
+        }
+        else
+        {
+            slotBase = loadoutIndex - 1;
+            slotMod = loadoutIndex;
+        }
+        int abilityBase, abilityMod;
+        if (isAbilityBase)
+        {
+            abilityBase = perkIndex;
+            abilityMod = -1;
+        }
+        else
+        {
+            abilityBase = perkIndex / 4;
+            abilityMod = perkIndex;
+        }
+        SetLoadoutPerk(slotBase, abilityBase);
+        SetLoadoutPerk(slotMod, abilityMod);
+    }
+
+    public void UpdateLoadoutPassive(int loadoutIndex, int perkIndex)
+    {
+        int otherSlot = loadoutIndex + (loadoutIndex % 2 == 0 ? 1 : -1);
+        if (loadoutData[currentCharacter, otherSlot] == perkIndex)
+        {
+            SetLoadoutPerk(otherSlot, -1);
+            SetLoadoutPerk(loadoutIndex, perkIndex);
+        }
+        else
+        {
+            SetLoadoutPerk(loadoutIndex, perkIndex);
+        }
+    }
+
+    public void SetLoadoutPerk(int loadoutIndex, int perkIndex)
+    {
+        loadoutData[currentCharacter, loadoutIndex] = perkIndex;
+        SaveLoadoutData();
     }
 
     public void SwitchMenu(MenuState menu)
@@ -315,7 +428,7 @@ public class GameManager : MonoBehaviour
 
     }
 
-    public void UpdatePerkSelection()
+    public void UpdatePerkSelection(int slotIndex)
     {
 
     }

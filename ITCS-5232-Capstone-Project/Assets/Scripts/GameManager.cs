@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     public float fadeTime = 0.5f;
 
     public List<ClassData> classData;
+    public List<StageData> stageData;
 
     public int currentCharacter, currentStage, currentDifficulty;
 
@@ -36,8 +37,10 @@ public class GameManager : MonoBehaviour
     public TextButton stageBack;
     public TextButton difficultyBack;
     public EmblemButton stageEmblem;
-    [Header("Stage Info")]
-    public List<string> stageNames;
+    public PowerMeter powerMeter;
+    public PerkLoadout perkLoadout;
+    public PerkSelection perkSelection;
+    public EmblemButton perkEmblem;
 
     void Start()
     {
@@ -241,7 +244,7 @@ public class GameManager : MonoBehaviour
             int diffIndex = playerData.stages[currentCharacter, stageIndex];
             if (diffIndex > -1)
             {
-                button.SetUnlocked(stageNames[stageIndex]);
+                button.SetUnlocked(stageData[stageIndex].stageName);
             }
             else
             {
@@ -287,11 +290,34 @@ public class GameManager : MonoBehaviour
     public void SetCurrentDifficulty(int difficulty)
     {
         currentDifficulty = difficulty;
+        UpdatePerkSelect();
     }
 
     public void UpdatePerkSelect()
     {
-        
+        UpdatePowerMeter();
+        UpdatePerkLoadout();
+        UpdateCharacterEmblem(perkEmblem, currentCharacter);
+    }
+
+    public void UpdatePowerMeter()
+    {
+        powerMeter.SetMeter(CheckLoadoutPower(), playerData.level[currentCharacter]);
+    }
+
+    public int CheckLoadoutPower()
+    {
+        return 0;
+    }
+
+    public void UpdatePerkLoadout()
+    {
+
+    }
+
+    public void UpdatePerkSelection()
+    {
+
     }
 }
 

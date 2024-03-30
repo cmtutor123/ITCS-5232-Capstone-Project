@@ -742,6 +742,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 97d24db1f5078c14b9409a6583fa475c, type: 2}
   - {fileID: 11400000, guid: 96740d39f296d594393ad30332f9a216, type: 2}
   - {fileID: 11400000, guid: 7dc1efc4c85af5c4f855a4fef3eafc74, type: 2}
+  stageData:
+  - {fileID: 11400000, guid: 65864c618a9b2b545aa148c2cb601701, type: 2}
+  - {fileID: 11400000, guid: ed44c09bb96f174429a8b326372b7c21, type: 2}
+  - {fileID: 11400000, guid: 5ca1f1e2fa3ce644c9712481916bf20f, type: 2}
   currentCharacter: 0
   currentStage: 0
   currentDifficulty: 0
@@ -778,10 +782,6 @@ MonoBehaviour:
   stageBack: {fileID: 1840249177}
   difficultyBack: {fileID: 647792691}
   stageEmblem: {fileID: 1926891367}
-  stageNames:
-  - First Level
-  - Second Level
-  - Third Level
 --- !u!4 &159685999
 Transform:
   m_ObjectHideFlags: 0

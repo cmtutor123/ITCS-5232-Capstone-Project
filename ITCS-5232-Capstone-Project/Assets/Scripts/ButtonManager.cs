@@ -75,4 +75,19 @@ public class ButtonManager : MonoBehaviour
     {
         GameManager.instance.UpdateStageSelect();
     }
+
+    public void ButtonPerkLoadout(int index)
+    {
+
+    }   
+    
+    public void ButtonPerkSelection(int index)
+    {
+
+    }
+
+    public void ButtonMatchStart()
+    {
+        
+    }
 }

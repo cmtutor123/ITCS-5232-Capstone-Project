@@ -16,6 +16,8 @@ public class GameManager : MonoBehaviour
 
     public int currentCharacter, currentStage, currentDifficulty;
 
+    public PerkData perkNone;
+
     private Dictionary<MenuState, GameObject> menuUi = new Dictionary<MenuState, GameObject>();
     [Header("Fade")]
     public Image fade;
@@ -45,6 +47,7 @@ public class GameManager : MonoBehaviour
     public int[,] loadoutData = new int[PlayerData.CLASS_COUNT, 10];
     public string[] loadoutSlots = { "NormalMain", "NormalMod", "SpecialMain", "SpecialMod", "ChargedMain", "ChargedMod", "PassiveA1", "PassiveA2", "PassiveB1", "PassiveB1" };
     public int[] loadoutDefaults = { 0, -1, 0, -1, 0, -1, -1, -1, -1, -1 };
+    
 
     void Start()
     {
@@ -457,7 +460,36 @@ public class GameManager : MonoBehaviour
 
     public int CheckLoadoutPower()
     {
-        return 0;
+        int total = 0;
+        for (int i = 0; i < 10; i++)
+        {
+            int pIndex = loadoutData[currentCharacter, i];
+            if (pIndex != -1)
+            {
+                int slot = i / 2;
+                PerkData[] slotPerks = new PerkData[12];
+                switch (slot)
+                {
+                    case 0:
+                        slotPerks = classData[currentCharacter].normalAbility;
+                        break;
+                    case 1:
+                        slotPerks = classData[currentCharacter].specialAbility;
+                        break;
+                    case 2:
+                        slotPerks = classData[currentCharacter].chargedAbility;
+                        break;
+                    case 3:
+                        slotPerks = classData[currentCharacter].passiveAbilityA;
+                        break;
+                    case 4:
+                        slotPerks = classData[currentCharacter].passiveAbilityB;
+                        break;
+                }
+                total += slotPerks[pIndex].cost;
+            }
+        }
+        return total;
     }
 
     public void UpdatePerkLoadout()

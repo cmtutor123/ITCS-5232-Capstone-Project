@@ -463,7 +463,7 @@ public class GameManager : MonoBehaviour
     public void UpdatePerkLoadout()
     {
         perkSelection.gameObject.SetActive(false);
-        for (int i = 0; i < 0; i++)
+        for (int i = 0; i < 10; i++)
         {
             int slot = i / 2;
             PerkData[] slotPerks = new PerkData[12];

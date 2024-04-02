@@ -78,12 +78,12 @@ public class ButtonManager : MonoBehaviour
 
     public void ButtonPerkLoadout(int index)
     {
-
+        GameManager.instance.UpdatePerkLoadout();
     }   
     
     public void ButtonPerkSelection(int index)
     {
-
+        GameManager.instance.UpdatePerkSelection(index);
     }
 
     public void ButtonMatchStart()

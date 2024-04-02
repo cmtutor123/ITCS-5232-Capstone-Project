@@ -72,6 +72,10 @@ public class GameManager : MonoBehaviour
     public void LoadData()
     {
         playerData = FileManager.LoadPlayerData();
+    }
+
+    public void LoadLoadoutData()
+    {
         for (int c = 0; c < classData.Count; c++)
         {
             string className = classData[c].className;
@@ -312,6 +316,20 @@ public class GameManager : MonoBehaviour
             buttonIndex.SetIndex(index++);
             button.gameObject.GetComponentInChildren<Button>().onClick.AddListener(() => gameObject.GetComponent<ButtonManager>().ButtonSelectDifficulty(buttonIndex.GetIndex()));
         }
+        index = 0;
+        foreach (PerkButton button in perkLoadout.perkButtons)
+        {
+            ButtonIndex buttonIndex = button.gameObject.AddComponent<ButtonIndex>();
+            buttonIndex.SetIndex(index++);
+            button.gameObject.GetComponentInChildren<Button>().onClick.AddListener(() => gameObject.GetComponent<ButtonManager>().ButtonPerkLoadout(buttonIndex.GetIndex()));
+        }
+        index = 0;
+        foreach (PerkButton button in perkSelection.perkButtons)
+        {
+            ButtonIndex buttonIndex = button.gameObject.AddComponent<ButtonIndex>();
+            buttonIndex.SetIndex(index++);
+            button.gameObject.GetComponentInChildren<Button>().onClick.AddListener(() => gameObject.GetComponent<ButtonManager>().ButtonPerkSelection(buttonIndex.GetIndex()));
+        }
     }
 
     public void UpdateCharacterSelect()
@@ -444,12 +462,60 @@ public class GameManager : MonoBehaviour
 
     public void UpdatePerkLoadout()
     {
-
+        for (int i = 0; i < 0; i++)
+        {
+            int slot = i / 2;
+            PerkData[] slotPerks = new PerkData[12];
+            switch (slot)
+            {
+                case 0:
+                    slotPerks = classData[currentCharacter].normalAbility;
+                    break;
+                case 1:
+                    slotPerks = classData[currentCharacter].specialAbility;
+                    break;
+                case 2:
+                    slotPerks = classData[currentCharacter].chargedAbility;
+                    break;
+                case 3:
+                    slotPerks = classData[currentCharacter].passiveAbilityA;
+                    break;
+                case 4:
+                    slotPerks = classData[currentCharacter].passiveAbilityB;
+                    break;
+            }
+            perkLoadout.perkButtons[i].ChangeColor(classData[currentCharacter].classColorDark);
+            perkLoadout.perkButtons[i].SetPerk(slotPerks[loadoutData[currentCharacter, i]]);
+        }
     }
 
     public void UpdatePerkSelection(int slotIndex)
     {
-
+        int slot = slotIndex / 2;
+        PerkData[] slotPerks = new PerkData[12];
+        switch (slot)
+        {
+            case 0:
+                slotPerks = classData[currentCharacter].normalAbility;
+                break;
+            case 1:
+                slotPerks = classData[currentCharacter].specialAbility;
+                break;
+            case 2:
+                slotPerks = classData[currentCharacter].chargedAbility;
+                break;
+            case 3:
+                slotPerks = classData[currentCharacter].passiveAbilityA;
+                break;
+            case 4:
+                slotPerks = classData[currentCharacter].passiveAbilityB;
+                break;
+        }
+        for (int i = 0; i < 12; i++)
+        {
+            perkSelection.perkButtons[i].ChangeColor(classData[currentCharacter].classColorDark);
+            perkSelection.perkButtons[i].SetPerk(slotPerks[i]);
+        }
     }
 }
 

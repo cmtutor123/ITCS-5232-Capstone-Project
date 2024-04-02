@@ -4,5 +4,5 @@ using UnityEngine;
 
 public class PerkLoadout : MonoBehaviour
 {
-    
+    public List<PerkButton> perkButtons;
 }

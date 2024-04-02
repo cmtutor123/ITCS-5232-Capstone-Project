@@ -8,5 +8,6 @@ using System;
 public class PerkData : ScriptableObject
 {
     public string id, perkName, perkDescription;
+    public int cost = 0;
     public Sprite perkIcon;
 }

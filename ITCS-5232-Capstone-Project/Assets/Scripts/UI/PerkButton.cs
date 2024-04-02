@@ -23,4 +23,10 @@ public class PerkButton : MonoBehaviour
             tmpCost.text = "";
         }
     }
+
+    public void SetPerk(PerkData data)
+    {
+        ChangeIcon(data.perkIcon);
+        ChangeCost(data.cost);
+    }
 }

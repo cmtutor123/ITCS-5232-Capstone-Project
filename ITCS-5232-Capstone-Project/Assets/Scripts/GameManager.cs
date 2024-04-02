@@ -43,6 +43,7 @@ public class GameManager : MonoBehaviour
     public PerkLoadout perkLoadout;
     public PerkSelection perkSelection;
     public EmblemButton perkEmblem;
+    public PerkDescription perkTooltip;
     [Header("Loadout Information")]
     public int[,] loadoutData = new int[PlayerData.CLASS_COUNT, 10];
     public string[] loadoutSlots = { "NormalMain", "NormalMod", "SpecialMain", "SpecialMod", "ChargedMain", "ChargedMod", "PassiveA1", "PassiveA2", "PassiveB1", "PassiveB1" };
@@ -325,6 +326,8 @@ public class GameManager : MonoBehaviour
             ButtonIndex buttonIndex = button.gameObject.AddComponent<ButtonIndex>();
             buttonIndex.SetIndex(index++);
             button.gameObject.GetComponentInChildren<Button>().onClick.AddListener(() => gameObject.GetComponent<ButtonManager>().ButtonPerkLoadout(buttonIndex.GetIndex()));
+            PerkTooltip perkTooltip = button.gameObject.AddComponent<PerkTooltip>();
+            perkTooltip.UpdatePerk(perkNone);
         }
         index = 0;
         foreach (PerkButton button in perkSelection.perkButtons)
@@ -332,6 +335,8 @@ public class GameManager : MonoBehaviour
             ButtonIndex buttonIndex = button.gameObject.AddComponent<ButtonIndex>();
             buttonIndex.SetIndex(index++);
             button.gameObject.GetComponentInChildren<Button>().onClick.AddListener(() => gameObject.GetComponent<ButtonManager>().ButtonPerkSelection(buttonIndex.GetIndex()));
+            PerkTooltip perkTooltip = button.gameObject.AddComponent<PerkTooltip>();
+            perkTooltip.UpdatePerk(perkNone);
         }
     }
 
@@ -519,6 +524,7 @@ public class GameManager : MonoBehaviour
             }
             perkLoadout.perkButtons[i].ChangeColor(classData[currentCharacter].classColorDark);
             perkLoadout.perkButtons[i].SetPerk(slotPerks[loadoutData[currentCharacter, i]]);
+            perkLoadout.perkButtons[i].GetComponent<PerkTooltip>().UpdatePerk(slotPerks[loadoutData[currentCharacter, i]]);
         }
     }
 
@@ -549,7 +555,19 @@ public class GameManager : MonoBehaviour
         {
             perkSelection.perkButtons[i].ChangeColor(classData[currentCharacter].classColorDark);
             perkSelection.perkButtons[i].SetPerk(slotPerks[i]);
+            perkSelection.perkButtons[i].GetComponent<PerkTooltip>().UpdatePerk(slotPerks[i]);
         }
+    }
+
+    public void ShowPerkTooltip(PerkData perk)
+    {
+        perkTooltip.gameObject.SetActive(true);
+        perkTooltip.SetPerk(perk);
+    }
+
+    public void HidePerkTooltip()
+    {
+        perkTooltip.gameObject.SetActive(false);
     }
 }
 

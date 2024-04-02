@@ -21,4 +21,11 @@ public class PerkDescription : MonoBehaviour
     {
         tmpDescription.text = newDescription;
     }
+
+    public void SetPerk(PerkData perk)
+    {
+        ChangeIcon(perk.perkIcon);
+        ChangeName(perk.perkName);
+        ChangeDescription(perk.perkDescription);
+    }
 }

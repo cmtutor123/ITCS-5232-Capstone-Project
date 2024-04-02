@@ -749,6 +749,7 @@ MonoBehaviour:
   currentCharacter: 0
   currentStage: 0
   currentDifficulty: 0
+  perkNone: {fileID: 11400000, guid: 8f41a0be4631582489f0f26b1525d7c4, type: 2}
   fade: {fileID: 3069151128633599443}
   uiLoad: {fileID: 1442312147}
   uiMainMenu: {fileID: 944791046}
@@ -782,6 +783,22 @@ MonoBehaviour:
   stageBack: {fileID: 1840249177}
   difficultyBack: {fileID: 647792691}
   stageEmblem: {fileID: 1926891367}
+  powerMeter: {fileID: 0}
+  perkLoadout: {fileID: 0}
+  perkSelection: {fileID: 0}
+  perkEmblem: {fileID: 0}
+  loadoutSlots:
+  - NormalMain
+  - NormalMod
+  - SpecialMain
+  - SpecialMod
+  - ChargedMain
+  - ChargedMod
+  - PassiveA1
+  - PassiveA2
+  - PassiveB1
+  - PassiveB1
+  loadoutDefaults: 00000000ffffffff00000000ffffffff00000000ffffffffffffffffffffffffffffffffffffffff
 --- !u!4 &159685999
 Transform:
   m_ObjectHideFlags: 0

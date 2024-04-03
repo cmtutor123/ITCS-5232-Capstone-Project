@@ -109,11 +109,11 @@ public class GameManager : MonoBehaviour
         for (int c = 0; c < classData.Count; c++)
         {
             CheckLoadoutPerk(c, loadoutData[c, 0], 0, 0, false);
-            CheckLoadoutPerk(c, loadoutData[c, 1], 0, -1, true, false);
+            CheckLoadoutPerk(c, loadoutData[c, 1], 0, -1, true, true);
             CheckLoadoutPerk(c, loadoutData[c, 2], 12, 0, false);
-            CheckLoadoutPerk(c, loadoutData[c, 3], 12, -1, true, false);
+            CheckLoadoutPerk(c, loadoutData[c, 3], 12, -1, true, true);
             CheckLoadoutPerk(c, loadoutData[c, 4], 24, 0, false);
-            CheckLoadoutPerk(c, loadoutData[c, 5], 24, -1, true, false);
+            CheckLoadoutPerk(c, loadoutData[c, 5], 24, -1, true, true);
             CheckLoadoutPerk(c, loadoutData[c, 6], 36, -1);
             CheckLoadoutPerk(c, loadoutData[c, 7], 36, -1);
             CheckLoadoutPerk(c, loadoutData[c, 8], 48, -1);
@@ -141,6 +141,10 @@ public class GameManager : MonoBehaviour
                 int modNumber = sIndex % 4;
                 int modBase = sIndex - modNumber;
                 if (loadoutData[cIndex, modBase + pOffset] != modBase)
+                {
+                    loadoutData[cIndex, sIndex] = defaultValue;
+                }
+                if (modNumber == 0)
                 {
                     loadoutData[cIndex, sIndex] = defaultValue;
                 }

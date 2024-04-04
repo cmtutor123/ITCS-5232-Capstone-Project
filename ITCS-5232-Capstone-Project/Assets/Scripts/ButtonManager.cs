@@ -63,6 +63,7 @@ public class ButtonManager : MonoBehaviour
         if (GameManager.instance.playerData.stages[GameManager.instance.currentCharacter, GameManager.instance.currentStage] < difficulty) return;
         GameManager.instance.SetCurrentDifficulty(difficulty);
         GameManager.instance.SwitchMenu(MenuState.PerkSelect);
+        GameManager.instance.UpdatePerkLoadout();
     }
 
     public void ButtonRemoveMenu()
@@ -79,11 +80,13 @@ public class ButtonManager : MonoBehaviour
     public void ButtonPerkLoadout(int index)
     {
         GameManager.instance.UpdatePerkLoadout();
+        GameManager.instance.UpdatePerkSelection(index);
     }   
     
     public void ButtonPerkSelection(int index)
     {
-        GameManager.instance.UpdatePerkSelection(index);
+        GameManager.instance.UpdateLoadoutPerk(GameManager.instance.currentSlot, index);
+        GameManager.instance.UpdatePerkLoadout();
     }
 
     public void ButtonMatchStart()

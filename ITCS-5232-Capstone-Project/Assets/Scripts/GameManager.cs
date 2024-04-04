@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public List<ClassData> classData;
     public List<StageData> stageData;
 
-    public int currentCharacter, currentStage, currentDifficulty;
+    public int currentCharacter, currentStage, currentDifficulty, currentSlot;
 
     public PerkData perkNone;
 
@@ -105,51 +105,52 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.SetInt(className + loadoutSlots[s], loadoutData[c, s]);
             }
         }
+        PlayerPrefs.Save();
     }
 
     public void CheckLoadoutData()
     {
         for (int c = 0; c < classData.Count; c++)
         {
-            CheckLoadoutPerk(c, loadoutData[c, 0], 0, 0, false);
-            CheckLoadoutPerk(c, loadoutData[c, 1], 0, -1, true, true);
-            CheckLoadoutPerk(c, loadoutData[c, 2], 12, 0, false);
-            CheckLoadoutPerk(c, loadoutData[c, 3], 12, -1, true, true);
-            CheckLoadoutPerk(c, loadoutData[c, 4], 24, 0, false);
-            CheckLoadoutPerk(c, loadoutData[c, 5], 24, -1, true, true);
-            CheckLoadoutPerk(c, loadoutData[c, 6], 36, -1);
-            CheckLoadoutPerk(c, loadoutData[c, 7], 36, -1);
-            CheckLoadoutPerk(c, loadoutData[c, 8], 48, -1);
-            CheckLoadoutPerk(c, loadoutData[c, 9], 48, -1);
+            CheckLoadoutPerk(c, 0, loadoutData[c, 0], 0, false);
+            CheckLoadoutPerk(c, 1, loadoutData[c, 1], 0, true, true);
+            CheckLoadoutPerk(c, 2, loadoutData[c, 2], 12, false);
+            CheckLoadoutPerk(c, 3, loadoutData[c, 3], 12, true, true);
+            CheckLoadoutPerk(c, 4, loadoutData[c, 4], 24, false);
+            CheckLoadoutPerk(c, 5, loadoutData[c, 5], 24, true, true);
+            CheckLoadoutPerk(c, 6, loadoutData[c, 6], 36);
+            CheckLoadoutPerk(c, 7, loadoutData[c, 7], 36);
+            CheckLoadoutPerk(c, 8, loadoutData[c, 8], 48);
+            CheckLoadoutPerk(c, 9, loadoutData[c, 9], 48);
         }
     }
 
-    public void CheckLoadoutPerk(int cIndex, int sIndex, int pOffset, int defaultValue, bool canBeEmpty = true, bool isModSlot = false)
+    public void CheckLoadoutPerk(int cIndex, int sIndex, int pIndex, int pOffset, bool canBeEmpty = true, bool isModSlot = false)
     {
-        if (sIndex == -1)
+        if (pIndex == -1)
         {
             if (!canBeEmpty)
             {
-                loadoutData[cIndex, sIndex] = defaultValue;
+                loadoutData[cIndex, sIndex] = 0;
             }
         }
-        else if (playerData.perks[cIndex, sIndex + pOffset] != 1)
+        else if (playerData.perks[cIndex, pIndex + pOffset] != 1)
         {
-            loadoutData[cIndex, sIndex] = defaultValue;
+            loadoutData[cIndex, sIndex] = canBeEmpty ? -1 : 0;
         }
         else
         {
             if (isModSlot)
             {
-                int modNumber = sIndex % 4;
-                int modBase = sIndex - modNumber;
+                int modNumber = pIndex % 4;
+                int modBase = pIndex - modNumber;
                 if (loadoutData[cIndex, modBase + pOffset] != modBase)
                 {
-                    loadoutData[cIndex, sIndex] = defaultValue;
+                    loadoutData[cIndex, sIndex] = -1;
                 }
                 if (modNumber == 0)
                 {
-                    loadoutData[cIndex, sIndex] = defaultValue;
+                    loadoutData[cIndex, sIndex] = -1;
                 }
             }
         }
@@ -190,7 +191,7 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            abilityBase = perkIndex / 4;
+            abilityBase = (perkIndex / 4) * 4;
             abilityMod = perkIndex;
         }
         SetLoadoutPerk(slotBase, abilityBase);
@@ -545,6 +546,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdatePerkSelection(int slotIndex)
     {
+        currentSlot = slotIndex;
         perkSelection.gameObject.SetActive(true);
         int slot = slotIndex / 2;
         PerkData[] slotPerks = new PerkData[12];

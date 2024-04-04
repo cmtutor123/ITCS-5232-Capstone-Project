@@ -5,6 +5,8 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public bool debug = true;
+
     public static GameManager instance;
     public bool loadedData = false;
     public PlayerData playerData;
@@ -69,6 +71,7 @@ public class GameManager : MonoBehaviour
             LoadData();
             loadedData = true;
         }
+        LoadLoadoutData();
         InitializeButtonIndex();
         SetMenu(MenuState.MainMenu);
     }
@@ -527,8 +530,16 @@ public class GameManager : MonoBehaviour
                     break;
             }
             perkLoadout.perkButtons[i].ChangeColor(classData[currentCharacter].classColorDark);
-            perkLoadout.perkButtons[i].SetPerk(slotPerks[loadoutData[currentCharacter, i]]);
-            perkLoadout.perkButtons[i].GetComponent<PerkTooltip>().UpdatePerk(slotPerks[loadoutData[currentCharacter, i]]);
+            if (loadoutData[currentCharacter, i] == -1)
+            {
+                perkLoadout.perkButtons[i].SetPerk(perkNone);
+                perkLoadout.perkButtons[i].GetComponent<PerkTooltip>().UpdatePerk(perkNone);
+            }
+            else
+            {
+                perkLoadout.perkButtons[i].SetPerk(slotPerks[loadoutData[currentCharacter, i]]);
+                perkLoadout.perkButtons[i].GetComponent<PerkTooltip>().UpdatePerk(slotPerks[loadoutData[currentCharacter, i]]);
+            }
         }
     }
 

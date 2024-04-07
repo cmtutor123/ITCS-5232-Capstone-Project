@@ -6,4 +6,7 @@ using UnityEngine;
 public class StageData : ScriptableObject
 {
     public string stageName;
+
+    public int roomCount = 10;
+    public int[] powerLevels;
 }

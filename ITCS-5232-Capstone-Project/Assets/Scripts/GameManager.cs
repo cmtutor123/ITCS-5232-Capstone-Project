@@ -626,6 +626,26 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        LoadStage();
+        LoadPlayer();
+        SetMenu(MenuState.Match);
+    }
+
+    public void LoadStage()
+    {
+        StageData currentStageData = stageData[currentStage];
+        int roomCount = currentStageData.roomCount;
+        int powerLevel = currentStageData.powerLevels[currentStageData.powerLevels.Length - 1];
+        if (currentStageData.powerLevels.Length < currentDifficulty)
+        {
+            powerLevel = currentStageData.powerLevels[currentDifficulty];
+        }
+        int[] rooms = new int[10];
+        
+    }
+
+    public void LoadPlayer()
+    {
 
     }
 }

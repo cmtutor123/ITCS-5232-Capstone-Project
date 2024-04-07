@@ -469,6 +469,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdatePowerMeter()
     {
+        powerMeter.SetPoints(playerData.points[currentCharacter]);
         powerMeter.SetMeter(CheckLoadoutPower(), playerData.level[currentCharacter]);
     }
 

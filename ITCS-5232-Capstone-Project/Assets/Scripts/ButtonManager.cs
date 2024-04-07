@@ -85,6 +85,14 @@ public class ButtonManager : MonoBehaviour
     
     public void ButtonPerkSelection(int index)
     {
+        if (GameManager.instance.PerkLocked(GameManager.instance.currentSlot, index))
+        {
+            if (GameManager.instance.GetPoints() > 0)
+            {
+                GameManager.instance.UnlockPerk(GameManager.instance.currentSlot, index);
+            }
+            return;
+        }
         GameManager.instance.UpdateLoadoutPerk(GameManager.instance.currentSlot, index);
         GameManager.instance.UpdatePerkLoadout();
     }

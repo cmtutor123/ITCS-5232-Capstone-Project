@@ -606,6 +606,24 @@ public class GameManager : MonoBehaviour
         perkTooltip.gameObject.SetActive(false);
     }
 
+    public int GetPoints()
+    {
+        return playerData.points[currentCharacter];
+    }    
+
+    public bool PerkLocked(int slot, int index)
+    {
+        int pIndex = 12 * slot + index;
+        return playerData.perks[currentCharacter, pIndex] != 1;
+    }
+
+    public void UnlockPerk(int slot, int index)
+    {
+        int pIndex = 12 * slot + index;
+        playerData.perks[currentCharacter, pIndex] = 1;
+        FileManager.SavePlayerData(playerData);
+    }
+
     public void StartGame()
     {
 

@@ -19,6 +19,7 @@ public class GameManager : MonoBehaviour
     public int currentCharacter, currentStage, currentDifficulty, currentSlot;
 
     public PerkData perkNone;
+    public Sprite perkLocked;
 
     private Dictionary<MenuState, GameObject> menuUi = new Dictionary<MenuState, GameObject>();
     [Header("Fade")]
@@ -91,12 +92,12 @@ public class GameManager : MonoBehaviour
                 loadoutData[c, s] = PlayerPrefs.GetInt(className + loadoutSlots[s], loadoutDefaults[s]);
             }
         }
-        CheckLoadoutData();
         SaveLoadoutData();
     }
 
     public void SaveLoadoutData()
     {
+        CheckLoadoutData();
         for (int c = 0; c < classData.Count; c++)
         {
             string className = classData[c].className;
@@ -105,7 +106,6 @@ public class GameManager : MonoBehaviour
                 PlayerPrefs.SetInt(className + loadoutSlots[s], loadoutData[c, s]);
             }
         }
-        PlayerPrefs.Save();
     }
 
     public void CheckLoadoutData()
@@ -550,6 +550,7 @@ public class GameManager : MonoBehaviour
         perkSelection.gameObject.SetActive(true);
         int slot = slotIndex / 2;
         PerkData[] slotPerks = new PerkData[12];
+        int perkOffset = 0;
         switch (slot)
         {
             case 0:
@@ -557,15 +558,19 @@ public class GameManager : MonoBehaviour
                 break;
             case 1:
                 slotPerks = classData[currentCharacter].specialAbility;
+                perkOffset = 12;
                 break;
             case 2:
                 slotPerks = classData[currentCharacter].chargedAbility;
+                perkOffset = 24;
                 break;
             case 3:
                 slotPerks = classData[currentCharacter].passiveAbilityA;
+                perkOffset = 36;
                 break;
             case 4:
                 slotPerks = classData[currentCharacter].passiveAbilityB;
+                perkOffset = 48;
                 break;
         }
         for (int i = 0; i < 12; i++)
@@ -573,6 +578,10 @@ public class GameManager : MonoBehaviour
             perkSelection.perkButtons[i].ChangeColor(classData[currentCharacter].classColorDark);
             perkSelection.perkButtons[i].SetPerk(slotPerks[i]);
             perkSelection.perkButtons[i].GetComponent<PerkTooltip>().UpdatePerk(slotPerks[i]);
+            if (playerData.perks[currentCharacter, perkOffset + i] != 1)
+            {
+                perkSelection.perkButtons[i].ChangeIcon(perkLocked);
+            }
         }
     }
 

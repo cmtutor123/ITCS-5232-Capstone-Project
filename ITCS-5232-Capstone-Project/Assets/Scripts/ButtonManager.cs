@@ -91,6 +91,7 @@ public class ButtonManager : MonoBehaviour
 
     public void ButtonMatchStart()
     {
-        
+        GameManager.instance.SetMenu(MenuState.Load);
+        GameManager.instance.StartGame();
     }
 }

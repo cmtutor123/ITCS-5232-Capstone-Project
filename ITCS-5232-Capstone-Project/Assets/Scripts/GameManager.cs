@@ -47,6 +47,7 @@ public class GameManager : MonoBehaviour
     public PerkSelection perkSelection;
     public EmblemButton perkEmblem;
     public PerkDescription perkTooltip;
+    public GameObject matchStartButton;
     [Header("Loadout Information")]
     public int[,] loadoutData = new int[PlayerData.CLASS_COUNT, 10];
     public string[] loadoutSlots = { "NormalMain", "NormalMod", "SpecialMain", "SpecialMod", "ChargedMain", "ChargedMod", "PassiveA1", "PassiveA2", "PassiveB1", "PassiveB1" };
@@ -502,6 +503,14 @@ public class GameManager : MonoBehaviour
                 total += slotPerks[pIndex].cost;
             }
         }
+        if (total <= playerData.level[currentCharacter])
+        {
+            matchStartButton.SetActive(true);
+        }
+        else
+        {
+            matchStartButton.SetActive(false);
+        }
         return total;
     }
 
@@ -594,6 +603,11 @@ public class GameManager : MonoBehaviour
     public void HidePerkTooltip()
     {
         perkTooltip.gameObject.SetActive(false);
+    }
+
+    public void StartGame()
+    {
+
     }
 }
 

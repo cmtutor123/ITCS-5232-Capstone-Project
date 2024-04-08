@@ -663,7 +663,10 @@ public class GameManager : MonoBehaviour
             rooms[lowest] += enemy.enemyLevel;
             remainingPower -= enemy.enemyLevel;
         }
-        
+        (int[], List<EnemyData>[]) reorderedRooms = ReorderRooms(rooms, roomEnemies);
+        rooms = reorderedRooms.Item1;
+        roomEnemies = reorderedRooms.Item2;
+
     }
 
     public int GetLowestIndex(int[] array)
@@ -706,6 +709,26 @@ public class GameManager : MonoBehaviour
             }
         }
         return enemies[enemies.Count - 1][enemies[enemies.Count - 1].Length - 1];
+    }
+    
+    public (int[], List<EnemyData>[]) ReorderRooms(int[] rooms, List<EnemyData>[] roomEnemies)
+    {
+        for (int i = 0; i < rooms.Length - 1; i++)
+        {
+            for (int j = 0; j < rooms.Length - i - 1; j++)
+            {
+                if (rooms[j] > rooms[j + 1])
+                {
+                    int tempInt = rooms[j + 1];
+                    List<EnemyData> tempData = roomEnemies[j + 1];
+                    rooms[j + 1] = rooms[j];
+                    roomEnemies[j + 1] = roomEnemies[j];
+                    rooms[j] = tempInt;
+                    roomEnemies[j] = tempData;
+                }
+            }
+        }
+        return (rooms, roomEnemies);
     }
 
     public void LoadPlayer()

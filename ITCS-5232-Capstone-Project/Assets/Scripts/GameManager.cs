@@ -666,7 +666,21 @@ public class GameManager : MonoBehaviour
         (int[], List<EnemyData>[]) reorderedRooms = ReorderRooms(rooms, roomEnemies);
         rooms = reorderedRooms.Item1;
         roomEnemies = reorderedRooms.Item2;
-
+        RoomData[] roomData = new RoomData[roomCount + 2];
+        RoomData startingRoom = new RoomData();
+        startingRoom.SetStartRoom();
+        roomData[0] = startingRoom;
+        RoomData bossRoom = new RoomData();
+        bossRoom.SetBossRoom();
+        bossRoom.SetBossEnemy(currentStageData.bossEnemies);
+        roomData[roomCount + 1] = bossRoom;
+        for (int i = 0; i < roomCount; i++)
+        {
+            RoomData currentRoomData = new RoomData();
+            currentRoomData.SetRoomShape(rooms[i]);
+            currentRoomData.SetRoomEnemies(roomEnemies[i]);
+            roomData[i + 1] = currentRoomData;
+        }
     }
 
     public int GetLowestIndex(int[] array)

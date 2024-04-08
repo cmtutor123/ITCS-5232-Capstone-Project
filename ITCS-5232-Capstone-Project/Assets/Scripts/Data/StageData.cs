@@ -11,4 +11,6 @@ public class StageData : ScriptableObject
     public int[] powerLevels;
 
     public EnemyData[] normalEnemies, strongEnemies, minibossEnemies, bossEnemies;
+
+    public List<RoomTile> roomTiles = new List<RoomTile>();
 }

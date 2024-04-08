@@ -681,6 +681,25 @@ public class GameManager : MonoBehaviour
             currentRoomData.SetRoomEnemies(roomEnemies[i]);
             roomData[i + 1] = currentRoomData;
         }
+        for (int i = 1; i < roomData.Length; i++)
+        {
+            (int, int) lastRoomOffset = roomData[i - 1].roomOffset;
+            (int, int) lastExitOffset = roomData[i - 1].nextOffset;
+            (int, int) currentOffset = (lastRoomOffset.Item1 + lastExitOffset.Item1, lastRoomOffset.Item2 + lastExitOffset.Item2);
+            roomData[i].roomOffset = currentOffset;
+        }
+    }
+
+    public static string GetRoomFormatId(bool leftWall, bool rightWall, bool upWall, bool downWall, bool hasEntrance, bool hasExit)
+    {
+        string id = "t";
+        if (leftWall) id += "l";
+        if (rightWall) id += "r";
+        if (upWall) id += "u";
+        if (downWall) id += "d";
+        if (hasEntrance) id += "e";
+        if (hasExit) id += "x";
+        return id;
     }
 
     public int GetLowestIndex(int[] array)

@@ -635,13 +635,77 @@ public class GameManager : MonoBehaviour
     {
         StageData currentStageData = stageData[currentStage];
         int roomCount = currentStageData.roomCount;
-        int powerLevel = currentStageData.powerLevels[currentStageData.powerLevels.Length - 1];
+        int powerLevel = 0;
+        if (currentStageData.powerLevels.Length > 0)
+        {
+            powerLevel = currentStageData.powerLevels[currentStageData.powerLevels.Length - 1];
+        }
         if (currentStageData.powerLevels.Length < currentDifficulty)
         {
             powerLevel = currentStageData.powerLevels[currentDifficulty];
         }
-        int[] rooms = new int[10];
+        List<EnemyData[]> stageEnemyData = new List<EnemyData[]>();
+        stageEnemyData.Add(currentStageData.normalEnemies);
+        stageEnemyData.Add(currentStageData.strongEnemies);
+        stageEnemyData.Add(currentStageData.minibossEnemies);
+        int[] rooms = new int[roomCount];
+        List<EnemyData>[] roomEnemies = new List<EnemyData>[roomCount];
+        for (int i = 0; i < roomCount; i++)
+        {
+            roomEnemies[i] = new List<EnemyData>();
+        }
+        int remainingPower = powerLevel;
+        while (remainingPower > 0)
+        {
+            int lowest = GetLowestIndex(rooms);
+            EnemyData enemy = GetRandomEnemy(powerLevel, stageEnemyData);
+            roomEnemies[lowest].Add(enemy);
+            rooms[lowest] += enemy.enemyLevel;
+            remainingPower -= enemy.enemyLevel;
+        }
         
+    }
+
+    public int GetLowestIndex(int[] array)
+    {
+        int lowest = 0;
+        for (int i = 0; i < array.Length; i++)
+        {
+            if (array[i] < array[lowest])
+            {
+                lowest = i;
+            }
+        }
+        return lowest;
+    }
+
+    public EnemyData GetRandomEnemy(int powerLevel, List<EnemyData[]> enemies)
+    {
+        float weightTotal = 0;
+        foreach (EnemyData[] array in enemies)
+        {
+            foreach (EnemyData data in array)
+            {
+                float level = data.enemyLevel;
+                float weight = powerLevel / level;
+                weightTotal += weight;
+            }
+        }
+        Random.Range(0, weightTotal);
+        foreach (EnemyData[] array in enemies)
+        {
+            foreach (EnemyData data in array)
+            {
+                float level = data.enemyLevel;
+                float weight = powerLevel / level;
+                weightTotal -= weight;
+                if (weight <= 0)
+                {
+                    return data;
+                }
+            }
+        }
+        return enemies[enemies.Count - 1][enemies[enemies.Count - 1].Length - 1];
     }
 
     public void LoadPlayer()

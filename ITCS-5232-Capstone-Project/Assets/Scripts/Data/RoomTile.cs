@@ -6,16 +6,17 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "New Room Tile", menuName = "RoomTile")]
 public class RoomTile : ScriptableObject
 {
-    string formatId = null;
+    List<string> formatId;
     public bool wallLeft, wallRight, wallUp, wallDown, hasEntrance, hasExit;
-    public Func<(int, int), GameObject> GenerationFunction;
+    public TileGenerator tileGenerator;
 
-    public string GetId()
+    public List<string> GetIds()
     {
-        if (formatId == null)
-        {
-            formatId = GameManager.GetRoomFormatId(wallLeft, wallRight, wallUp, wallDown, hasEntrance, hasExit);
-        }
         return formatId;
+    }
+
+    public bool HasId(string id)
+    {
+        return formatId.Contains(id);
     }
 }

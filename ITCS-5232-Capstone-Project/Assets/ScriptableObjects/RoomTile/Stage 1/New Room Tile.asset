@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52437777766fccf47a4c94c39e056776, type: 3}
+  m_Name: New Room Tile
+  m_EditorClassIdentifier: 
+  wallLeft: 0
+  wallRight: 0
+  wallUp: 0
+  wallDown: 0
+  hasEntrance: 0
+  hasExit: 0

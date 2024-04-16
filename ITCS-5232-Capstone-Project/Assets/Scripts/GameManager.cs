@@ -688,6 +688,12 @@ public class GameManager : MonoBehaviour
             (int, int) currentOffset = (lastRoomOffset.Item1 + lastExitOffset.Item1, lastRoomOffset.Item2 + lastExitOffset.Item2);
             roomData[i].roomOffset = currentOffset;
         }
+        GenerateStage(roomData);
+    }
+
+    public void GenerateStage(RoomData[] roomData)
+    {
+
     }
 
     public static string GetRoomFormatId(bool leftWall, bool rightWall, bool upWall, bool downWall, bool hasEntrance, bool hasExit)

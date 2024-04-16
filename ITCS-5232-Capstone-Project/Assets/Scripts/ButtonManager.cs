@@ -93,6 +93,11 @@ public class ButtonManager : MonoBehaviour
             }
             return;
         }
+        if (GameManager.instance.currentSlot >= 6 && GameManager.instance.currentSlot <= 9 && GameManager.instance.loadoutData[GameManager.instance.currentCharacter, GameManager.instance.currentSlot] == index)
+        {
+            GameManager.instance.UpdateLoadoutPerk(GameManager.instance.currentSlot, -1);
+            GameManager.instance.UpdatePerkLoadout();
+        }
         GameManager.instance.UpdateLoadoutPerk(GameManager.instance.currentSlot, index);
         GameManager.instance.UpdatePerkLoadout();
     }

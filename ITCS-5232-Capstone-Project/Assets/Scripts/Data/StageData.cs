@@ -12,5 +12,5 @@ public class StageData : ScriptableObject
 
     public EnemyData[] normalEnemies, strongEnemies, minibossEnemies, bossEnemies;
 
-    public List<RoomTile> roomTiles = new List<RoomTile>();
+    public TileGenerator tileGenerator;
 }

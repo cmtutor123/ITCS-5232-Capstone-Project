@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
     public bool debug = true;
 
     public static GameManager instance;
+    public List<MatchRoom> matchRooms;
     public bool loadedData = false;
     public PlayerData playerData;
     public List<MenuState> menuStates;
@@ -693,19 +694,16 @@ public class GameManager : MonoBehaviour
 
     public void GenerateStage(RoomData[] roomData)
     {
-
-    }
-
-    public static string GetRoomFormatId(bool leftWall, bool rightWall, bool upWall, bool downWall, bool hasEntrance, bool hasExit)
-    {
-        string id = "t";
-        if (leftWall) id += "l";
-        if (rightWall) id += "r";
-        if (upWall) id += "u";
-        if (downWall) id += "d";
-        if (hasEntrance) id += "e";
-        if (hasExit) id += "x";
-        return id;
+        matchRooms = new List<MatchRoom>();
+        TileGenerator generator = stageData[currentStage].tileGenerator;
+        foreach (RoomData data in roomData)
+        {
+            matchRooms.Add(new MatchRoom(data, generator));
+        }
+        foreach (MatchRoom room in matchRooms)
+        {
+            room.GenerateRoom();
+        }
     }
 
     public int GetLowestIndex(int[] array)

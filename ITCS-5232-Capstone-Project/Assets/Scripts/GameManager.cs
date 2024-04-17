@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
 
     public int currentCharacter, currentStage, currentDifficulty, currentSlot;
 
+    public GameObject roomObjectPrefab;
+
     public PerkData perkNone;
     public Sprite perkLocked;
 
@@ -690,6 +692,7 @@ public class GameManager : MonoBehaviour
             roomData[i].roomOffset = currentOffset;
         }
         GenerateStage(roomData);
+        //
     }
 
     public void GenerateStage(RoomData[] roomData)

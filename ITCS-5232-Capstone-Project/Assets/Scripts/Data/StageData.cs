@@ -11,6 +11,4 @@ public class StageData : ScriptableObject
     public int[] powerLevels;
 
     public EnemyData[] normalEnemies, strongEnemies, minibossEnemies, bossEnemies;
-
-    public TileGenerator tileGenerator;
 }

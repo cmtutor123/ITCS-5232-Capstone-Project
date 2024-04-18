@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
 
     public List<ClassData> classData;
     public List<StageData> stageData;
+    public List<TileGenerator> tileGenerators;
 
     public int currentCharacter, currentStage, currentDifficulty, currentSlot;
 
@@ -643,7 +644,7 @@ public class GameManager : MonoBehaviour
         {
             powerLevel = currentStageData.powerLevels[currentStageData.powerLevels.Length - 1];
         }
-        if (currentStageData.powerLevels.Length < currentDifficulty)
+        if (currentStageData.powerLevels.Length > currentDifficulty)
         {
             powerLevel = currentStageData.powerLevels[currentDifficulty];
         }
@@ -691,6 +692,14 @@ public class GameManager : MonoBehaviour
             (int, int) currentOffset = (lastRoomOffset.Item1 + lastExitOffset.Item1, lastRoomOffset.Item2 + lastExitOffset.Item2);
             roomData[i].roomOffset = currentOffset;
         }
+        foreach (RoomData room in roomData)
+        {
+            (int, int) roomOffset = room.roomOffset;
+            foreach (TileData tile in room.tileData)
+            {
+                tile.AddRoomOffset(roomOffset);
+            }
+        }
         GenerateStage(roomData);
         //
     }
@@ -698,7 +707,7 @@ public class GameManager : MonoBehaviour
     public void GenerateStage(RoomData[] roomData)
     {
         matchRooms = new List<MatchRoom>();
-        TileGenerator generator = stageData[currentStage].tileGenerator;
+        TileGenerator generator = tileGenerators[currentStage];
         foreach (RoomData data in roomData)
         {
             matchRooms.Add(new MatchRoom(data, generator));
@@ -730,19 +739,19 @@ public class GameManager : MonoBehaviour
             foreach (EnemyData data in array)
             {
                 float level = data.enemyLevel;
-                float weight = powerLevel / level;
+                float weight = 1.0f / level;
                 weightTotal += weight;
             }
         }
-        Random.Range(0, weightTotal);
+        float random = Random.Range(0, weightTotal);
         foreach (EnemyData[] array in enemies)
         {
             foreach (EnemyData data in array)
             {
                 float level = data.enemyLevel;
-                float weight = powerLevel / level;
-                weightTotal -= weight;
-                if (weight <= 0)
+                float weight = 1.0f / level;
+                random -= weight;
+                if (random <= 0)
                 {
                     return data;
                 }

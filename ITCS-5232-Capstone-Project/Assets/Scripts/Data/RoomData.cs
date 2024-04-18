@@ -35,24 +35,24 @@ public class RoomData
                         }
                     }
                 }
-                float sum = 0; 
-                foreach ((int, int) key in probs.Keys)
-                {
-                    sum += probs[key];
-                }
-                float rand = Random.Range(0, sum);
-                (int, int) pos = (0, 0);
-                foreach ((int, int) key in probs.Keys)
-                {
-                    rand -= probs[key];
-                    if (rand <= 0)
-                    {
-                        pos = key;
-                        break;
-                    }
-                }
-                points.Add(pos);
             }
+            float sum = 0;
+            foreach ((int, int) key in probs.Keys)
+            {
+                sum += probs[key];
+            }
+            float rand = Random.Range(0, sum);
+            (int, int) pos = (0, 0);
+            foreach ((int, int) key in probs.Keys)
+            {
+                rand -= probs[key];
+                if (rand <= 0)
+                {
+                    pos = key;
+                    break;
+                }
+            }
+            points.Add(pos);
         }
         GenerateTileData();
         SetEntrance();
@@ -103,10 +103,10 @@ public class RoomData
     {
         foreach ((int, int) point in points)
         {
-            bool left = points.Contains((point.Item1 - 1, point.Item2));
-            bool right = points.Contains((point.Item1 + 1, point.Item2));
-            bool up = points.Contains((point.Item1, point.Item2 + 1));
-            bool down = points.Contains((point.Item1, point.Item2 - 1));
+            bool left = !points.Contains((point.Item1 - 1, point.Item2));
+            bool right = !points.Contains((point.Item1 + 1, point.Item2));
+            bool up = !points.Contains((point.Item1, point.Item2 + 1));
+            bool down = !points.Contains((point.Item1, point.Item2 - 1));
             tileData.Add(new TileData(point, left, right, up, down));
         }
     }

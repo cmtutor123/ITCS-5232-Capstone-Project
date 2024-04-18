@@ -15,4 +15,11 @@ public class TileData
         wallUp = up;
         wallDown = down;
     }
+
+    public void AddRoomOffset((int, int) roomOffset)
+    {
+        int x = tileOffset.Item1 + roomOffset.Item1;
+        int y = tileOffset.Item2 + roomOffset.Item2;
+        tileOffset = (x, y);
+    }
 }

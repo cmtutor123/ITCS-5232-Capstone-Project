@@ -14,20 +14,21 @@ public class TileGenerator : MonoBehaviour
         float y = tileData.tileOffset.Item2;
         x *= tileSize;
         y *= tileSize;
-        transform.position = new Vector3(x, y, 0);
-        GameObject floor = Instantiate(floorPrefab, tileObject.transform);
+        tileObject.transform.position = new Vector3(x, y, 0);
+        GameObject floor = Instantiate(floorPrefab, tileObject.transform, true);
         floor.transform.localScale = new Vector3(tileSize, tileSize, 1);
+        floor.transform.localPosition = new Vector3(0, 0, 0);
         tileObject.floors.Add(floor);
         if (tileData.wallLeft)
         {
-            GameObject wall = Instantiate(wallPrefab, tileObject.transform);
+            GameObject wall = Instantiate(wallPrefab, tileObject.transform, true);
             wall.transform.localScale = new Vector3(1, tileSize, 1);
             wall.transform.localPosition = new Vector3(-tileSize / 2, 0, 0);
             tileObject.walls.Add(wall);
         }
         if (tileData.wallRight)
         {
-            GameObject wall = Instantiate(wallPrefab, tileObject.transform);
+            GameObject wall = Instantiate(wallPrefab, tileObject.transform, true);
             wall.transform.localScale = new Vector3(1, tileSize, 1);
             wall.transform.localPosition = new Vector3(tileSize / 2, 0, 0);
             tileObject.walls.Add(wall);
@@ -36,20 +37,20 @@ public class TileGenerator : MonoBehaviour
         {
             if (!tileData.hasEntrance)
             {
-                GameObject wall = Instantiate(wallPrefab, tileObject.transform);
+                GameObject wall = Instantiate(wallPrefab, tileObject.transform, true);
                 wall.transform.localScale = new Vector3(tileSize, 1, 1);
                 wall.transform.localPosition = new Vector3(0, -tileSize / 2, 0);
                 tileObject.walls.Add(wall);
             }
             else
             {
-                GameObject wall = Instantiate(wallPrefab, tileObject.transform);
+                GameObject wall = Instantiate(wallPrefab, tileObject.transform, true);
                 wall.transform.localScale = new Vector3(tileSize / 3, 1, 1);
-                wall.transform.localPosition = new Vector3(-2 * tileSize / 3, -tileSize / 2, 0);
+                wall.transform.localPosition = new Vector3(-tileSize / 3, -tileSize / 2, 0);
                 tileObject.walls.Add(wall);
-                wall = Instantiate(wallPrefab, tileObject.transform);
+                wall = Instantiate(wallPrefab, tileObject.transform, true);
                 wall.transform.localScale = new Vector3(tileSize / 3, 1, 1);
-                wall.transform.localPosition = new Vector3(2 * tileSize / 3, -tileSize / 2, 0);
+                wall.transform.localPosition = new Vector3(tileSize / 3, -tileSize / 2, 0);
                 tileObject.walls.Add(wall);
             }
         }
@@ -57,22 +58,22 @@ public class TileGenerator : MonoBehaviour
         {
             if (!tileData.hasExit)
             {
-                GameObject wall = Instantiate(wallPrefab, tileObject.transform);
+                GameObject wall = Instantiate(wallPrefab, tileObject.transform, true);
                 wall.transform.localScale = new Vector3(tileSize, 1, 1);
                 wall.transform.localPosition = new Vector3(0, tileSize / 2, 0);
                 tileObject.walls.Add(wall);
             }
             else
             {
-                GameObject wall = Instantiate(wallPrefab, tileObject.transform);
+                GameObject wall = Instantiate(wallPrefab, tileObject.transform, true);
                 wall.transform.localScale = new Vector3(tileSize / 3, 1, 1);
-                wall.transform.localPosition = new Vector3(-2 * tileSize / 3, tileSize / 2, 0);
+                wall.transform.localPosition = new Vector3(-tileSize / 3, tileSize / 2, 0);
                 tileObject.walls.Add(wall);
-                wall = Instantiate(wallPrefab, tileObject.transform);
+                wall = Instantiate(wallPrefab, tileObject.transform, true);
                 wall.transform.localScale = new Vector3(tileSize / 3, 1, 1);
-                wall.transform.localPosition = new Vector3(2 * tileSize / 3, tileSize / 2, 0);
+                wall.transform.localPosition = new Vector3(tileSize / 3, tileSize / 2, 0);
                 tileObject.walls.Add(wall);
-                GameObject door = Instantiate(doorPrefab, tileObject.transform);
+                GameObject door = Instantiate(doorPrefab, tileObject.transform, true);
                 door.transform.localScale = new Vector3(tileSize / 3, 1, 1);
                 door.transform.localPosition = new Vector3(0, tileSize / 2, 0);
                 tileObject.doors.Add(door);

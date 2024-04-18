@@ -18,6 +18,7 @@ public class MatchRoom
     {
         roomObject = GameObject.Instantiate(GameManager.instance.roomObjectPrefab).GetComponent<RoomObject>();
         roomObject.transform.position = new Vector3(0, 0, 0);
+        roomObject.tileGenerator = tileGenerator;
         foreach (TileData tileData in roomData.tileData)
         {
             roomObject.GenerateTile(tileData);

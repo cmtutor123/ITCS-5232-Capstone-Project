@@ -784,6 +784,36 @@ public class GameManager : MonoBehaviour
     {
 
     }
+
+    public void TryAbility(AbilityType ability)
+    {
+
+    }
+
+    public void TryStartCharge(AbilityType ability)
+    {
+
+    }
+
+    public void TryEndCharge(AbilityType ability)
+    {
+
+    }
+
+    public void TryDash()
+    {
+
+    }
+
+    public void TryMove(Vector2 direction)
+    {
+
+    }
+
+    public void TryPause()
+    {
+
+    }
 }
 
 public enum MenuState
@@ -808,4 +838,11 @@ public enum PlayerClass
     Paladin,
     Rogue,
     Wizard
+}
+
+public enum AbilityType
+{
+    Normal,
+    Special,
+    Charged
 }

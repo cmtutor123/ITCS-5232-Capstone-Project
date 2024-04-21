@@ -89,7 +89,22 @@ public class ButtonManager : MonoBehaviour
         {
             if (GameManager.instance.GetPoints() > 0)
             {
-                GameManager.instance.UnlockPerk(GameManager.instance.currentSlot, index);
+                if (GameManager.instance.currentSlot >= 0 || GameManager.instance.currentSlot <= 5)
+                {
+                    int main = index / 4;
+                    if (main == index)
+                    {
+                        GameManager.instance.UnlockPerk(GameManager.instance.currentSlot, index);
+                    }
+                    else if (!GameManager.instance.PerkLocked(GameManager.instance.currentSlot, main))
+                    {
+                        GameManager.instance.UnlockPerk(GameManager.instance.currentSlot, index);
+                    }
+                }
+                else
+                {
+                    GameManager.instance.UnlockPerk(GameManager.instance.currentSlot, index);
+                }
             }
             return;
         }

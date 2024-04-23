@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour
     public List<StageData> stageData;
     public List<TileGenerator> tileGenerators;
 
+    public GameObject prefabPlayerProjectile;
+    public GameObject prefabProjectileSlash, prefabProjectileCircle, prefabProjectileRectangle;
+
     public int currentCharacter, currentStage, currentDifficulty, currentSlot;
 
     public GameObject roomObjectPrefab;
@@ -813,6 +816,20 @@ public class GameManager : MonoBehaviour
     public void TryPause()
     {
 
+    }
+
+    public GameObject GetProjectilePrefab(ProjectileShape shape)
+    {
+        switch (shape)
+        {
+            case ProjectileShape.Slash:
+                return prefabProjectileSlash;
+            case ProjectileShape.Circle:
+                return prefabProjectileCircle;
+            case ProjectileShape.Rectangle:
+                return prefabProjectileRectangle;
+        }
+        return null;
     }
 }
 

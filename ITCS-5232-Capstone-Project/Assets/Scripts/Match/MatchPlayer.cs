@@ -6,7 +6,7 @@ public class MatchPlayer : MonoBehaviour
 {
     public List<PerkId> perkIds = new List<PerkId>();
 
-    public float baseDamage, baseCritChance, baseCritDamage;
+    
 
     public void ProcessPerks()
     {
@@ -70,6 +70,28 @@ public class MatchPlayer : MonoBehaviour
     public bool HasPerk(PerkId perkId)
     {
         return perkIds.Contains(perkId);
+    }
+
+    public void TriggerHit(MatchEnemy enemy, AbilityType abilityType, bool chargeActive)
+    {
+        bool hitCrit = TriggeredCrit(enemy, abilityType, chargeActive);
+        // determine damage
+        // determine hit effects
+        // if crit determine crit damage and crit effects
+        // damage enemy
+        // apply effects to enemy
+
+    }
+
+    public void TriggerCrit(MatchEnemy enemy, AbilityType abilityType, bool chargeActive)
+    {
+
+    }
+
+    public bool TriggeredCrit(MatchEnemy enemy, AbilityType abilityType, bool chargeActive)
+    {
+        // calculate crit chance and randomly determine if crit
+        return false;
     }
 }
 

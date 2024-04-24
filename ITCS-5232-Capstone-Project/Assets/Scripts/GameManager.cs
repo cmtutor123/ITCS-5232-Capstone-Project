@@ -59,7 +59,9 @@ public class GameManager : MonoBehaviour
     public int[,] loadoutData = new int[PlayerData.CLASS_COUNT, 10];
     public string[] loadoutSlots = { "NormalMain", "NormalMod", "SpecialMain", "SpecialMod", "ChargedMain", "ChargedMod", "PassiveA1", "PassiveA2", "PassiveB1", "PassiveB1" };
     public int[] loadoutDefaults = { 0, -1, 0, -1, 0, -1, -1, -1, -1, -1 };
-    
+
+    public List<MatchEnemy> aliveEnemies = new List<MatchEnemy>();
+    public MatchPlayer matchPlayer;
 
     void Start()
     {
@@ -830,6 +832,46 @@ public class GameManager : MonoBehaviour
                 return prefabProjectileRectangle;
         }
         return null;
+    }
+
+    public float HomingDistance(float moveSpeed, float rotationSpeed, Vector2 direction, Vector2 startPoint, Vector2 endPoint)
+    {
+        Vector2 toTarget = endPoint - startPoint;
+        float angle = Vector2.SignedAngle(direction, toTarget);
+        bool isLeft = angle > 0;
+        float radius = moveSpeed / rotationSpeed;
+        Vector2 center = startPoint + Vector2.Perpendicular(direction) * radius * (isLeft ? -1 : 1);
+        Vector2 toCenter = center - endPoint;
+        if (toCenter.magnitude <= radius)
+        {
+            return float.PositiveInfinity;
+        }
+        float distanceToCenter = toCenter.magnitude;
+        float tangentDistance = Mathf.Sqrt(distanceToCenter * distanceToCenter - radius * radius);
+        float rotation = Mathf.PI * 2 * rotationSpeed;
+        Vector2 tangentDirection = RotateVector(toCenter, rotation);
+        Vector2 tangentPoint = endPoint + (tangentDirection.normalized * tangentDistance);
+        float arcDistance = Mathf.PI * 2 * radius * Vector2.Angle(startPoint - center, tangentPoint - center) / 360f;
+        float totalDistance = arcDistance + (endPoint - tangentPoint).magnitude;
+        return totalDistance;
+    }
+
+    public Vector2 RotateVector(Vector2 v, float rotation)
+    {
+        return new Vector2(v.x * Mathf.Cos(rotation) - v.y * Mathf.Sin(rotation), v.x * Mathf.Sin(rotation) + v.y * Mathf.Cos(rotation));
+    }
+
+    public List<MatchEnemy> EnemiesInRange(Vector2 point, float range)
+    {
+        List<MatchEnemy> inRange = new List<MatchEnemy>();
+        foreach (MatchEnemy enemy in aliveEnemies)
+        {
+            if (enemy != null && (point - (Vector2)enemy.transform.position).magnitude <= range)
+            {
+                inRange.Add(enemy);
+            }    
+        }
+        return inRange;
     }
 }
 

@@ -821,6 +821,10 @@ MonoBehaviour:
   - {fileID: 33978403}
   - {fileID: 33978403}
   - {fileID: 33978403}
+  prefabPlayerProjectile: {fileID: 5393716777603125300, guid: 3e7abc92068a17c4b92d707078475298, type: 3}
+  prefabProjectileSlash: {fileID: 2213659137507464274, guid: 4b65c330409bd704d8f40052863bc1a9, type: 3}
+  prefabProjectileCircle: {fileID: 2213659137507464274, guid: 4ad8a8ebc5a6f5342b82e88775d99787, type: 3}
+  prefabProjectileRectangle: {fileID: 2213659137507464274, guid: 4b65c330409bd704d8f40052863bc1a9, type: 3}
   currentCharacter: 0
   currentStage: 0
   currentDifficulty: 0
@@ -879,6 +883,8 @@ MonoBehaviour:
   - PassiveB1
   - PassiveB1
   loadoutDefaults: 00000000ffffffff00000000ffffffff00000000ffffffffffffffffffffffffffffffffffffffff
+  aliveEnemies: []
+  matchPlayer: {fileID: 0}
 --- !u!4 &159685999
 Transform:
   m_ObjectHideFlags: 0
@@ -888,7 +894,7 @@ Transform:
   m_GameObject: {fileID: 159685997}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.76931953, y: 0.2672763, z: 0.020412326}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

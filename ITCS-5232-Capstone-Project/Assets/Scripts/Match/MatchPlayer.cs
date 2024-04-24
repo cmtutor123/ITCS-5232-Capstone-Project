@@ -6,6 +6,7 @@ public class MatchPlayer : MonoBehaviour
 {
     public List<PerkId> perkIds = new List<PerkId>();
 
+    public bool chargeActive;
     
 
     public void ProcessPerks()
@@ -72,14 +73,24 @@ public class MatchPlayer : MonoBehaviour
         return perkIds.Contains(perkId);
     }
 
-    public void TriggerHit(MatchEnemy enemy, AbilityType abilityType, bool chargeActive)
+    public bool TriggerHit(MatchEnemy enemy, AbilityType abilityType, bool chargeActive)
     {
+        if (enemy != null)
+        {
+            bool invincibilityFrames = enemy.GetInvincibilityFrames();
+            if (invincibilityFrames) return true;
+        }
         bool hitCrit = TriggeredCrit(enemy, abilityType, chargeActive);
         // determine damage
         // determine hit effects
         // if crit determine crit damage and crit effects
         // damage enemy
         // apply effects to enemy
+        return false;
+    }
+
+    public void TriggerPeriodic(List<MatchEnemy> enemies, AbilityType abilityType, bool chargeActive)
+    {
 
     }
 
@@ -92,6 +103,11 @@ public class MatchPlayer : MonoBehaviour
     {
         // calculate crit chance and randomly determine if crit
         return false;
+    }
+
+    public void TriggerDestroy(Vector2 position, AbilityType abilityType, bool chargeActive)
+    {
+
     }
 }
 

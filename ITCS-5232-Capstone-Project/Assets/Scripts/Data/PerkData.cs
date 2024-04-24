@@ -7,7 +7,8 @@ using System;
 [CreateAssetMenu(fileName = "New Perk Data", menuName = "Perk Data")]
 public class PerkData : ScriptableObject
 {
-    public string id, perkName, perkDescription;
+    public PerkId perkId;
+    public string perkName, perkDescription;
     public int cost = 0;
     public Sprite perkIcon;
 }

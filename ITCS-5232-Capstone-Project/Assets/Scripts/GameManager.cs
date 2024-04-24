@@ -62,6 +62,8 @@ public class GameManager : MonoBehaviour
 
     public List<MatchEnemy> aliveEnemies = new List<MatchEnemy>();
     public MatchPlayer matchPlayer;
+    public GameObject prefabMatchPlayer;
+    public List<BaseStats> baseStats;
 
     void Start()
     {
@@ -236,7 +238,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator FadeOut(float seconds)
     {
-        for (float t = 0; t < 1; t += Time.deltaTime / seconds)
+        for (float t = 0; t < 1; t += Time.unscaledDeltaTime / seconds)
         {
             fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, Mathf.Lerp(0, 1, t));
             yield return null;
@@ -246,7 +248,7 @@ public class GameManager : MonoBehaviour
 
     public IEnumerator FadeIn(float seconds)
     {
-        for (float t = 0; t < 1; t += Time.deltaTime / seconds)
+        for (float t = 0; t < 1; t += Time.unscaledDeltaTime / seconds)
         {
             fade.color = new Color(fade.color.r, fade.color.g, fade.color.b, Mathf.Lerp(1, 0, t));
             yield return null;
@@ -787,37 +789,89 @@ public class GameManager : MonoBehaviour
 
     public void LoadPlayer()
     {
-
+        matchPlayer = Instantiate(prefabMatchPlayer).GetComponent<MatchPlayer>();
+        for (int i = 0; i < 10; i++)
+        {
+            int slot = i / 2;
+            PerkData[] slotPerks = new PerkData[12];
+            switch (slot)
+            {
+                case 0:
+                    slotPerks = classData[currentCharacter].normalAbility;
+                    break;
+                case 1:
+                    slotPerks = classData[currentCharacter].specialAbility;
+                    break;
+                case 2:
+                    slotPerks = classData[currentCharacter].chargedAbility;
+                    break;
+                case 3:
+                    slotPerks = classData[currentCharacter].passiveAbilityA;
+                    break;
+                case 4:
+                    slotPerks = classData[currentCharacter].passiveAbilityB;
+                    break;
+            }
+            if (loadoutData[currentCharacter, i] != -1)
+            {
+                matchPlayer.AddPerk(slotPerks[loadoutData[currentCharacter, i]].perkId);
+            }
+        }
+        matchPlayer.ProcessPerks();
     }
 
     public void TryAbility(AbilityType ability)
     {
-
+        if (matchPlayer != null)
+        {
+            matchPlayer.TriggerAbilityUse(ability);
+        }
     }
 
     public void TryStartCharge(AbilityType ability)
     {
-
+        if (matchPlayer != null)
+        {
+            matchPlayer.TriggerChargeStart(ability);
+        }
     }
 
     public void TryEndCharge(AbilityType ability)
     {
-
+        if (matchPlayer != null)
+        {
+            matchPlayer.TriggerChargeEnd(ability);
+        }
     }
 
     public void TryDash()
     {
-
+        if (matchPlayer != null)
+        {
+            matchPlayer.TriggerDash();
+        }
     }
 
     public void TryMove(Vector2 direction)
     {
-
+        if (matchPlayer != null)
+        {
+            matchPlayer.TriggerMove(direction);
+        }
     }
 
     public void TryPause()
     {
-
+        if (GetMenu() == MenuState.Match)
+        {
+            Time.timeScale = 0;
+            SwitchMenu(MenuState.Pause);
+        }
+        else if (GetMenu() == MenuState.Pause)
+        {
+            Time.timeScale = 1;
+            RemoveMenu();
+        }
     }
 
     public GameObject GetProjectilePrefab(ProjectileShape shape)
@@ -872,6 +926,11 @@ public class GameManager : MonoBehaviour
             }    
         }
         return inRange;
+    }
+
+    public BaseStats GetBaseStats()
+    {
+        return baseStats[currentCharacter];
     }
 }
 

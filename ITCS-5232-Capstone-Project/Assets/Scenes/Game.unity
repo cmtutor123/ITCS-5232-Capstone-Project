@@ -885,6 +885,13 @@ MonoBehaviour:
   loadoutDefaults: 00000000ffffffff00000000ffffffff00000000ffffffffffffffffffffffffffffffffffffffff
   aliveEnemies: []
   matchPlayer: {fileID: 0}
+  baseStats:
+  - {fileID: 11400000, guid: 9c3d5e2dda20e714d9f1b1d668a3bc89, type: 2}
+  - {fileID: 11400000, guid: ccaa9feeb634ad7479688a4488ccd7a0, type: 2}
+  - {fileID: 11400000, guid: 3b6ecae2b0fd978418c4dc36d0b480df, type: 2}
+  - {fileID: 11400000, guid: d8b7688f249bb46418c4af820f3eef90, type: 2}
+  - {fileID: 11400000, guid: 6f4f6e2ff4d4541458469ceeefbb6125, type: 2}
+  - {fileID: 11400000, guid: f937948978d9ad24790344e55a7925b6, type: 2}
 --- !u!4 &159685999
 Transform:
   m_ObjectHideFlags: 0

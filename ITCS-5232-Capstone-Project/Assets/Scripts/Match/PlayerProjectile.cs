@@ -103,7 +103,7 @@ public class PlayerProjectile : MonoBehaviour
                 }
                 else if (chargeDuration)
                 {
-                    if (!matchPlayer.chargeActive)
+                    if (!matchPlayer.chargedActive)
                     {
                         TriggerDestroy();
                     }
@@ -116,7 +116,7 @@ public class PlayerProjectile : MonoBehaviour
         }
     }
 
-    public void PrepareProjectile(ProjectileShape shape, float duration, float sizeX, float sizeY, float sizeXGrow, float sizeYGrow, float growDuration, float moveSpeed, float homingStrength, float rotateSpeed, float periodLength, int pierce, int bounces, bool followPlayer, bool returning, bool chargeDuration, AbilityType abilityType, Vector2 initialMoveDirection, Sprite sprite)
+    public void PrepareProjectile(ProjectileShape shape, float duration, float sizeX, float sizeY, float sizeXGrow, float sizeYGrow, float growDuration, float moveSpeed, float homingStrength, float rotateSpeed, float periodLength, int pierce, int bounces, bool followPlayer, bool returning, bool chargeDuration, AbilityType abilityType, Vector2 initialMoveDirection, Sprite sprite, bool chargeActive)
     {
         this.shape = shape;
         this.duration = duration;
@@ -155,6 +155,8 @@ public class PlayerProjectile : MonoBehaviour
         collider.transform.Rotate(matchPlayer.transform.forward, Vector2.Angle(collider.transform.up, initialMoveDirection));
 
         this.sprite = sprite;
+
+        this.chargeActive = chargeActive;
     }
 
     public void StartProjectile()

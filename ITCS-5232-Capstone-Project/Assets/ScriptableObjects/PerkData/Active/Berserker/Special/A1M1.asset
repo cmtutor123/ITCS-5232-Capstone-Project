@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01051a3afbed6c34ebee48bc842c11e5, type: 3}
   m_Name: A1M1
   m_EditorClassIdentifier: 
-  perkId: 0
+  perkId: 14
   perkName: 
   perkDescription: 
   cost: 0

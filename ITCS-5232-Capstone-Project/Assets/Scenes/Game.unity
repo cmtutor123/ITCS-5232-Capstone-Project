@@ -799,6 +799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   debug: 1
+  cam: {fileID: 914204898}
   loadedData: 0
   playerData:
     exp: 000000000000000000000000000000000000000000000000
@@ -885,6 +886,7 @@ MonoBehaviour:
   loadoutDefaults: 00000000ffffffff00000000ffffffff00000000ffffffffffffffffffffffffffffffffffffffff
   aliveEnemies: []
   matchPlayer: {fileID: 0}
+  prefabMatchPlayer: {fileID: 2974406542465919744, guid: 99b60bd7dd081a34ca379bc321bfc185, type: 3}
   baseStats:
   - {fileID: 11400000, guid: 9c3d5e2dda20e714d9f1b1d668a3bc89, type: 2}
   - {fileID: 11400000, guid: ccaa9feeb634ad7479688a4488ccd7a0, type: 2}

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MatchPlayer : MonoBehaviour
 {
+    public bool newlySpawned = true;
+    public float newlySpawnedTimer = 3;
+
     public List<PerkId> perkIds = new List<PerkId>();
 
     public PlayerState currentState = PlayerState.Idle;
@@ -22,14 +25,17 @@ public class MatchPlayer : MonoBehaviour
     public bool StateMovable => currentState == PlayerState.Idle || currentState == PlayerState.Moving;
     public bool StateAbilityUsable => currentState == PlayerState.Idle || currentState == PlayerState.Moving || currentState == PlayerState.WindingDown;
     public bool StateDashUsable => currentState == PlayerState.Idle || currentState == PlayerState.Moving || currentState == PlayerState.WindingDown || currentState == PlayerState.WindingUp;
+    public bool StateAimChangable => currentState == PlayerState.Idle || currentState == PlayerState.Moving || currentState == PlayerState.Charging || currentState == PlayerState.WindingDown;
 
     public float currentMoveSpeed;
 
-    public Vector2 aimDirection;
+    public Vector2 aimDirection, newDirection;
+    public bool inputMoving;
     public float moveSpeed;
     public float dashTimer;
     public float dashDuration;
     public float dashDistance;
+    public float dashSpeed;
 
     public int currentSpecialCharges;
     public int maxSpecialCharges;
@@ -72,15 +78,22 @@ public class MatchPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
+        /*if (newlySpawned)
+        {
+            newlySpawnedTimer -= Time.fixedDeltaTime;
+            if (newlySpawnedTimer < 0) newlySpawned = false;
+        }*/
         if (currentState == PlayerState.Charging)
         {
             chargeAbilityTimer += Time.fixedDeltaTime;
         }
         else if (currentState == PlayerState.Dashing)
         {
+            rb.velocity = aimDirection * dashSpeed;
             dashTimer -= Time.fixedDeltaTime;
             if (dashTimer <= 0)
             {
+                currentMoveSpeed = 0;
                 currentState = PlayerState.Idle;
             }
         }
@@ -108,7 +121,15 @@ public class MatchPlayer : MonoBehaviour
                 TriggerWindDown();
             }
         }
-        else if (currentState == PlayerState.Moving)
+        if (StateAimChangable)
+        {
+            aimDirection = newDirection;
+        }
+        if (currentState == PlayerState.Idle && inputMoving)
+        {
+            currentState = PlayerState.Moving;
+        }
+        if (currentState == PlayerState.Moving && inputMoving)
         {
             rb.velocity = aimDirection * moveSpeed;
         }
@@ -124,10 +145,14 @@ public class MatchPlayer : MonoBehaviour
 
         dashDuration = baseStats.dashDuration;
         dashDistance = baseStats.dashDistance;
+        dashSpeed = dashDistance / dashDuration;
         windUpTime = baseStats.windUpTime;
         windDownTime = baseStats.windDownTime;
         castTime = baseStats.castTime;
-        GetComponent<SpriteRenderer>().sprite = baseStats.playerSprite;
+        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.sprite = baseStats.playerSprite;
+        spriteRenderer.size = new Vector2(1, 2);
+        moveSpeed = baseStats.moveSpeed;
 
         // Normal Active Perks
 
@@ -185,6 +210,7 @@ public class MatchPlayer : MonoBehaviour
         // Wizard
 
         // Passive Perks
+
 
     }
 
@@ -297,23 +323,21 @@ public class MatchPlayer : MonoBehaviour
         {
             currentState = PlayerState.Dashing;
             dashTimer = dashDuration;
-            moveSpeed = dashDistance / dashDuration;
         }
     }
 
     public void TriggerMove(Vector2 direction)
     {
+        if (direction != new Vector2(0, 0)) newDirection = direction.normalized;
+        inputMoving = direction != new Vector2(0, 0);
         if (StateMovable)
         {
             if (direction != new Vector2(0, 0))
             {
-                aimDirection = direction.normalized;
-                currentMoveSpeed = moveSpeed;
                 currentState = PlayerState.Moving;
             }
             else
             {
-                currentMoveSpeed = 0;
                 currentState = PlayerState.Idle;
             }
         }

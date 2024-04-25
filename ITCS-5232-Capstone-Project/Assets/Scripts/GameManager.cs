@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
 {
     public bool debug = true;
 
+    public Camera cam;
+
     public static GameManager instance;
     public List<MatchRoom> matchRooms;
     public bool loadedData = false;
@@ -87,6 +89,14 @@ public class GameManager : MonoBehaviour
         LoadLoadoutData();
         InitializeButtonIndex();
         SetMenu(MenuState.MainMenu);
+    }
+
+    void Update()
+    {
+        if (matchPlayer != null && cam != null)
+        {
+            cam.transform.position = matchPlayer.transform.position + new Vector3(0, 0, -10);
+        }
     }
 
     public void LoadData()

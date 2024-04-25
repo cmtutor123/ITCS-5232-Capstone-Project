@@ -11,4 +11,5 @@ public class BaseStats : ScriptableObject
     public float windUpTime = 0.3f;
     public float castTime = 0.4f;
     public float windDownTime = 0.3f;
+    public float moveSpeed = 1.5f;
 }

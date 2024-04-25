@@ -17,3 +17,44 @@ MonoBehaviour:
   classColorLight: {r: 0.4897959, g: 0, b: 0.6792453, a: 1}
   classColorDark: {r: 0.27891156, g: 0, b: 0.38679248, a: 1}
   classSprite: {fileID: 0}
+  normalAbility:
+  - {fileID: 11400000, guid: 8cd8d63a6a2f2c94182aa937642d0459, type: 2}
+  - {fileID: 11400000, guid: 4c574744beacf4548ac268dbab9fa573, type: 2}
+  - {fileID: 11400000, guid: 6bfd53357c9d48542bcd74cc49f66e5b, type: 2}
+  - {fileID: 11400000, guid: f792a70949aa72446bc134af4e58a474, type: 2}
+  - {fileID: 11400000, guid: 4d3fd0e58febc5e4c98e9193984f4be0, type: 2}
+  - {fileID: 11400000, guid: 5fc27d03872d7aa4a8f5084dc5a747d4, type: 2}
+  - {fileID: 11400000, guid: 822adfb374996984cbbe7a4b60ae4983, type: 2}
+  - {fileID: 11400000, guid: 7daa9fdcb1e471648ba036ad701f0389, type: 2}
+  - {fileID: 11400000, guid: b8f33303de87dbb4ba1d454cc215b5bf, type: 2}
+  - {fileID: 11400000, guid: 6bdd7703785d9004f983a0489e632d75, type: 2}
+  - {fileID: 11400000, guid: dbd372f0133b6d541999633acfdd1de8, type: 2}
+  - {fileID: 11400000, guid: ea7df00a431d99d4aa67afc92270627a, type: 2}
+  specialAbility:
+  - {fileID: 11400000, guid: 2a3252b1deff0aa4ea547a8725877989, type: 2}
+  - {fileID: 11400000, guid: a3ce075679f235840ac407da8604adf0, type: 2}
+  - {fileID: 11400000, guid: 803680bd7218adf4689f4484555971c8, type: 2}
+  - {fileID: 11400000, guid: b1c21fa35a9182048a4734e1ea1eac7c, type: 2}
+  - {fileID: 11400000, guid: 39badbb2a4756fd48ac313ff11ce0f8d, type: 2}
+  - {fileID: 11400000, guid: 88a47b3ccb209ba4bb53406be250a4ae, type: 2}
+  - {fileID: 11400000, guid: f4c48502896687543b11f0966ea616a9, type: 2}
+  - {fileID: 11400000, guid: 6b304f70742725744bc7dc099645bb80, type: 2}
+  - {fileID: 11400000, guid: 719affc758d16054d87b3b0aa5c2cb2a, type: 2}
+  - {fileID: 11400000, guid: 3d9f71e2eba4bca4dabc29c3bcfae263, type: 2}
+  - {fileID: 11400000, guid: 516d48bd07806814eb3d9b622c73d6d6, type: 2}
+  - {fileID: 11400000, guid: 81a60ecd1ee6d23458ee281ca3fb65ef, type: 2}
+  chargedAbility:
+  - {fileID: 11400000, guid: 6cb04582a4aa81f4e989b21606399b1a, type: 2}
+  - {fileID: 11400000, guid: 72ae47a902327de4abf1d285b2377b29, type: 2}
+  - {fileID: 11400000, guid: ce1f708a0c1fbfa4594fbd0739663a07, type: 2}
+  - {fileID: 11400000, guid: af1d3708818f6d246b48ac6fd439b04d, type: 2}
+  - {fileID: 11400000, guid: 583ac38f694949044a9cce5b3a0c732d, type: 2}
+  - {fileID: 11400000, guid: a03f8f25b0dcd6c46aaf15ab1982a2ac, type: 2}
+  - {fileID: 11400000, guid: 500d1ccb4df82ce4e8a59ba83f43cc16, type: 2}
+  - {fileID: 11400000, guid: 5c999e3731064ba4e8dfc4ebbb1204c2, type: 2}
+  - {fileID: 11400000, guid: c56ecfad896f15b45b9d5b93ac711ac2, type: 2}
+  - {fileID: 11400000, guid: 62a87407f1a798749b18889f3fc04b38, type: 2}
+  - {fileID: 11400000, guid: c34ee81301dda7047acd23f2f07d8346, type: 2}
+  - {fileID: 11400000, guid: c9d9e72732aabf648b98b274b0f86817, type: 2}
+  passiveAbilityA: []
+  passiveAbilityB: []

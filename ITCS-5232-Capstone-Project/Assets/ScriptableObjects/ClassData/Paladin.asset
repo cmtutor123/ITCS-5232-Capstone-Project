@@ -17,3 +17,44 @@ MonoBehaviour:
   classColorLight: {r: 0.8962264, g: 0.7949674, b: 0, a: 1}
   classColorDark: {r: 0.5283019, g: 0.46831998, b: 0, a: 1}
   classSprite: {fileID: 0}
+  normalAbility:
+  - {fileID: 11400000, guid: bc9c6e342d53dcb48939b3665f8e5735, type: 2}
+  - {fileID: 11400000, guid: 08de5c9060a5dcc46ba3f4015c2b5621, type: 2}
+  - {fileID: 11400000, guid: 5463232da9e0f8349a0956b9f06e818b, type: 2}
+  - {fileID: 11400000, guid: 609943df93464c24d8e0be38453a542f, type: 2}
+  - {fileID: 11400000, guid: 86d4e839c36df324ab6bb088097ca4f8, type: 2}
+  - {fileID: 11400000, guid: 0fe842f8aecd9c441825331d35ac0291, type: 2}
+  - {fileID: 11400000, guid: ac647f13ed20904419a8e4589c749fec, type: 2}
+  - {fileID: 11400000, guid: f719037859de2f641b1ec2fc84ebff9a, type: 2}
+  - {fileID: 11400000, guid: 0d8f2d022c2d9d94da363aa5388de18c, type: 2}
+  - {fileID: 11400000, guid: 9a2b40acd2e19f34b81951c1b1fd0fbf, type: 2}
+  - {fileID: 11400000, guid: 1be6474a403b6754cbdc959b05b96fb0, type: 2}
+  - {fileID: 11400000, guid: 1d01fdfb7b3a02c4cbb84346fd3d7ff5, type: 2}
+  specialAbility:
+  - {fileID: 11400000, guid: fbfe36e4d7ddd594d85bec065f3d96b3, type: 2}
+  - {fileID: 11400000, guid: 74040213d7aa03e42b3b2b026f602a45, type: 2}
+  - {fileID: 11400000, guid: a1acc90c293b4494e919a7c25bc100cf, type: 2}
+  - {fileID: 11400000, guid: 5c84c8f52eb739948a7b187b8bbaf707, type: 2}
+  - {fileID: 11400000, guid: 694a4dbbc0d101549b9c7d1f927ccc28, type: 2}
+  - {fileID: 11400000, guid: c0fcd20869b15b348ad1546c096d9115, type: 2}
+  - {fileID: 11400000, guid: c73d23988b59b47429c9ace348df71c4, type: 2}
+  - {fileID: 11400000, guid: 38345220463aeee44ab97504d5ed8c5e, type: 2}
+  - {fileID: 11400000, guid: 71612115ff1669340af2db9cc274909a, type: 2}
+  - {fileID: 11400000, guid: ea1ad432976f60d4abe5e116f24b6b05, type: 2}
+  - {fileID: 11400000, guid: c9274db5184e78f45adae7cbbe19ce03, type: 2}
+  - {fileID: 11400000, guid: 81a8de91f1a72324085dfb98465156a9, type: 2}
+  chargedAbility:
+  - {fileID: 11400000, guid: 2835096d9cca58143a2a80dd2ae8d105, type: 2}
+  - {fileID: 11400000, guid: 7a45d79b8d6f5bb40a5e2f6520478b06, type: 2}
+  - {fileID: 11400000, guid: 3dea66732b7692242bc3bb1f79a7796a, type: 2}
+  - {fileID: 11400000, guid: 781158fa942444b4594ced8e223dec80, type: 2}
+  - {fileID: 11400000, guid: 97e9f5beb1b34f94d9e3c1c722711a03, type: 2}
+  - {fileID: 11400000, guid: 28739f6fc1bfeea4e8ed7c1e2cba02e6, type: 2}
+  - {fileID: 11400000, guid: 9576a3c6e699a8a41ae75f39cf34287e, type: 2}
+  - {fileID: 11400000, guid: 4038da085d99aaf4cb9cdf10a19624d6, type: 2}
+  - {fileID: 11400000, guid: 49670eb6ef33fbb499d0aa541e56640b, type: 2}
+  - {fileID: 11400000, guid: b291c7262a78e644c9b80b6dce17abf3, type: 2}
+  - {fileID: 11400000, guid: e8a05c7ab6bf74843853963b939e12a8, type: 2}
+  - {fileID: 11400000, guid: 9da80ea00f4299d47803956129d5150f, type: 2}
+  passiveAbilityA: []
+  passiveAbilityB: []

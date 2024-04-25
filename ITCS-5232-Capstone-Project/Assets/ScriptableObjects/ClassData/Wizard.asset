@@ -17,3 +17,44 @@ MonoBehaviour:
   classColorLight: {r: 0, g: 0.532125, b: 1, a: 1}
   classColorDark: {r: 0, g: 0.34213832, b: 0.6415094, a: 1}
   classSprite: {fileID: 0}
+  normalAbility:
+  - {fileID: 11400000, guid: 1148cd8ad0d532d4292c89b76f16c79b, type: 2}
+  - {fileID: 11400000, guid: 48c776cd19e50f9499127d90fc2d82f7, type: 2}
+  - {fileID: 11400000, guid: 8e7efbb6dd858fd43bf68c88eb03830a, type: 2}
+  - {fileID: 11400000, guid: 3e759000b6caeba4b975d5327445ab1d, type: 2}
+  - {fileID: 11400000, guid: d92f1bcb68af6bd4ba766fd43f6ea8c4, type: 2}
+  - {fileID: 11400000, guid: 2395faa2a7e5b8047805e2579c437c31, type: 2}
+  - {fileID: 11400000, guid: 75feb2d19706117479af9f922ec0309f, type: 2}
+  - {fileID: 11400000, guid: da0248874ebbd7f4fa8b9d3fa7b88c34, type: 2}
+  - {fileID: 11400000, guid: 3a1b027608e421c44ac0a07a29bdbb02, type: 2}
+  - {fileID: 11400000, guid: fbea14e8a95c7f74ba691466df4dda06, type: 2}
+  - {fileID: 11400000, guid: 2d278b26910dfbc4dab95d18acf184de, type: 2}
+  - {fileID: 11400000, guid: acce87051050d7843a530d1202d2320d, type: 2}
+  specialAbility:
+  - {fileID: 11400000, guid: 6b3bc67de82e02c429b6585941e0b17c, type: 2}
+  - {fileID: 11400000, guid: f95ab26172d99dd44b8f0a5e3b7b9c7c, type: 2}
+  - {fileID: 11400000, guid: c6d6d82cc2084204ab7c0c7cb253ef94, type: 2}
+  - {fileID: 11400000, guid: 05bf4520dce896148a977235c3218edc, type: 2}
+  - {fileID: 11400000, guid: 747356f279c37e14db1d2e3fbe455ab6, type: 2}
+  - {fileID: 11400000, guid: 581f6bf72217e6948925a45a0bf3343b, type: 2}
+  - {fileID: 11400000, guid: 10742b5432d456e4f8547c1816c888c2, type: 2}
+  - {fileID: 11400000, guid: 9202202b2ba88ac4ca11a914331c6f24, type: 2}
+  - {fileID: 11400000, guid: a2e095a0458fd544ebb14b8802e2b3ff, type: 2}
+  - {fileID: 11400000, guid: 0ff33d88830cae14db2830d153eedff4, type: 2}
+  - {fileID: 11400000, guid: 59d563a8b149cf04386b7a0b544e0778, type: 2}
+  - {fileID: 11400000, guid: c8f713e7d0fa2ed4b92b5c87159cd607, type: 2}
+  chargedAbility:
+  - {fileID: 11400000, guid: 2902f550dd183e74f8614cdfbbcce40b, type: 2}
+  - {fileID: 11400000, guid: 21f661a0de2cb7846b58ac760d392a76, type: 2}
+  - {fileID: 11400000, guid: b260ec55c2ada514cbe79ac5b33e9782, type: 2}
+  - {fileID: 11400000, guid: 625d7d06912b5e04eb41666e436d1e17, type: 2}
+  - {fileID: 11400000, guid: b5590133f08c074499304c85ae526ef8, type: 2}
+  - {fileID: 11400000, guid: f7eae66c57350df41a7adec157ff8b18, type: 2}
+  - {fileID: 11400000, guid: 4c7ed5b861942754aa6639a4ec418ceb, type: 2}
+  - {fileID: 11400000, guid: b6f89b9f0edbaba418ffad1fe9e963ba, type: 2}
+  - {fileID: 11400000, guid: 3a854d09fa3109f45bda8ed0d7225d7a, type: 2}
+  - {fileID: 11400000, guid: 81ba2d3d8a6665346b243ecf2bf30c03, type: 2}
+  - {fileID: 11400000, guid: bbb134daa9eee6f4c84150f033e7b577, type: 2}
+  - {fileID: 11400000, guid: 8e1401a125fb248468211a5cf336de6a, type: 2}
+  passiveAbilityA: []
+  passiveAbilityB: []

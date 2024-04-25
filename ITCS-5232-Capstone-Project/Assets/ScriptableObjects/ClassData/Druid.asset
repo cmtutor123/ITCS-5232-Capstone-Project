@@ -56,5 +56,29 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 83633261f1321eb40810ef35f45602d2, type: 2}
   - {fileID: 11400000, guid: a9d453a6130a5514595fc1c509276eb0, type: 2}
   - {fileID: 11400000, guid: 70aef3aa5000007488b648023ed8ad81, type: 2}
-  passiveAbilityA: []
-  passiveAbilityB: []
+  passiveAbilityA:
+  - {fileID: 11400000, guid: df2272af0dfb8724eabc677e9f707f6b, type: 2}
+  - {fileID: 11400000, guid: c65f6bc53bd74f6499b502d72ebcd635, type: 2}
+  - {fileID: 11400000, guid: 230ac83ee150953479c705cadc916460, type: 2}
+  - {fileID: 11400000, guid: 57715ba49bd1ae9429e2aceddaab36d8, type: 2}
+  - {fileID: 11400000, guid: 56f56aff276ff7e4cad72510aa695e58, type: 2}
+  - {fileID: 11400000, guid: 3390588631aa01e43b32e97eb4b5d126, type: 2}
+  - {fileID: 11400000, guid: 422879e2831100f459a6023c0fbb8e85, type: 2}
+  - {fileID: 11400000, guid: bb88aa21be0f7574084084430ca5e184, type: 2}
+  - {fileID: 11400000, guid: 6fc6fd834f2e6a84ebdb090e78bad068, type: 2}
+  - {fileID: 11400000, guid: dc091f70c5847f64fb010d68bb919060, type: 2}
+  - {fileID: 11400000, guid: b1f033cf74d15594487aa93f2d402cb8, type: 2}
+  - {fileID: 11400000, guid: 8258a813f4192294ba77f46db0a843ed, type: 2}
+  passiveAbilityB:
+  - {fileID: 11400000, guid: 9cca7491e2e0e3b4796702153c8ed68f, type: 2}
+  - {fileID: 11400000, guid: ef07077926a2c804e9599acbd794bca6, type: 2}
+  - {fileID: 11400000, guid: 16fe6bac172e56949ac23b62a9f000d4, type: 2}
+  - {fileID: 11400000, guid: 79fa9ba83e879a54abc56a9b4158c110, type: 2}
+  - {fileID: 11400000, guid: 920f655c7168b3e4a88b219f84ec0de4, type: 2}
+  - {fileID: 11400000, guid: 6e1e4439eb9ff6741b1d273fde849d76, type: 2}
+  - {fileID: 11400000, guid: 8b4b0d54f25b7fa4f8c814b734c06d13, type: 2}
+  - {fileID: 11400000, guid: 24e1719770994f64c9f3d4013df2ffa3, type: 2}
+  - {fileID: 11400000, guid: d7c82b11f069e09408ce05a8b7ec455f, type: 2}
+  - {fileID: 11400000, guid: de60decc24251c04186026e79a364294, type: 2}
+  - {fileID: 11400000, guid: 22112bd05c2150749a78b2cdd142d452, type: 2}
+  - {fileID: 11400000, guid: 0852b009de5e2b24e8e5b77e47471d03, type: 2}

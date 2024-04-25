@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 {
     public bool debug = true;
 
+    public ProjectileSpriteManager projectileSpriteManager;
     public Camera cam;
 
     public static GameManager instance;

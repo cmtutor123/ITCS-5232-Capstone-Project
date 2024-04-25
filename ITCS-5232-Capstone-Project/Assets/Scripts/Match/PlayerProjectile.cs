@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerProjectile : MonoBehaviour
 {
+    public int index;
+
     public ProjectileShape shape;
     public int bounces, pierce;
     public float duration, sizeX, sizeY, sizeXGrow, sizeYGrow, growDuration, moveSpeed, homingStrength, rotateSpeed, periodLength;
@@ -116,7 +118,7 @@ public class PlayerProjectile : MonoBehaviour
         }
     }
 
-    public void PrepareProjectile(ProjectileShape shape, float duration, float sizeX, float sizeY, float sizeXGrow, float sizeYGrow, float growDuration, float moveSpeed, float homingStrength, float rotateSpeed, float periodLength, int pierce, int bounces, bool followPlayer, bool returning, bool chargeDuration, AbilityType abilityType, Vector2 initialMoveDirection, Sprite sprite, bool chargeActive)
+    public void PrepareProjectile(ProjectileShape shape, float duration, float sizeX, float sizeY, float sizeXGrow, float sizeYGrow, float growDuration, float moveSpeed, float homingStrength, float rotateSpeed, float periodLength, int pierce, int bounces, bool followPlayer, bool returning, bool chargeDuration, AbilityType abilityType, Vector2 initialMoveDirection, Sprite sprite, bool chargeActive, int index = 1)
     {
         this.shape = shape;
         this.duration = duration;
@@ -157,6 +159,8 @@ public class PlayerProjectile : MonoBehaviour
         this.sprite = sprite;
 
         this.chargeActive = chargeActive;
+
+        this.index = index;
     }
 
     public void StartProjectile()
@@ -210,7 +214,7 @@ public class PlayerProjectile : MonoBehaviour
     public void TriggerDestroy()
     {
         active = false;
-        matchPlayer.TriggerDestroy(transform.position, abilityType, chargeActive);
+        matchPlayer.TriggerDestroy(transform.position, transform.up, abilityType, index, chargeActive);
     }
 }
 

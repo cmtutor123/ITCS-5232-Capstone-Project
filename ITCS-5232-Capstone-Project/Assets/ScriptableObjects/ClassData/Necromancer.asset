@@ -56,5 +56,29 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 62a87407f1a798749b18889f3fc04b38, type: 2}
   - {fileID: 11400000, guid: c34ee81301dda7047acd23f2f07d8346, type: 2}
   - {fileID: 11400000, guid: c9d9e72732aabf648b98b274b0f86817, type: 2}
-  passiveAbilityA: []
-  passiveAbilityB: []
+  passiveAbilityA:
+  - {fileID: 11400000, guid: 230ac83ee150953479c705cadc916460, type: 2}
+  - {fileID: 11400000, guid: 57715ba49bd1ae9429e2aceddaab36d8, type: 2}
+  - {fileID: 11400000, guid: 29f6c6d383dd52b40b5a43c644781082, type: 2}
+  - {fileID: 11400000, guid: 422879e2831100f459a6023c0fbb8e85, type: 2}
+  - {fileID: 11400000, guid: 97994feeceada5542bc8d92d8d85ca5c, type: 2}
+  - {fileID: 11400000, guid: df34d553fc712914398d3e4616d1a05a, type: 2}
+  - {fileID: 11400000, guid: 36366710b154f934d85771247ac109b0, type: 2}
+  - {fileID: 11400000, guid: ff0f4683eb313cc47b85eef55e063f14, type: 2}
+  - {fileID: 11400000, guid: 4f4e0bf3233f37a4eb55ef18fe226a0f, type: 2}
+  - {fileID: 11400000, guid: f310f5709cf4f1f4b8172c51c343dd63, type: 2}
+  - {fileID: 11400000, guid: 9f2f5c9cfcdc74c47a11eef4a0a616cb, type: 2}
+  - {fileID: 11400000, guid: a0df6708c8e2ff34abc9d374b3beda40, type: 2}
+  passiveAbilityB:
+  - {fileID: 11400000, guid: df2272af0dfb8724eabc677e9f707f6b, type: 2}
+  - {fileID: 11400000, guid: 37c14ee5001be9045bb56d01407b9510, type: 2}
+  - {fileID: 11400000, guid: bb88aa21be0f7574084084430ca5e184, type: 2}
+  - {fileID: 11400000, guid: 79fa9ba83e879a54abc56a9b4158c110, type: 2}
+  - {fileID: 11400000, guid: 2b0d69059c1d2a24a82cd50c7ca626d0, type: 2}
+  - {fileID: 11400000, guid: 8bf19e300d61dc842aca8ca69c7efaae, type: 2}
+  - {fileID: 11400000, guid: 2d028a2e147b4d34eba18c26ef3471d3, type: 2}
+  - {fileID: 11400000, guid: 352fe9be8530a2344b0c43be3732191e, type: 2}
+  - {fileID: 11400000, guid: 1aa73d572c869f0439e5c7853178d9e2, type: 2}
+  - {fileID: 11400000, guid: c5a3a001004a4484ab1a3c000b5ea114, type: 2}
+  - {fileID: 11400000, guid: 0a13949683eaad74e8400a9e3f84e2b2, type: 2}
+  - {fileID: 11400000, guid: 29b5b5f13b40bc2458ce19b2b749ecfb, type: 2}

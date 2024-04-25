@@ -128,7 +128,7 @@ public class PlayerProjectile : MonoBehaviour
         this.sizeYGrow = sizeYGrow;
         this.growDuration = growDuration;
         grow = (sizeX != sizeXGrow) || (sizeY != sizeYGrow);
-        this.moveSpeed = moveSpeed;
+        this.moveSpeed = moveSpeed * 10;
         move = moveSpeed != 0;
         this.homingStrength = homingStrength;
         homing = homingStrength != 0;
@@ -152,7 +152,7 @@ public class PlayerProjectile : MonoBehaviour
         GameObject collider = Instantiate(colliderPrefab, transform);
         rb = collider.GetComponent<Rigidbody2D>();
         projectileCollider = collider.GetComponent<ProjectileCollider>();
-        collider.transform.localScale = new Vector3(sizeX, sizeY);
+        collider.transform.localScale = new Vector3(sizeX / collider.transform.localScale.x, sizeY / collider.transform.localScale.y);
         collider.transform.position = matchPlayer.transform.position - new Vector3(0, 0, -1);
         collider.transform.Rotate(matchPlayer.transform.forward, Vector2.Angle(collider.transform.up, initialMoveDirection));
 

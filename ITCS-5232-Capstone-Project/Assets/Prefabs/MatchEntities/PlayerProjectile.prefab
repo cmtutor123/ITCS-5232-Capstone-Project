@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2331210926564110243}
   - component: {fileID: 7985997922205548223}
+  - component: {fileID: 5496222246091140659}
   m_Layer: 0
   m_Name: PlayerProjectile
   m_TagString: Untagged
@@ -59,3 +60,50 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &5496222246091140659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5393716777603125300}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6452d1a95eb7ba46b1617180f43d09b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  index: 0
+  shape: 0
+  bounces: 0
+  pierce: 0
+  duration: 0
+  sizeX: 0
+  sizeY: 0
+  sizeXGrow: 0
+  sizeYGrow: 0
+  growDuration: 0
+  moveSpeed: 0
+  homingStrength: 0
+  rotateSpeed: 0
+  periodLength: 0
+  grow: 0
+  followPlayer: 0
+  move: 0
+  homing: 0
+  rotate: 0
+  returning: 0
+  bouncing: 0
+  piercing: 0
+  periodic: 0
+  chargeDuration: 0
+  initialMoveDirection: {x: 0, y: 0}
+  moveDirection: {x: 0, y: 0}
+  abilityType: 0
+  chargeActive: 0
+  active: 0
+  activeTime: 0
+  periodTime: 0
+  isReturning: 0
+  sprite: {fileID: 0}
+  rb: {fileID: 0}
+  projectileCollider: {fileID: 0}

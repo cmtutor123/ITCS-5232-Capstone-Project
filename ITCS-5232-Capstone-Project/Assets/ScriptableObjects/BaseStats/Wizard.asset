@@ -13,8 +13,11 @@ MonoBehaviour:
   m_Name: Wizard
   m_EditorClassIdentifier: 
   playerSprite: {fileID: 21300000, guid: 9c328bc426e69524b9e8b0822f1ffd93, type: 3}
-  dashDuration: 0.25
-  dashDistance: 5
+  damage: 50
+  critChance: 0.05
+  critDamage: 0.5
+  dashDuration: 0.2
+  dashDistance: 4
   windUpTime: 0.3
   castTime: 0.4
   windDownTime: 0.3

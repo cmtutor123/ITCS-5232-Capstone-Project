@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class MatchPlayer : MonoBehaviour
 {
-    public bool newlySpawned = true;
     public float newlySpawnedTimer = 3;
 
     public List<PerkId> perkIds = new List<PerkId>();
@@ -109,11 +108,6 @@ public class MatchPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
-        /*if (newlySpawned)
-        {
-            newlySpawnedTimer -= Time.fixedDeltaTime;
-            if (newlySpawnedTimer < 0) newlySpawned = false;
-        }*/
         if (currentState == PlayerState.Charging)
         {
             chargeAbilityTimer += Time.fixedDeltaTime;
@@ -198,7 +192,7 @@ public class MatchPlayer : MonoBehaviour
         if (HasPerk(PerkId.BNThrow))
         {
             shapeNormal1 = ProjectileShape.Rectangle;
-            durationNormal1 = 1.5f;
+            durationNormal1 = 0.5f;
             sizeXNormal1 = .25f;
             sizeYNormal1 = 1;
             growsNormal1 = false;
@@ -343,9 +337,6 @@ public class MatchPlayer : MonoBehaviour
 
     public void TriggerNormalAbility(float chargePercent = 0)
     {
-        Debug.Log(shapeNormal1);
-        Debug.Log(aimDirection);
-        Debug.Log(spriteNormal1);
         SpawnProjectile(shapeNormal1, durationNormal1, sizeXNormal1, sizeYNormal1, growsNormal1 ? sizeXGrowNormal1 : sizeXNormal1, growsNormal1 ? sizeYGrowNormal1 : sizeYNormal1, growDurationNormal1, projectileSpeedNormal1, homingStrengthNormal1, rotateSpeedNormal1, periodLengthNormal1, pierceNormal1, bounceNormal1, followPlayerNormal1, returningNormal1, false, AbilityType.Normal, aimDirection, spriteNormal1, chargedActive);
     }
 
@@ -463,7 +454,6 @@ public class MatchPlayer : MonoBehaviour
     public void SpawnProjectile(ProjectileShape shape, float duration, float sizeX, float sizeY, float sizeXGrow, float sizeYGrow, float growDuration, float moveSpeed, float homingStrength, float rotateSpeed, float periodLength, int pierce, int bounces, bool followPlayer, bool returning, bool chargeDuration, AbilityType abilityType, Vector2 initialMoveDirection, Sprite sprite, bool chargeActive, int index = 1)
     {
         PlayerProjectile projectile = NewProjectile;
-        Debug.Log(projectile);
         projectile.PrepareProjectile(shape, duration, sizeX, sizeY, sizeXGrow, sizeYGrow, growDuration, moveSpeed, homingStrength, rotateSpeed, periodLength, pierce, bounces, followPlayer, returning, chargeDuration, abilityType, initialMoveDirection, sprite, chargeActive, index);
         projectile.StartProjectile();
     }

@@ -1121,8 +1121,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a48bad103251a52478d5da7530b3a030, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rectangleTemp: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  circleTemp: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+  rectangleTemp: {fileID: 21300000, guid: 5b57df82ce934294896866b84581dee4, type: 3}
+  circleTemp: {fileID: 21300000, guid: 26e5bab22d7ecad4c9754541c1bf5ee9, type: 3}
 --- !u!1 &188806819
 GameObject:
   m_ObjectHideFlags: 0

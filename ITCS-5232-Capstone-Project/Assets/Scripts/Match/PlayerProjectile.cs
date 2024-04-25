@@ -128,7 +128,7 @@ public class PlayerProjectile : MonoBehaviour
         this.sizeYGrow = sizeYGrow;
         this.growDuration = growDuration;
         grow = (sizeX != sizeXGrow) || (sizeY != sizeYGrow);
-        this.moveSpeed = moveSpeed * 10;
+        this.moveSpeed = moveSpeed * 50;
         move = moveSpeed != 0;
         this.homingStrength = homingStrength;
         homing = homingStrength != 0;
@@ -154,7 +154,7 @@ public class PlayerProjectile : MonoBehaviour
         projectileCollider = collider.GetComponent<ProjectileCollider>();
         collider.transform.localScale = new Vector3(sizeX / collider.transform.localScale.x, sizeY / collider.transform.localScale.y);
         collider.transform.position = matchPlayer.transform.position - new Vector3(0, 0, -1);
-        collider.transform.Rotate(matchPlayer.transform.forward, Vector2.Angle(collider.transform.up, initialMoveDirection));
+        collider.transform.Rotate(matchPlayer.transform.forward, Vector2.SignedAngle(collider.transform.up, initialMoveDirection));
 
         this.sprite = sprite;
 
@@ -215,6 +215,7 @@ public class PlayerProjectile : MonoBehaviour
     {
         active = false;
         matchPlayer.TriggerDestroy(transform.position, transform.up, abilityType, index, chargeActive);
+        Destroy(gameObject);
     }
 }
 

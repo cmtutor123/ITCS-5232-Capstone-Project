@@ -870,8 +870,12 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    bool pauseToggle = true;
+
     public void TryPause()
     {
+        if (!pauseToggle) return;
+        pauseToggle = false;
         if (GetMenu() == MenuState.Match)
         {
             Time.timeScale = 0;
@@ -879,9 +883,10 @@ public class GameManager : MonoBehaviour
         }
         else if (GetMenu() == MenuState.Pause)
         {
-            Time.timeScale = 1;
             RemoveMenu();
+            Time.timeScale = 1;
         }
+        pauseToggle = true;
     }
 
     public GameObject GetProjectilePrefab(ProjectileShape shape)

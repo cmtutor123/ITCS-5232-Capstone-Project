@@ -122,4 +122,9 @@ public class ButtonManager : MonoBehaviour
         GameManager.instance.SetMenu(MenuState.Load);
         GameManager.instance.StartGame();
     }
+
+    public void ButtonTryPause()
+    {
+        GameManager.instance.TryPause();
+    }
 }

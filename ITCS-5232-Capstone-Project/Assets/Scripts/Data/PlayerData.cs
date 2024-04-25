@@ -123,6 +123,14 @@ public class PlayerData
 
     public int GetLevelFromExp(int exp)
     {
-        return 1;
+        int level = 1;
+        int experience = exp;
+        while (level < 20)
+        {
+            if (experience <= 0) return level;
+            experience -= level * level * 100;
+            level++;
+        }
+        return level;
     }
 }

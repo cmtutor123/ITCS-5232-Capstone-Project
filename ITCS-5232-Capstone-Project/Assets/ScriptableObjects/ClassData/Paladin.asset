@@ -56,5 +56,29 @@ MonoBehaviour:
   - {fileID: 11400000, guid: b291c7262a78e644c9b80b6dce17abf3, type: 2}
   - {fileID: 11400000, guid: e8a05c7ab6bf74843853963b939e12a8, type: 2}
   - {fileID: 11400000, guid: 9da80ea00f4299d47803956129d5150f, type: 2}
-  passiveAbilityA: []
-  passiveAbilityB: []
+  passiveAbilityA:
+  - {fileID: 11400000, guid: 9cca7491e2e0e3b4796702153c8ed68f, type: 2}
+  - {fileID: 11400000, guid: 56f56aff276ff7e4cad72510aa695e58, type: 2}
+  - {fileID: 11400000, guid: 29f6c6d383dd52b40b5a43c644781082, type: 2}
+  - {fileID: 11400000, guid: ef07077926a2c804e9599acbd794bca6, type: 2}
+  - {fileID: 11400000, guid: 1cf491c8db78b7a42a1e1dec8347d083, type: 2}
+  - {fileID: 11400000, guid: 422879e2831100f459a6023c0fbb8e85, type: 2}
+  - {fileID: 11400000, guid: dc091f70c5847f64fb010d68bb919060, type: 2}
+  - {fileID: 11400000, guid: 0a7d8a1c600a4c444a5eb4c110612940, type: 2}
+  - {fileID: 11400000, guid: 97994feeceada5542bc8d92d8d85ca5c, type: 2}
+  - {fileID: 11400000, guid: 0aa8fdecbf834c34eab8e17ce184b451, type: 2}
+  - {fileID: 11400000, guid: 19c19fcbfc583734e85dba290c6de9f3, type: 2}
+  - {fileID: 11400000, guid: efaf904df3ea2cd42a380a3408e5418f, type: 2}
+  passiveAbilityB:
+  - {fileID: 11400000, guid: c65f6bc53bd74f6499b502d72ebcd635, type: 2}
+  - {fileID: 11400000, guid: 230ac83ee150953479c705cadc916460, type: 2}
+  - {fileID: 11400000, guid: 3390588631aa01e43b32e97eb4b5d126, type: 2}
+  - {fileID: 11400000, guid: 37c14ee5001be9045bb56d01407b9510, type: 2}
+  - {fileID: 11400000, guid: cc18840f64996a8428b337517740730f, type: 2}
+  - {fileID: 11400000, guid: 6fc6fd834f2e6a84ebdb090e78bad068, type: 2}
+  - {fileID: 11400000, guid: 920f655c7168b3e4a88b219f84ec0de4, type: 2}
+  - {fileID: 11400000, guid: 3c7deb7fbe79de84c950d98d5de331b5, type: 2}
+  - {fileID: 11400000, guid: 03b13d0dc3bdbfc4287407b15feb52b2, type: 2}
+  - {fileID: 11400000, guid: baed07c175a25814688f0f3fe06d8576, type: 2}
+  - {fileID: 11400000, guid: 00c8427989fdb01418c6e5efbe4cfc6f, type: 2}
+  - {fileID: 11400000, guid: d5061587673c2a04f952acd965fde60a, type: 2}

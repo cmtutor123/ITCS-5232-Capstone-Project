@@ -917,6 +917,7 @@ MonoBehaviour:
   aliveEnemies: []
   matchPlayer: {fileID: 0}
   prefabMatchPlayer: {fileID: 2974406542465919744, guid: 99b60bd7dd081a34ca379bc321bfc185, type: 3}
+  prefabMatchEnemy: {fileID: 8127237478297089003, guid: 0901bed833e608841af63b658487800e, type: 3}
   baseStats:
   - {fileID: 11400000, guid: 9c3d5e2dda20e714d9f1b1d668a3bc89, type: 2}
   - {fileID: 11400000, guid: ccaa9feeb634ad7479688a4488ccd7a0, type: 2}
@@ -924,6 +925,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d8b7688f249bb46418c4af820f3eef90, type: 2}
   - {fileID: 11400000, guid: 6f4f6e2ff4d4541458469ceeefbb6125, type: 2}
   - {fileID: 11400000, guid: f937948978d9ad24790344e55a7925b6, type: 2}
+  spawnDelay: 2
 --- !u!4 &159685999
 Transform:
   m_ObjectHideFlags: 0

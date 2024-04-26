@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class RoomObject : MonoBehaviour
 {
-    public int difficultyLevel => GameManager.instance.GetDifficultyLevel();
-
     public TileGenerator tileGenerator;
     public List<TileObject> tileObjects = new List<TileObject>();
 
@@ -27,7 +25,7 @@ public class RoomObject : MonoBehaviour
     {
         foreach (EnemyData enemy in enemies)
         {
-            Debug.Log("Spawning Power " + enemy.enemyLevel);
+            tileObjects[Random.Range(0, tileObjects.Count)].AddEnemyToQueue(enemy);
         }
     }
 }

@@ -13,7 +13,7 @@ public class MatchEnemy : MonoBehaviour
     public float moveSpeed;
     public float invincibilityFrames = 0;
 
-    public MatchEnemy(EnemyData enemyData)
+    public void SetEnemy(EnemyData enemyData)
     {
         maxHealth = enemyData.flatHealth + enemyData.scaledHealth * difficultyLevel;
         currentHealth = maxHealth;

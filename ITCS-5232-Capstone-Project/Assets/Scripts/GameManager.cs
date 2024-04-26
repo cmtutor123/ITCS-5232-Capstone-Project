@@ -66,7 +66,10 @@ public class GameManager : MonoBehaviour
     public List<MatchEnemy> aliveEnemies = new List<MatchEnemy>();
     public MatchPlayer matchPlayer;
     public GameObject prefabMatchPlayer;
+    public GameObject prefabMatchEnemy;
     public List<BaseStats> baseStats;
+
+    public float spawnDelay = 2.5f;
 
     void Start()
     {

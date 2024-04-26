@@ -73,6 +73,8 @@ public class GameManager : MonoBehaviour
 
     public List<MatchEnemy> matchEnemies = new List<MatchEnemy>();
 
+    public PathfindingHelper pathfindingHelper;
+
     void Start()
     {
         if (instance == null)

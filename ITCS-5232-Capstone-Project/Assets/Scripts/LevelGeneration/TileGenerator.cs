@@ -5,7 +5,7 @@ using UnityEngine;
 public class TileGenerator : MonoBehaviour
 {
     public GameObject tileObjectPrefab, floorPrefab, wallPrefab, doorPrefab;
-    public float tileSize = 30;
+    public static float tileSize = 30;
 
     public TileObject GenerateTile(TileData tileData)
     {

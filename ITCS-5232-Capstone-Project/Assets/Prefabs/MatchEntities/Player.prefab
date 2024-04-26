@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4336924669425861561}
   - component: {fileID: 3351973428165635316}
   - component: {fileID: 6539499732885196818}
+  - component: {fileID: 1569999890466891155}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -73,6 +74,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9b1d379667310f6428c5814ec63c247c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  newlySpawnedTimer: 3
   perkIds: 
   currentState: 0
   currentAbilityType: 0
@@ -85,10 +87,13 @@ MonoBehaviour:
   windDownTimer: 0
   currentMoveSpeed: 0
   aimDirection: {x: 0, y: 0}
+  newDirection: {x: 0, y: 0}
+  inputMoving: 0
   moveSpeed: 0
   dashTimer: 0
   dashDuration: 0
   dashDistance: 0
+  dashSpeed: 0
   currentSpecialCharges: 0
   maxSpecialCharges: 0
   specialChargeTime: 0
@@ -105,6 +110,10 @@ MonoBehaviour:
   chargeAbilityTimer: 0
   chargeAbilityTimeNormal: 0
   chargeAbilityTimeSpecial: 0
+  chargeAbilityDamageNormal1: 0
+  chargeAbilityDamageSpecial1: 0
+  chargeAbilitySizeNormal1: 0
+  chargeAbilitySizeSpecial1: 0
   damageTypeNormal1: 0
   damageTypeSpecial1: 0
   damageTypeCharged1: 0
@@ -117,7 +126,9 @@ MonoBehaviour:
   sizeYSpecial1: 0
   sizeXCharged1: 0
   sizeYCharged1: 0
-  grows: 0
+  growsNormal1: 0
+  growsSpecial1: 0
+  growsCharged1: 0
   sizeXGrowNormal1: 0
   sizeYGrowNormal1: 0
   sizeXGrowSpecial1: 0
@@ -158,12 +169,40 @@ MonoBehaviour:
   spriteSpecial1: {fileID: 0}
   spriteCharged1: {fileID: 0}
   lunging: 0
-  stunStackNormal1: 0
-  stunStackSpecial1: 0
-  stunStackCharged1: 0
   damageNormal1: 0
   damageSpecial1: 0
   damageCharged1: 0
+  critChanceNormal1: 0
+  critChanceSpecial1: 0
+  critChanceCharged1: 0
+  critDamageNormal1: 0
+  critDamageSpecial1: 0
+  critDamageCharged1: 0
+  stunStackNormal1: 0
+  stunStackSpecial1: 0
+  stunStackCharged1: 0
+  hasDestroyedNormal1: 0
+  shapeDestroyedNormal1: 0
+  durationDestroyedNormal1: 0
+  sizeXDestroyedNormal1: 0
+  sizeYDestroyedNormal1: 0
+  growsDestroyedNormal1: 0
+  sizeXGrowDestroyedNormal1: 0
+  sizeYGrowDestroyedNormal1: 0
+  growDurationDestroyedNormal1: 0
+  projectileSpeedDestroyedNormal1: 0
+  damageTypeDestroyedNormal1: 0
+  damageDestroyedNormal1: 0
+  critChanceDestroyedNormal1: 0
+  critDamageDestroyedNormal1: 0
+  pierceDestroyedNormal1: 0
+  bounceDestroyedNormal1: 0
+  followPlayerDestroyedNormal1: 0
+  homingStrengthDestroyedNormal1: 0
+  periodLengthDestroyedNormal1: 0
+  returningDestroyedNormal1: 0
+  rotateSpeedDestroyedNormal1: 0
+  spriteDestroyedNormal1: {fileID: 0}
 --- !u!212 &6539499732885196818
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -216,3 +255,48 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &1569999890466891155
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2974406542465919744}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 1
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

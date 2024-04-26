@@ -18,7 +18,7 @@ MonoBehaviour:
   critDamage: 0.5
   dashDuration: 0.2
   dashDistance: 4
-  windUpTime: 0.3
-  castTime: 0.4
-  windDownTime: 0.3
+  windUpTime: 0.1
+  castTime: 0.2
+  windDownTime: 0.2
   moveSpeed: 8

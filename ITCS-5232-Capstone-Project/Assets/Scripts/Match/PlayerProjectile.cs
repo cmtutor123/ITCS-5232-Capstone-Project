@@ -156,6 +156,8 @@ public class PlayerProjectile : MonoBehaviour
         collider.transform.position = matchPlayer.transform.position + new Vector3(0, 0, -1);
         collider.transform.Rotate(matchPlayer.transform.forward, Vector2.SignedAngle(collider.transform.up, initialMoveDirection));
 
+        projectileCollider.playerProjectile = this;
+
         this.sprite = sprite;
 
         this.chargeActive = chargeActive;

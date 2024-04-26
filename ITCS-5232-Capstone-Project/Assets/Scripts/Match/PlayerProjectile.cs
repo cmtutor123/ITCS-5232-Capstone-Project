@@ -171,7 +171,7 @@ public class PlayerProjectile : MonoBehaviour
 
     public void TriggerCollision(MatchEnemy enemy)
     {
-        bool invincibilityFrames = matchPlayer.TriggerHit(enemy, abilityType, chargeActive);
+        bool invincibilityFrames = matchPlayer.TriggerHit(enemy, abilityType, index, chargeActive);
         if (invincibilityFrames) return;
         if (piercing)
         {

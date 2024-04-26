@@ -406,11 +406,11 @@ public class MatchPlayer : MonoBehaviour
         }
     }
 
-    public bool TriggerHit(MatchEnemy enemy, AbilityType abilityType, bool chargeActive)
+    public bool TriggerHit(MatchEnemy enemy, AbilityType abilityType, int index, bool chargeActive)
     {
         if (enemy != null)
         {
-            bool invincibilityFrames = enemy.GetInvincibilityFrames();
+            bool invincibilityFrames = enemy.HasInvincibilityFrames();
             if (invincibilityFrames) return true;
         }
         bool hitCrit = TriggeredCrit(enemy, abilityType, chargeActive);

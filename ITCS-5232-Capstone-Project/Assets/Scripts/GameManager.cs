@@ -948,6 +948,11 @@ public class GameManager : MonoBehaviour
     {
         return baseStats[currentCharacter];
     }
+
+    public int GetDifficultyLevel()
+    {
+        return stageData[currentStage].powerLevels[currentDifficulty];
+    }
 }
 
 public enum MenuState

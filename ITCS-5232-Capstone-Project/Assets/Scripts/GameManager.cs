@@ -71,6 +71,8 @@ public class GameManager : MonoBehaviour
 
     public float spawnDelay = 2.5f;
 
+    public List<MatchEnemy> matchEnemies = new List<MatchEnemy>();
+
     void Start()
     {
         if (instance == null)
@@ -961,6 +963,11 @@ public class GameManager : MonoBehaviour
     public void TriggerWave(int wave)
     {
         matchRooms[wave + 1].SpawnWave(wave);
+    }
+
+    public void RegisterEnemy(MatchEnemy enemy)
+    {
+        matchEnemies.Add(enemy);
     }
 }
 

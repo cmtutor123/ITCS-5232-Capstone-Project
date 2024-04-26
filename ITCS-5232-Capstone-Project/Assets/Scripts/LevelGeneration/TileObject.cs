@@ -27,9 +27,11 @@ public class TileObject : MonoBehaviour
                 enemyQueue.RemoveAt(0);
                 foreach ((float, float) position in enemy.spawnPattern)
                 {
-                    GameObject matchEnemy = Instantiate(prefabMatchEnemy);
-                    matchEnemy.transform.position = floors[0].transform.position + new Vector3(0, 0, -2) + new Vector3(position.Item1, position.Item2, 0);
-                    matchEnemy.GetComponent<MatchEnemy>().SetEnemy(enemy);
+                    GameObject matchEnemyObject = Instantiate(prefabMatchEnemy);
+                    matchEnemyObject.transform.position = floors[0].transform.position + new Vector3(0, 0, -2) + new Vector3(position.Item1, position.Item2, 0);
+                    MatchEnemy matchEnemy = matchEnemyObject.GetComponent<MatchEnemy>();
+                    matchEnemy.SetEnemy(enemy);
+                    GameManager.instance.RegisterEnemy(matchEnemy);
                 }
             }
         }

@@ -741,6 +741,10 @@ public class GameManager : MonoBehaviour
         foreach (MatchRoom room in matchRooms)
         {
             room.GenerateRoom();
+            foreach (TileData tile in room.roomData.tileData)
+            {
+                pathfindingHelper.AddTile(tile);
+            }
         }
     }
 

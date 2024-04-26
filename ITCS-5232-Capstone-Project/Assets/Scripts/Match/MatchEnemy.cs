@@ -5,13 +5,24 @@ using UnityEngine;
 public class MatchEnemy : MonoBehaviour
 {
     public int difficultyLevel => GameManager.instance.GetDifficultyLevel();
+    public Vector2 nextTile => GameManager.instance.pathfindingHelper.PathToPlayer(transform.position);
 
     public SpriteRenderer spriteRenderer => GetComponent<SpriteRenderer>();
+
+    public Rigidbody2D rb;
 
     public float currentHealth, maxHealth;
     public float damage;
     public float moveSpeed;
     public float invincibilityFrames = 0;
+
+    Vector2 targetMove;
+
+    void FixedUpdate()
+    {
+        targetMove = nextTile;
+        rb.velocity = (targetMove - (Vector2)transform.position).normalized * moveSpeed;
+    }
 
     public void SetEnemy(EnemyData enemyData)
     {

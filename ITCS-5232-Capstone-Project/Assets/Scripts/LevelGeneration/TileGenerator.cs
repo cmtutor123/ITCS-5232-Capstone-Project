@@ -77,6 +77,7 @@ public class TileGenerator : MonoBehaviour
                 door.transform.localScale = new Vector3(tileSize / 3, 1, 1);
                 door.transform.localPosition = new Vector3(0, tileSize / 2, 0);
                 tileObject.doors.Add(door);
+                door.GetComponent<MatchDoor>().index = tileData.index;
             }
         }
         return tileObject;

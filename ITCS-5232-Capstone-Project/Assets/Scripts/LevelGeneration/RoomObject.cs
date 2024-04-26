@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class RoomObject : MonoBehaviour
 {
+    public int difficultyLevel => GameManager.instance.GetDifficultyLevel();
+
     public TileGenerator tileGenerator;
     public List<TileObject> tileObjects = new List<TileObject>();
 
@@ -19,5 +21,13 @@ public class RoomObject : MonoBehaviour
             tileObject.DestroyTile();
         }
         Destroy(gameObject);
+    }
+
+    public void SpawnWave(List<EnemyData> enemies)
+    {
+        foreach (EnemyData enemy in enemies)
+        {
+            Debug.Log("Spawning Power " + enemy.enemyLevel);
+        }
     }
 }

@@ -699,6 +699,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < roomCount; i++)
         {
             RoomData currentRoomData = new RoomData();
+            currentRoomData.index = i;
             currentRoomData.SetRoomShape(rooms[i]);
             currentRoomData.SetRoomEnemies(roomEnemies[i]);
             roomData[i + 1] = currentRoomData;
@@ -952,6 +953,11 @@ public class GameManager : MonoBehaviour
     public int GetDifficultyLevel()
     {
         return stageData[currentStage].powerLevels[currentDifficulty];
+    }
+
+    public void TriggerWave(int wave)
+    {
+        matchRooms[wave + 1].SpawnWave(wave);
     }
 }
 

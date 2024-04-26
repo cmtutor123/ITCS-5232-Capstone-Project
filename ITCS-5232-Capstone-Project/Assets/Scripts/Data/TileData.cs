@@ -6,14 +6,16 @@ public class TileData
 {
     public bool hasEntrance, hasExit, wallLeft, wallRight, wallUp, wallDown;
     public (int, int) tileOffset;
+    public int index;
 
-    public TileData((int, int) offset, bool left, bool right, bool up, bool down)
+    public TileData((int, int) offset, bool left, bool right, bool up, bool down, int index)
     {
         tileOffset = offset;
         wallLeft = left;
         wallRight = right;
         wallUp = up;
         wallDown = down;
+        this.index = index;
     }
 
     public void AddRoomOffset((int, int) roomOffset)

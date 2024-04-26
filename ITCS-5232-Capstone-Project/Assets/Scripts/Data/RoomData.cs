@@ -8,6 +8,7 @@ public class RoomData
     public List<(int, int)> points = new List<(int, int)>();
     public List<TileData> tileData = new List<TileData>();
     public (int, int) roomOffset, nextOffset;
+    public int index;
 
     public void SetRoomShape(int size)
     {
@@ -107,7 +108,7 @@ public class RoomData
             bool right = !points.Contains((point.Item1 + 1, point.Item2));
             bool up = !points.Contains((point.Item1, point.Item2 + 1));
             bool down = !points.Contains((point.Item1, point.Item2 - 1));
-            tileData.Add(new TileData(point, left, right, up, down));
+            tileData.Add(new TileData(point, left, right, up, down, index));
         }
     }
 

@@ -24,4 +24,9 @@ public class MatchRoom
             roomObject.GenerateTile(tileData);
         }
     }
+
+    public void SpawnWave(int index)
+    {
+        roomObject.SpawnWave(roomData.roomEnemies);
+    }
 }

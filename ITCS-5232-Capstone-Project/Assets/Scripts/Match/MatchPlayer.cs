@@ -81,6 +81,7 @@ public class MatchPlayer : MonoBehaviour
     public float critDamageNormal1, critDamageSpecial1, critDamageCharged1;
 
     public int stunStackNormal1, stunStackSpecial1, stunStackCharged1;
+    public int bleedStackNormal1;
 
     public bool hasDestroyedNormal1;
     public ProjectileShape shapeDestroyedNormal1;
@@ -102,6 +103,16 @@ public class MatchPlayer : MonoBehaviour
     public bool returningDestroyedNormal1;
     public float rotateSpeedDestroyedNormal1;
     public Sprite spriteDestroyedNormal1;
+
+    public float poisonDamage = 5f;
+    public float chillSlowMin = 0.3f;
+    public float chillSlowIncrease = 0.05f;
+    public float burnDamage = 10;
+    public bool burnCrit = false;
+    public float burnCritChance = 0.2f;
+    public float burnCritDamage = 1.0f;
+    public float curseBaseDamage = 10f;
+    public float curseDamageMult = 1.5f;
 
     public BaseStats baseStats => GameManager.instance.GetBaseStats();
     public ProjectileSpriteManager ProjectileSprite => GameManager.instance.projectileSpriteManager;
@@ -199,7 +210,7 @@ public class MatchPlayer : MonoBehaviour
             float range = 4;
             projectileSpeedNormal1 = range / durationNormal1;
             damageTypeNormal1 = DamageType.Physical;
-            damageNormal1 = baseDamage * 0.8f;
+            damageNormal1 = baseDamage;
             critChanceNormal1 = baseCritChance;
             critDamageNormal1 = baseCritDamage;
             stunStackNormal1 = 2;
@@ -237,6 +248,34 @@ public class MatchPlayer : MonoBehaviour
                 damageNormal1 = baseDamage * 0.5f;
                 returningNormal1 = true;
                 pierceNormal1 = int.MaxValue;
+            }
+        }
+        if (HasPerk(PerkId.BNGreat))
+        {
+            shapeNormal1 = ProjectileShape.Slash;
+            durationNormal1 = 0.3f;
+            sizeXNormal1 = 1;
+            sizeYNormal1 = 0.3f;
+            growsNormal1 = false;
+            pierceNormal1 = int.MaxValue;
+            damageTypeNormal1 = DamageType.Physical;
+            damageNormal1 = baseDamage * 1.2f;
+            critChanceNormal1 = baseCritChance;
+            critDamageNormal1 = baseCritDamage;
+            if (HasPerk(PerkId.BNGreatBlood))
+            {
+                bleedStackNormal1 = 1;
+            }
+            if (HasPerk(PerkId.BNGreatBrutal))
+            {
+                critChanceNormal1 += 0.1f;
+                critDamageNormal1 += 0.5f;
+            }
+            if (HasPerk(PerkId.BNGreatWrath))
+            {
+                damageNormal1 *= 1.25f;
+                sizeXNormal1 = 1.25f;
+                sizeYNormal1 = 0.4f;
             }
         }
 
@@ -337,12 +376,12 @@ public class MatchPlayer : MonoBehaviour
 
     public void TriggerNormalAbility(float chargePercent = 0)
     {
-        SpawnProjectile(shapeNormal1, durationNormal1, sizeXNormal1, sizeYNormal1, growsNormal1 ? sizeXGrowNormal1 : sizeXNormal1, growsNormal1 ? sizeYGrowNormal1 : sizeYNormal1, growDurationNormal1, projectileSpeedNormal1, homingStrengthNormal1, rotateSpeedNormal1, periodLengthNormal1, pierceNormal1, bounceNormal1, followPlayerNormal1, returningNormal1, false, AbilityType.Normal, aimDirection, spriteNormal1, chargedActive);
+        SpawnProjectile(shapeNormal1, durationNormal1, sizeXNormal1, sizeYNormal1, growsNormal1 ? sizeXGrowNormal1 : sizeXNormal1, growsNormal1 ? sizeYGrowNormal1 : sizeYNormal1, growDurationNormal1, projectileSpeedNormal1, homingStrengthNormal1, rotateSpeedNormal1, periodLengthNormal1, pierceNormal1, bounceNormal1, followPlayerNormal1, returningNormal1, false, AbilityType.Normal, aimDirection, spriteNormal1, chargedActive, 1, 1 + chargePercent);
     }
 
     public void TriggerSpecialAbility(float chargePercent = 0)
     {
-        SpawnProjectile(shapeSpecial1, durationSpecial1, sizeXSpecial1, sizeYSpecial1, growsSpecial1 ? sizeXGrowSpecial1 : sizeXSpecial1, growsSpecial1 ? sizeYGrowSpecial1 : sizeYSpecial1, growDurationSpecial1, projectileSpeedSpecial1, homingStrengthSpecial1, rotateSpeedSpecial1, periodLengthSpecial1, pierceSpecial1, bounceSpecial1, followPlayerSpecial1, returningSpecial1, false, AbilityType.Special, aimDirection, spriteSpecial1, chargedActive);
+        SpawnProjectile(shapeSpecial1, durationSpecial1, sizeXSpecial1, sizeYSpecial1, growsSpecial1 ? sizeXGrowSpecial1 : sizeXSpecial1, growsSpecial1 ? sizeYGrowSpecial1 : sizeYSpecial1, growDurationSpecial1, projectileSpeedSpecial1, homingStrengthSpecial1, rotateSpeedSpecial1, periodLengthSpecial1, pierceSpecial1, bounceSpecial1, followPlayerSpecial1, returningSpecial1, false, AbilityType.Special, aimDirection, spriteSpecial1, chargedActive, 1, 1 + chargePercent);
     }
 
     public void ToggleChargedAbility()
@@ -354,7 +393,7 @@ public class MatchPlayer : MonoBehaviour
         else
         {
             chargedActive = true;
-            SpawnProjectile(shapeCharged1, durationCharged1, sizeXCharged1, sizeYCharged1, growsCharged1 ? sizeXGrowCharged1 : sizeXCharged1, growsCharged1 ? sizeYGrowCharged1 : sizeYCharged1, growDurationCharged1, projectileSpeedCharged1, homingStrengthCharged1, rotateSpeedCharged1, periodLengthCharged1, pierceCharged1, bounceCharged1, followPlayerCharged1, returningCharged1, true, AbilityType.Charged, aimDirection, spriteCharged1, chargedActive);
+            SpawnProjectile(shapeCharged1, durationCharged1, sizeXCharged1, sizeYCharged1, growsCharged1 ? sizeXGrowCharged1 : sizeXCharged1, growsCharged1 ? sizeYGrowCharged1 : sizeYCharged1, growDurationCharged1, projectileSpeedCharged1, homingStrengthCharged1, rotateSpeedCharged1, periodLengthCharged1, pierceCharged1, bounceCharged1, followPlayerCharged1, returningCharged1, true, AbilityType.Charged, aimDirection, spriteCharged1, chargedActive, 1, 1);
         }
     }
 
@@ -406,7 +445,7 @@ public class MatchPlayer : MonoBehaviour
         }
     }
 
-    public bool TriggerHit(MatchEnemy enemy, AbilityType abilityType, int index, bool chargeActive)
+    public bool TriggerHit(MatchEnemy enemy, AbilityType abilityType, int index, bool chargeActive, float damageMult = 1)
     {
         if (enemy != null)
         {
@@ -416,12 +455,21 @@ public class MatchPlayer : MonoBehaviour
         bool hitCrit = TriggeredCrit(enemy, abilityType, index, chargeActive);
         float damage = 0;
         float critDamage = 0;
+        int stunStacks = 0;
+        int bleedStacks = 0;
+        int poisonStacks = 0;
+        int chillStacks = 0;
+        int burnStacks = 0;
+        int curseStacks = 0;
+        bool smited = false;
         if (abilityType == AbilityType.Normal)
         {
             if (index == 1)
             {
                 damage = damageNormal1;
                 critDamage = critDamageNormal1;
+                stunStacks = stunStackNormal1;
+                bleedStacks = bleedStackNormal1;
             }
             else if (index == 2)
             {
@@ -449,13 +497,10 @@ public class MatchPlayer : MonoBehaviour
         {
             damage *= 1 + critDamage;
         }
+        damage *= damageMult;
         enemy.Damage(damage);
-
-        // determine damage
-        // determine hit effects
-        // if crit determine crit damage and crit effects
-        // damage enemy
-        // apply effects to enemy
+        if (stunStacks > 0) enemy.InflictStatus(Status.Stun, stunStacks);
+        if (bleedStacks > 0) enemy.InflictStatus(Status.Bleed, bleedStacks);
         return false;
     }
 
@@ -499,19 +544,19 @@ public class MatchPlayer : MonoBehaviour
     {
         if (index == 1 && hasDestroyedNormal1)
         {
-            SpawnProjectile(shapeDestroyedNormal1, durationDestroyedNormal1, sizeXDestroyedNormal1, sizeYDestroyedNormal1, growsDestroyedNormal1, sizeXGrowDestroyedNormal1, sizeYGrowDestroyedNormal1, growDurationDestroyedNormal1, projectileSpeedDestroyedNormal1, homingStrengthDestroyedNormal1, rotateSpeedDestroyedNormal1, periodLengthDestroyedNormal1, pierceDestroyedNormal1, bounceDestroyedNormal1, followPlayerDestroyedNormal1, returningDestroyedNormal1, false, abilityType, direction, spriteDestroyedNormal1, chargeActive, 2);
+            SpawnProjectile(shapeDestroyedNormal1, durationDestroyedNormal1, sizeXDestroyedNormal1, sizeYDestroyedNormal1, growsDestroyedNormal1, sizeXGrowDestroyedNormal1, sizeYGrowDestroyedNormal1, growDurationDestroyedNormal1, projectileSpeedDestroyedNormal1, homingStrengthDestroyedNormal1, rotateSpeedDestroyedNormal1, periodLengthDestroyedNormal1, pierceDestroyedNormal1, bounceDestroyedNormal1, followPlayerDestroyedNormal1, returningDestroyedNormal1, false, abilityType, direction, spriteDestroyedNormal1, chargeActive, 2, 1);
         }
     }
 
-    public void SpawnProjectile(ProjectileShape shape, float duration, float sizeX, float sizeY, bool grows, float sizeXGrow, float sizeYGrow, float growDuration, float moveSpeed, float homingStrength, float rotateSpeed, float periodLength, int pierce, int bounces, bool followPlayer, bool returning, bool chargeDuration, AbilityType abilityType, Vector2 initialMoveDirection, Sprite sprite, bool chargeActive, int index = 1)
+    public void SpawnProjectile(ProjectileShape shape, float duration, float sizeX, float sizeY, bool grows, float sizeXGrow, float sizeYGrow, float growDuration, float moveSpeed, float homingStrength, float rotateSpeed, float periodLength, int pierce, int bounces, bool followPlayer, bool returning, bool chargeDuration, AbilityType abilityType, Vector2 initialMoveDirection, Sprite sprite, bool chargeActive, int index, float damageMult)
     {
-        SpawnProjectile(shape, duration, sizeX, sizeY, grows ? sizeXGrow : sizeX, grows ? sizeYGrow : sizeY, growDuration, moveSpeed, homingStrength, rotateSpeed, periodLength, pierce, bounces, followPlayer, returning, chargeDuration, abilityType, initialMoveDirection, sprite, chargeActive, index);
+        SpawnProjectile(shape, duration, sizeX, sizeY, grows ? sizeXGrow : sizeX, grows ? sizeYGrow : sizeY, growDuration, moveSpeed, homingStrength, rotateSpeed, periodLength, pierce, bounces, followPlayer, returning, chargeDuration, abilityType, initialMoveDirection, sprite, chargeActive, index, damageMult);
     }
 
-    public void SpawnProjectile(ProjectileShape shape, float duration, float sizeX, float sizeY, float sizeXGrow, float sizeYGrow, float growDuration, float moveSpeed, float homingStrength, float rotateSpeed, float periodLength, int pierce, int bounces, bool followPlayer, bool returning, bool chargeDuration, AbilityType abilityType, Vector2 initialMoveDirection, Sprite sprite, bool chargeActive, int index = 1)
+    public void SpawnProjectile(ProjectileShape shape, float duration, float sizeX, float sizeY, float sizeXGrow, float sizeYGrow, float growDuration, float moveSpeed, float homingStrength, float rotateSpeed, float periodLength, int pierce, int bounces, bool followPlayer, bool returning, bool chargeDuration, AbilityType abilityType, Vector2 initialMoveDirection, Sprite sprite, bool chargeActive, int index, float damageMult)
     {
         PlayerProjectile projectile = NewProjectile;
-        projectile.PrepareProjectile(shape, duration, sizeX, sizeY, sizeXGrow, sizeYGrow, growDuration, moveSpeed, homingStrength, rotateSpeed, periodLength, pierce, bounces, followPlayer, returning, chargeDuration, abilityType, initialMoveDirection, sprite, chargeActive, index);
+        projectile.PrepareProjectile(shape, duration, sizeX, sizeY, sizeXGrow, sizeYGrow, growDuration, moveSpeed, homingStrength, rotateSpeed, periodLength, pierce, bounces, followPlayer, returning, chargeDuration, abilityType, initialMoveDirection, sprite, chargeActive, index, damageMult);
         projectile.StartProjectile();
     }
 }

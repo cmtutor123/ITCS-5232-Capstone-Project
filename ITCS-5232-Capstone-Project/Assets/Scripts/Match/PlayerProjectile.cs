@@ -18,6 +18,8 @@ public class PlayerProjectile : MonoBehaviour
     public float periodTime;
     public bool isReturning;
 
+    public float chargedUp;
+
     public Sprite sprite;
 
     public Rigidbody2D rb;
@@ -118,8 +120,9 @@ public class PlayerProjectile : MonoBehaviour
         }
     }
 
-    public void PrepareProjectile(ProjectileShape shape, float duration, float sizeX, float sizeY, float sizeXGrow, float sizeYGrow, float growDuration, float moveSpeed, float homingStrength, float rotateSpeed, float periodLength, int pierce, int bounces, bool followPlayer, bool returning, bool chargeDuration, AbilityType abilityType, Vector2 initialMoveDirection, Sprite sprite, bool chargeActive, int index = 1)
+    public void PrepareProjectile(ProjectileShape shape, float duration, float sizeX, float sizeY, float sizeXGrow, float sizeYGrow, float growDuration, float moveSpeed, float homingStrength, float rotateSpeed, float periodLength, int pierce, int bounces, bool followPlayer, bool returning, bool chargeDuration, AbilityType abilityType, Vector2 initialMoveDirection, Sprite sprite, bool chargeActive, int index, float chargedUp = 1)
     {
+        this.chargedUp = chargedUp;
         this.shape = shape;
         this.duration = duration;
         this.sizeX = sizeX;
@@ -173,7 +176,7 @@ public class PlayerProjectile : MonoBehaviour
 
     public void TriggerCollision(MatchEnemy enemy)
     {
-        bool invincibilityFrames = matchPlayer.TriggerHit(enemy, abilityType, index, chargeActive);
+        bool invincibilityFrames = matchPlayer.TriggerHit(enemy, abilityType, index, chargeActive, chargedUp);
         if (invincibilityFrames) return;
         if (piercing)
         {

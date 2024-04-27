@@ -19,6 +19,9 @@ public class PathfindingHelper : MonoBehaviour
 
 class TileGrid
 {
+    public float currentOff = 0.4f;
+    public float nextOff = 0.6f;
+
     Dictionary<(int, int), TilePath> grid = new Dictionary<(int, int), TilePath>();
 
     float tileSize;
@@ -50,7 +53,9 @@ class TileGrid
             CalculateNextTile(start, end);
         }
         (int, int) next = bestNextTile[(start, end)];
-        return new Vector2(next.Item1 * tileSize, next.Item2 * tileSize);
+        Vector2 startPos = new Vector2(start.Item1 * tileSize, start.Item2 * tileSize);
+        Vector2 tilePos = new Vector2(next.Item1 * tileSize, next.Item2 * tileSize);
+        return (currentOff * startPos) + (nextOff * tilePos);
     }
 
     public void CalculateNextTile((int, int) start, (int, int) end)
@@ -83,13 +88,12 @@ class TileGrid
         (int, int) currentTile = end;
         while (currentTile != start)
         {
-            (int, int) previousTile = cameFrom[currentTile];
-            if (cameFrom[previousTile] == start)
+            if (cameFrom[currentTile] == start)
             {
                 bestNextTile[(start, end)] = currentTile;
                 break;
             }
-            currentTile = previousTile;
+            currentTile = cameFrom[currentTile];
         }
     }
 

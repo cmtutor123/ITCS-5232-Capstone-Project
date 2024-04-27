@@ -14,11 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyName: BaseMini
   enemyLevel: 4
-  flatHealth: 0
-  scaledHealth: 0
-  flatDamage: 0
-  scaledDamage: 0
-  moveSpeed: 0
+  flatHealth: 80
+  scaledHealth: 20
+  flatDamage: 4
+  scaledDamage: 1
+  moveSpeed: 1
   sprite: {fileID: 21300000, guid: 26e5bab22d7ecad4c9754541c1bf5ee9, type: 3}
   spawnX:
   - 0

@@ -37,4 +37,19 @@ public class MatchEnemy : MonoBehaviour
     {
         return invincibilityFrames > 0;
     }
+
+    public void Damage(float damage)
+    {
+        currentHealth -= damage;
+        if (currentHealth < 0)
+        {
+            TriggerDeath();
+        }
+    }
+
+    public void TriggerDeath()
+    {
+        GameManager.instance.matchEnemies.Remove(this);
+        Destroy(gameObject);
+    }
 }

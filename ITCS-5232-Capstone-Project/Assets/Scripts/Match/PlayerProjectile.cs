@@ -210,7 +210,7 @@ public class PlayerProjectile : MonoBehaviour
     public void TriggerPeriodic()
     {
         List<MatchEnemy> enemies = projectileCollider.EnemiesInRange();
-        matchPlayer.TriggerPeriodic(enemies, abilityType, chargeActive);
+        matchPlayer.TriggerPeriodic(enemies, abilityType, index, chargeActive);
     }
 
     public void TriggerDestroy()

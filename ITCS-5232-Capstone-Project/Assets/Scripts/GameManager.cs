@@ -963,7 +963,7 @@ public class GameManager : MonoBehaviour
 
     public int GetDifficultyLevel()
     {
-        return stageData[currentStage].powerLevels[currentDifficulty];
+        return stageData[currentStage].enemyLevels[currentDifficulty];
     }
 
     public void TriggerWave(int wave)

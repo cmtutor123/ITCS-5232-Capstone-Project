@@ -413,7 +413,44 @@ public class MatchPlayer : MonoBehaviour
             bool invincibilityFrames = enemy.HasInvincibilityFrames();
             if (invincibilityFrames) return true;
         }
-        bool hitCrit = TriggeredCrit(enemy, abilityType, chargeActive);
+        bool hitCrit = TriggeredCrit(enemy, abilityType, index, chargeActive);
+        float damage = 0;
+        float critDamage = 0;
+        if (abilityType == AbilityType.Normal)
+        {
+            if (index == 1)
+            {
+                damage = damageNormal1;
+                critDamage = critDamageNormal1;
+            }
+            else if (index == 2)
+            {
+                damage = damageDestroyedNormal1;
+                critDamage = critDamageDestroyedNormal1;
+            }
+        }
+        else if (abilityType == AbilityType.Special)
+        {
+            if (index == 1)
+            {
+                damage = damageSpecial1;
+                critDamage = critDamageSpecial1;
+            }
+        }
+        else if (abilityType == AbilityType.Charged)
+        {
+            if (index == 1)
+            {
+                damage = damageCharged1;
+                critDamage = critDamageCharged1;
+            }
+        }
+        if (hitCrit)
+        {
+            damage *= 1 + critDamage;
+        }
+        enemy.Damage(damage);
+
         // determine damage
         // determine hit effects
         // if crit determine crit damage and crit effects
@@ -422,20 +459,40 @@ public class MatchPlayer : MonoBehaviour
         return false;
     }
 
-    public void TriggerPeriodic(List<MatchEnemy> enemies, AbilityType abilityType, bool chargeActive)
+    public void TriggerPeriodic(List<MatchEnemy> enemies, AbilityType abilityType, int index, bool chargeActive)
     {
 
     }
 
-    public void TriggerCrit(MatchEnemy enemy, AbilityType abilityType, bool chargeActive)
+    public void TriggerCrit(MatchEnemy enemy, AbilityType abilityType, int index, bool chargeActive)
     {
 
     }
 
-    public bool TriggeredCrit(MatchEnemy enemy, AbilityType abilityType, bool chargeActive)
+    public bool TriggeredCrit(MatchEnemy enemy, AbilityType abilityType, int index, bool chargeActive)
     {
-        // calculate crit chance and randomly determine if crit
-        return false;
+        float critChance = 0;
+        if (abilityType == AbilityType.Normal)
+        {
+            if (index == 1)
+            {
+                critChance = critChanceNormal1;
+            }
+            else if (index == 2)
+            {
+                critChance = critChanceDestroyedNormal1;
+            }
+        }
+        else if (abilityType == AbilityType.Special)
+        {
+            critChance = critChanceSpecial1;
+        }
+        else if (abilityType == AbilityType.Charged)
+        {
+            critChance = critChanceCharged1;
+        }
+        float randChance = Random.value;
+        return randChance > critChance;
     }
 
     public void TriggerDestroy(Vector2 position, Vector2 direction, AbilityType abilityType, int index, bool chargeActive)

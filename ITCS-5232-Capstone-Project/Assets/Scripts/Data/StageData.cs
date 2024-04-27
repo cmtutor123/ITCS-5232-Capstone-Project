@@ -9,6 +9,7 @@ public class StageData : ScriptableObject
 
     public int roomCount = 10;
     public int[] powerLevels;
+    public int[] enemyLevels;
 
     public EnemyData[] normalEnemies, strongEnemies, minibossEnemies, bossEnemies;
 }

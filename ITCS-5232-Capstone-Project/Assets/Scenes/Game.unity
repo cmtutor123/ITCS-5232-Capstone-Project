@@ -831,6 +831,9 @@ MonoBehaviour:
   debug: 1
   projectileSpriteManager: {fileID: 159686003}
   cam: {fileID: 914204898}
+  layerMaskSightBlock:
+    serializedVersion: 2
+    m_Bits: 512
   loadedData: 0
   playerData:
     exp: 000000000000000000000000000000000000000000000000
@@ -1010,10 +1013,6 @@ MonoBehaviour:
     m_ActionId: b8410d4e-f950-4aa2-bf52-5faef200b1c7
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: bceb7d85-e40a-4d59-9aff-2a736c33af4b
-    m_ActionName: Player/Interact[/Keyboard/e]
-  - m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 159686002}
         m_TargetAssemblyTypeName: InputManager, Assembly-CSharp
@@ -1093,10 +1092,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: d635b883-2201-46e6-a883-ef0c6aa388ac
     m_ActionName: Player/Pause[/Keyboard/escape]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 3af94d92-87d8-4e0f-a138-ae9674654e5e
-    m_ActionName: Player/Skills[/Keyboard/tab]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player

@@ -10,6 +10,8 @@ public class GameManager : MonoBehaviour
     public ProjectileSpriteManager projectileSpriteManager;
     public Camera cam;
 
+    public LayerMask layerMaskSightBlock;
+
     public static GameManager instance;
     public List<MatchRoom> matchRooms;
     public bool loadedData = false;

@@ -15,6 +15,7 @@ MonoBehaviour:
   stageName: First Level
   roomCount: 10
   powerLevels: 2800000000000000000000000000000000000000
+  enemyLevels: 0100000002000000030000000400000005000000
   normalEnemies:
   - {fileID: 11400000, guid: bf458bbd59c67f0488c8b75a0cc392ea, type: 2}
   strongEnemies:

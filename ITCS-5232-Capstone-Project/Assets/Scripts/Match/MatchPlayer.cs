@@ -114,6 +114,8 @@ public class MatchPlayer : MonoBehaviour
     public float curseBaseDamage = 10f;
     public float curseDamageMult = 1.5f;
 
+    public bool invisible;
+
     public BaseStats baseStats => GameManager.instance.GetBaseStats();
     public ProjectileSpriteManager ProjectileSprite => GameManager.instance.projectileSpriteManager;
 

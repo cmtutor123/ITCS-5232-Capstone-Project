@@ -40,7 +40,12 @@ class TileGrid
 
     public Vector2 FindPathToPlayer(Vector2 objPos)
     {
-        return FindPathToPoint(objPos, GameManager.instance.matchPlayer.transform.position);
+        if (GameManager.instance.matchPlayer.invisible) return objPos;
+        Vector2 playerPosition = GameManager.instance.matchPlayer.transform.position;
+        Vector2 toPlayer = playerPosition - objPos;
+        RaycastHit2D hit = Physics2D.BoxCast(objPos, new Vector2(.9f, 0.1f), Vector2.SignedAngle(objPos, playerPosition), toPlayer, toPlayer.magnitude, GameManager.instance.layerMaskSightBlock);
+        if (hit.collider == null) return playerPosition;
+        return FindPathToPoint(objPos, playerPosition);
     }
 
     public Vector2 FindPathToPoint(Vector2 objPos, Vector2 pointPos)

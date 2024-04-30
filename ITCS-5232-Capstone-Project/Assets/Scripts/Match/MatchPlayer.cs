@@ -28,6 +28,8 @@ public class MatchPlayer : MonoBehaviour
 
     public float currentMoveSpeed;
 
+    public float currentHealth, maxHealth, currentBarrier;
+
     public Vector2 aimDirection, newDirection;
     public bool inputMoving;
     public float moveSpeed;
@@ -121,6 +123,20 @@ public class MatchPlayer : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (currentSpecialCharges < maxSpecialCharges)
+        {
+            specialChargeTimer += Time.fixedDeltaTime;
+            if (specialChargeTimer >= specialChargeTime)
+            {
+                specialChargeTimer -= specialChargeTime;
+                currentSpecialCharges++;
+                if (currentSpecialCharges == maxSpecialCharges)
+                {
+                    specialChargeTimer = 0;
+                }
+            }
+        }
+
         if (currentState == PlayerState.Charging)
         {
             chargeAbilityTimer += Time.fixedDeltaTime;
@@ -383,6 +399,7 @@ public class MatchPlayer : MonoBehaviour
 
     public void TriggerSpecialAbility(float chargePercent = 0)
     {
+        currentSpecialCharges--;
         SpawnProjectile(shapeSpecial1, durationSpecial1, sizeXSpecial1, sizeYSpecial1, growsSpecial1 ? sizeXGrowSpecial1 : sizeXSpecial1, growsSpecial1 ? sizeYGrowSpecial1 : sizeYSpecial1, growDurationSpecial1, projectileSpeedSpecial1, homingStrengthSpecial1, rotateSpeedSpecial1, periodLengthSpecial1, pierceSpecial1, bounceSpecial1, followPlayerSpecial1, returningSpecial1, false, AbilityType.Special, aimDirection, spriteSpecial1, chargedActive, 1, 1 + chargePercent);
     }
 
@@ -560,6 +577,14 @@ public class MatchPlayer : MonoBehaviour
         PlayerProjectile projectile = NewProjectile;
         projectile.PrepareProjectile(shape, duration, sizeX, sizeY, sizeXGrow, sizeYGrow, growDuration, moveSpeed, homingStrength, rotateSpeed, periodLength, pierce, bounces, followPlayer, returning, chargeDuration, abilityType, initialMoveDirection, sprite, chargeActive, index, damageMult);
         projectile.StartProjectile();
+    }
+
+    public void UpdatePerkDisplay()
+    {
+        GameManager.instance.UpdatePerkDisplayNormal(StateAbilityUsable);
+        GameManager.instance.UpdatePerkDisplaySpecial(StateAbilityUsable, currentSpecialCharges, maxSpecialCharges, specialChargeTimer, specialChargeTime);
+        GameManager.instance.UpdatePerkDisplayCharged(StateAbilityUsable, chargedActive, ChargedAbilityTogglable, chargedMana, chargedMaxMana);
+        GameManager.instance.UpdateHealthDisplay(currentHealth, maxHealth, currentBarrier);
     }
 }
 

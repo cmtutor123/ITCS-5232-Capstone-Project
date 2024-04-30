@@ -12,6 +12,9 @@ public class GameManager : MonoBehaviour
 
     public LayerMask layerMaskSightBlock;
 
+    public AbilityDisplay perkDisplayNormal, perkDisplaySpecial, perkDisplayCharged;
+    public HealthBarDisplay healthBarDisplay;
+
     public static GameManager instance;
     public List<MatchRoom> matchRooms;
     public bool loadedData = false;
@@ -659,6 +662,13 @@ public class GameManager : MonoBehaviour
     {
         LoadStage();
         LoadPlayer();
+        Color lightColor = classData[currentCharacter].classColorLight;
+        Color darkColor = classData[currentCharacter].classColorDark;
+        perkDisplayNormal.SetColor(lightColor);
+        perkDisplaySpecial.SetColor(lightColor);
+        perkDisplayCharged.SetColor(lightColor);
+        perkDisplayCharged.ShowManaBar(darkColor);
+        healthBarDisplay.SetColor(lightColor, darkColor);
         SetMenu(MenuState.Match);
     }
 
@@ -976,6 +986,26 @@ public class GameManager : MonoBehaviour
     public void RegisterEnemy(MatchEnemy enemy)
     {
         matchEnemies.Add(enemy);
+    }
+
+    public void UpdatePerkDisplayNormal(bool anyAbilityUsable)
+    {
+        perkDisplayNormal.UpdateNormal(anyAbilityUsable);
+    }
+
+    public void UpdatePerkDisplaySpecial(bool anyAbilityUsable, int currentCharge, int maxCharge, float currentTime, float maxTime)
+    {
+        perkDisplaySpecial.UpdateSpecial(anyAbilityUsable, currentCharge, maxCharge, currentTime, maxTime);
+    }
+
+    public void UpdatePerkDisplayCharged(bool anyAbilityUsable, bool chargedActive, bool chargedTogglable, float currentMana, float maxMana)
+    {
+        perkDisplayCharged.UpdateCharged(anyAbilityUsable, chargedActive, chargedTogglable, currentMana, maxMana);
+    }
+
+    public void UpdateHealthDisplay(float currentHealth, float maxHealth, float currentBarrier)
+    {
+        healthBarDisplay.SetValues(currentHealth, maxHealth, currentBarrier);
     }
 }
 

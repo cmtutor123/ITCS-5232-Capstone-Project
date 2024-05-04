@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public bool debug = true;
+
+    public bool bossActive = false;
 
     public ProjectileSpriteManager projectileSpriteManager;
     public Camera cam;
@@ -79,6 +82,12 @@ public class GameManager : MonoBehaviour
     public List<MatchEnemy> matchEnemies = new List<MatchEnemy>();
 
     public PathfindingHelper pathfindingHelper;
+
+    public int currentWave;
+
+    public ExpBar oldExpBar, newExpBar;
+
+    public TextMeshProUGUI resultsText;
 
     void Start()
     {
@@ -660,6 +669,7 @@ public class GameManager : MonoBehaviour
 
     public void StartGame()
     {
+        bossActive = false;
         LoadStage();
         LoadPlayer();
         Color lightColor = classData[currentCharacter].classColorLight;
@@ -669,6 +679,9 @@ public class GameManager : MonoBehaviour
         perkDisplayCharged.SetColor(lightColor);
         perkDisplayCharged.ShowManaBar(darkColor);
         healthBarDisplay.SetColor(lightColor, darkColor);
+        perkDisplayNormal.SetPerk(classData[currentCharacter].normalAbility[loadoutData[currentCharacter, 0]]);
+        perkDisplaySpecial.SetPerk(classData[currentCharacter].specialAbility[loadoutData[currentCharacter, 2]]);
+        perkDisplayCharged.SetPerk(classData[currentCharacter].chargedAbility[loadoutData[currentCharacter, 4]]);
         SetMenu(MenuState.Match);
     }
 
@@ -981,6 +994,7 @@ public class GameManager : MonoBehaviour
     public void TriggerWave(int wave)
     {
         matchRooms[wave + 1].SpawnWave(wave);
+        currentWave = wave;
     }
 
     public void RegisterEnemy(MatchEnemy enemy)
@@ -1006,6 +1020,56 @@ public class GameManager : MonoBehaviour
     public void UpdateHealthDisplay(float currentHealth, float maxHealth, float currentBarrier)
     {
         healthBarDisplay.SetValues(currentHealth, maxHealth, currentBarrier);
+    }
+
+    public void EndGame(bool won)
+    {
+        SetMenu(MenuState.MainMenu, MenuState.Results);
+        foreach (MatchRoom room in matchRooms)
+        {
+            room.DestroyRoom();
+        }
+        matchRooms.Clear();
+        foreach (MatchEnemy enemy in matchEnemies)
+        {
+            enemy.DestroyEnemy();
+        }
+        matchEnemies.Clear();
+        int oldExp = playerData.exp[currentCharacter];
+        int diff = stageData[currentStage].enemyLevels[currentDifficulty];
+        int matchExp = (int)(Mathf.Sqrt(diff * diff * 10 * Mathf.Clamp(currentWave, 1, 10)) * (won ? 10 : 1));
+        int newExp = oldExp + matchExp;
+        playerData.exp[currentCharacter] = newExp;
+        FileManager.SavePlayerData(playerData);
+        SetResultsUI(won, oldExp, newExp);
+    }
+
+    public void SetResultsUI(bool won, int oldExp, int newExp)
+    {
+        int oldLevel = PlayerData.GetLevelFromExp(oldExp);
+        int newLevel = PlayerData.GetLevelFromExp(newExp);
+        int expGain = newExp - oldExp;
+        int levelGain = newLevel - oldLevel;
+        Color colorLight = classData[currentCharacter].classColorLight;
+        Color colorDark = classData[currentCharacter].classColorDark;
+        oldExpBar.SetEmblem(colorLight, colorDark, oldLevel);
+        newExpBar.SetEmblem(colorLight, colorDark, newLevel);
+        oldExpBar.SetExp(oldExp, PlayerData.GetExpNextLevel(oldLevel));
+        newExpBar.SetExp(newExp, PlayerData.GetExpNextLevel(newLevel));
+        int perkGain = levelGain * 3;
+        resultsText.text = GetResultsText(expGain, levelGain, perkGain);
+    }
+
+    public string GetResultsText(int expGain, int levelGain, int perkGain)
+    {
+        string exp = "";
+        string level = "";
+        string perk = "";
+        if (expGain > 0) exp = "+ " + expGain.ToString() + " exp";
+        if (levelGain > 0) level = "+ " + levelGain.ToString() + " level";
+        if (perkGain > 0) perk = "+ " + perkGain.ToString() + " unlocks";
+        string text = exp + "\n" + level + "\n" + perk;
+        return text;
     }
 }
 

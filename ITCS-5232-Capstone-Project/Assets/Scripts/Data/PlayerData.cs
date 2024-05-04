@@ -121,16 +121,27 @@ public class PlayerData
         }
     }
 
-    public int GetLevelFromExp(int exp)
+    public static int GetLevelFromExp(int exp)
     {
-        int level = 1;
-        int experience = exp;
-        while (level < 20)
+        for (int lvl = 20; lvl >= 1; lvl--)
         {
-            if (experience <= 0) return level;
-            experience -= level * level * 100;
-            level++;
+            if (exp >= GetExpFromLevel(lvl)) return lvl;
         }
-        return level;
+        return 1;
+    }
+
+    public static int GetExpFromLevel(int level)
+    {
+        int exp = 0;
+        for (int i = 1; i < level; i++)
+        {
+            exp += GetExpNextLevel(i);
+        }
+        return exp;
+    }
+
+    public static int GetExpNextLevel(int level)
+    {
+        return level * level * 100;
     }
 }

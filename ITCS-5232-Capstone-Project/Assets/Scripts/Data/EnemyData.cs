@@ -15,6 +15,8 @@ public class EnemyData : ScriptableObject
     public List<float> spawnX, spawnY;
     public List<(float, float)> spawnXY;
 
+    public bool isBoss = false;
+
     public List<(float, float)> GetSpawnPattern()
     {
         if (spawnXY == null)

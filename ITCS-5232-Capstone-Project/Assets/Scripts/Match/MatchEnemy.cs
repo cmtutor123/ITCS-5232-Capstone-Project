@@ -154,6 +154,7 @@ public class MatchEnemy : MonoBehaviour
         moveSpeed = enemyData.moveSpeed;
         damage = enemyData.flatDamage + enemyData.scaledDamage * difficultyLevel;
         spriteRenderer.sprite = enemyData.sprite;
+        if (enemyData.isBoss) GameManager.instance.bossActive = true;
     }
 
     public bool HasInvincibilityFrames()
@@ -171,6 +172,12 @@ public class MatchEnemy : MonoBehaviour
     }
 
     public void TriggerDeath()
+    {
+        GameManager.instance.matchEnemies.Remove(this);
+        Destroy(gameObject);
+    }
+
+    public void DestroyEnemy()
     {
         GameManager.instance.matchEnemies.Remove(this);
         Destroy(gameObject);

@@ -120,9 +120,18 @@ public class MatchPlayer : MonoBehaviour
 
     public BaseStats baseStats => GameManager.instance.GetBaseStats();
     public ProjectileSpriteManager ProjectileSprite => GameManager.instance.projectileSpriteManager;
+    public bool gameWon => GameManager.instance.bossActive && GameManager.instance.matchEnemies.Count == 0;
 
     private void FixedUpdate()
     {
+        if (currentHealth > 0 && gameWon)
+        {
+            GameManager.instance.EndGame(true);
+        }
+        else if (currentHealth <= 0)
+        {
+            GameManager.instance.EndGame(false);
+        }
         if (currentSpecialCharges < maxSpecialCharges)
         {
             specialChargeTimer += Time.fixedDeltaTime;

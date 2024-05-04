@@ -29,4 +29,9 @@ public class MatchRoom
     {
         roomObject.SpawnWave(roomData.roomEnemies);
     }
+
+    public void DestroyRoom()
+    {
+        roomObject.DestroyRoom();
+    }
 }

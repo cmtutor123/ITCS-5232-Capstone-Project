@@ -26,6 +26,7 @@ public class AbilityDisplay : MonoBehaviour
     public void ShowManaBar(Color color)
     {
         manaBackground.SetActive(true);
+        manaBar.color = color;
     }
 
     public void SetGrayed(bool grayed)

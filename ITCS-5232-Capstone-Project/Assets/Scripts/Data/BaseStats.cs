@@ -6,6 +6,7 @@ using UnityEngine;
 public class BaseStats : ScriptableObject
 {
     public Sprite playerSprite;
+    public float maxHealth = 100;
     public float damage = 50;
     public float critChance = 0.05f;
     public float critDamage = 0.5f;

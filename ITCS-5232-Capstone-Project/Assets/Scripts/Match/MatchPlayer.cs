@@ -122,14 +122,20 @@ public class MatchPlayer : MonoBehaviour
     public ProjectileSpriteManager ProjectileSprite => GameManager.instance.projectileSpriteManager;
     public bool gameWon => GameManager.instance.bossActive && GameManager.instance.matchEnemies.Count == 0;
 
+    public bool setupComplete = false;
+    public bool matchComplete = false;
+
     private void FixedUpdate()
     {
+        if (!setupComplete || matchComplete) return;
         if (currentHealth > 0 && gameWon)
         {
+            matchComplete = true;
             GameManager.instance.EndGame(true);
         }
         else if (currentHealth <= 0)
         {
+            matchComplete = true;
             GameManager.instance.EndGame(false);
         }
         if (currentSpecialCharges < maxSpecialCharges)
@@ -206,6 +212,7 @@ public class MatchPlayer : MonoBehaviour
     {
         // Base Stats
 
+        maxHealth = baseStats.maxHealth;
         dashDuration = baseStats.dashDuration;
         dashDistance = baseStats.dashDistance;
         dashSpeed = dashDistance / dashDuration;
@@ -347,6 +354,12 @@ public class MatchPlayer : MonoBehaviour
         // Passive Perks
 
 
+        // Final Setup
+
+        currentHealth = maxHealth;
+        transform.position = new Vector3(transform.position.x, transform.position.y, -1);
+
+        setupComplete = true;
     }
 
     public void AddPerk(PerkId perkId)

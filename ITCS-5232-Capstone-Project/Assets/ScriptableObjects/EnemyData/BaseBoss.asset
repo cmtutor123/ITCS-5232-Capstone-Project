@@ -24,3 +24,4 @@ MonoBehaviour:
   - 0
   spawnY:
   - 0
+  isBoss: 1

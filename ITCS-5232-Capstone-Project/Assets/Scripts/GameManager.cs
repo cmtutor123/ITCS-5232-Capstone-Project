@@ -656,15 +656,16 @@ public class GameManager : MonoBehaviour
 
     public bool PerkLocked(int slot, int index)
     {
-        int pIndex = 12 * slot + index;
+        int pIndex = 12 * (slot / 2) + index;
         return playerData.perks[currentCharacter, pIndex] != 1;
     }
 
     public void UnlockPerk(int slot, int index)
     {
-        int pIndex = 12 * slot + index;
+        int pIndex = 12 * (slot / 2) + index;
         playerData.perks[currentCharacter, pIndex] = 1;
         FileManager.SavePlayerData(playerData);
+        UpdatePowerMeter();
     }
 
     public void StartGame()

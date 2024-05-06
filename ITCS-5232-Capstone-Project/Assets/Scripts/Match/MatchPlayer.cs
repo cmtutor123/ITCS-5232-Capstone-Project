@@ -230,6 +230,21 @@ public class MatchPlayer : MonoBehaviour
         float baseCritChance = baseStats.critChance;
         float baseCritDamage = baseStats.critDamage;
 
+        damageNormal1 = baseDamage;
+        damageDestroyedNormal1 = baseDamage;
+        damageSpecial1 = baseDamage;
+        damageCharged1 = baseDamage;
+
+        critChanceNormal1 = baseCritChance;
+        critChanceDestroyedNormal1 = baseCritChance;
+        critChanceSpecial1 = baseCritChance;
+        critChanceCharged1 = baseCritChance;
+
+        critDamageNormal1 = baseCritDamage;
+        critDamageDestroyedNormal1 = baseCritDamage;
+        critDamageSpecial1 = baseCritDamage;
+        critDamageCharged1 = baseCritDamage;
+
         // Normal Active Perks
 
         // Berserker
@@ -244,9 +259,6 @@ public class MatchPlayer : MonoBehaviour
             float range = 4;
             projectileSpeedNormal1 = range / durationNormal1;
             damageTypeNormal1 = DamageType.Physical;
-            damageNormal1 = baseDamage;
-            critChanceNormal1 = baseCritChance;
-            critDamageNormal1 = baseCritDamage;
             stunStackNormal1 = 1;
             spriteNormal1 = ProjectileSprite.rectangleTemp;
 
@@ -260,7 +272,7 @@ public class MatchPlayer : MonoBehaviour
 
             if (HasPerk(PerkId.BNThrowExplode))
             {
-                damageNormal1 = baseDamage * 0.2f;
+                damageNormal1 *= 0.2f;
                 hasDestroyedNormal1 = true;
                 shapeDestroyedNormal1 = ProjectileShape.Circle;
                 durationDestroyedNormal1 = 2;
@@ -270,16 +282,14 @@ public class MatchPlayer : MonoBehaviour
                 growDurationDestroyedNormal1 = 1;
                 projectileSpeedDestroyedNormal1 = 0;
                 damageTypeDestroyedNormal1 = DamageType.Fire;
-                damageDestroyedNormal1 = baseDamage * 0.6f;
-                critChanceDestroyedNormal1 = baseCritChance;
-                critDamageDestroyedNormal1 = baseCritDamage;
+                damageDestroyedNormal1 *= 0.6f;
                 pierceDestroyedNormal1 = int.MaxValue;
                 spriteDestroyedNormal1 = ProjectileSprite.circleTemp;
             }
 
             if (HasPerk(PerkId.BNThrowReturn))
             {
-                damageNormal1 = baseDamage * 0.5f;
+                damageNormal1 *= 0.5f;
                 returningNormal1 = true;
                 pierceNormal1 = int.MaxValue;
             }
@@ -293,9 +303,7 @@ public class MatchPlayer : MonoBehaviour
             growsNormal1 = false;
             pierceNormal1 = int.MaxValue;
             damageTypeNormal1 = DamageType.Physical;
-            damageNormal1 = baseDamage * 1.2f;
-            critChanceNormal1 = baseCritChance;
-            critDamageNormal1 = baseCritDamage;
+            damageNormal1 *= 1.2f;
             if (HasPerk(PerkId.BNGreatBlood))
             {
                 bleedStackNormal1 = 1;
@@ -321,9 +329,6 @@ public class MatchPlayer : MonoBehaviour
             growsNormal1 = false;
             pierceNormal1 = int.MaxValue;
             damageTypeNormal1 = DamageType.Physical;
-            damageNormal1 = baseDamage;
-            critChanceNormal1 = baseCritChance;
-            critDamageNormal1 = baseCritDamage;
             stunStackNormal1 = 2;
             if (HasPerk(PerkId.BNWarElec))
             {
@@ -362,6 +367,17 @@ public class MatchPlayer : MonoBehaviour
 
         if (HasPerk(PerkId.BSScreech))
         {
+            shapeSpecial1 = ProjectileShape.Circle;
+            durationSpecial1 = 0.2f;
+            sizeXSpecial1 = 1;
+            sizeYSpecial1 = 1;
+            growsSpecial1 = true;
+            sizeXGrowSpecial1 = 5;
+            sizeYGrowSpecial1 = 5;
+            growDurationSpecial1 = 0.1f;
+            pierceSpecial1 = int.MaxValue;
+            damageTypeSpecial1 = DamageType.Physical;
+            damageSpecial1 = 2.5f;
 
         }
 

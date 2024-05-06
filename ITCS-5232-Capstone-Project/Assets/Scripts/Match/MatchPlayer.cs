@@ -247,7 +247,7 @@ public class MatchPlayer : MonoBehaviour
             damageNormal1 = baseDamage;
             critChanceNormal1 = baseCritChance;
             critDamageNormal1 = baseCritDamage;
-            stunStackNormal1 = 2;
+            stunStackNormal1 = 1;
             spriteNormal1 = ProjectileSprite.rectangleTemp;
 
             if (HasPerk(PerkId.BNThrowWind))
@@ -312,6 +312,39 @@ public class MatchPlayer : MonoBehaviour
                 sizeYNormal1 = 0.4f;
             }
         }
+        if (HasPerk(PerkId.BNWar))
+        {
+            shapeNormal1 = ProjectileShape.Circle;
+            durationNormal1 = 0.2f;
+            sizeXNormal1 = 1.5f;
+            sizeYNormal1 = 1.5f;
+            growsNormal1 = false;
+            pierceNormal1 = int.MaxValue;
+            damageTypeNormal1 = DamageType.Physical;
+            damageNormal1 = baseDamage;
+            critChanceNormal1 = baseCritChance;
+            critDamageNormal1 = baseCritDamage;
+            stunStackNormal1 = 2;
+            if (HasPerk(PerkId.BNWarElec))
+            {
+                damageTypeNormal1 = DamageType.Lightning;
+                stunStackNormal1 += 1;
+                damageNormal1 *= 1.2f;
+            }
+            if (HasPerk(PerkId.BNWarStun))
+            {
+                sizeXNormal1 = 2;
+                sizeYNormal1 = 2;
+                stunStackNormal1 += 2;
+            }
+            if (HasPerk(PerkId.BNWarHeavy))
+            {
+                damageNormal1 *= 1.75f;
+                stunStackNormal1 -= 1;
+                sizeXNormal1 = 1.75f;
+                sizeYNormal1 = 1.75f;
+            }
+        }
 
         // Druid
 
@@ -326,6 +359,11 @@ public class MatchPlayer : MonoBehaviour
         // Special Active Perks
 
         // Berserker
+
+        if (HasPerk(PerkId.BSScreech))
+        {
+
+        }
 
         // Druid
 

@@ -848,11 +848,6 @@ MonoBehaviour:
   fadeTime: 0.5
   classData:
   - {fileID: 11400000, guid: 187855167869e1c429a21786c08c2684, type: 2}
-  - {fileID: 11400000, guid: 3d629b52a470d8c46a95c1d98574b417, type: 2}
-  - {fileID: 11400000, guid: 36ca6faa6eba30040a635fd5701db45e, type: 2}
-  - {fileID: 11400000, guid: 97d24db1f5078c14b9409a6583fa475c, type: 2}
-  - {fileID: 11400000, guid: 96740d39f296d594393ad30332f9a216, type: 2}
-  - {fileID: 11400000, guid: 7dc1efc4c85af5c4f855a4fef3eafc74, type: 2}
   stageData:
   - {fileID: 11400000, guid: 65864c618a9b2b545aa148c2cb601701, type: 2}
   - {fileID: 11400000, guid: ed44c09bb96f174429a8b326372b7c21, type: 2}
@@ -1317,6 +1312,10 @@ PrefabInstance:
     - target: {fileID: 4443622491298140, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
       propertyPath: m_Name
       value: ClassButton2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443622491298140, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 712720933950199928, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
       propertyPath: m_fontSize
@@ -2360,6 +2359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClassButton3
       objectReference: {fileID: 0}
+    - target: {fileID: 4443622491298140, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 712720933950199928, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
       propertyPath: m_fontSize
       value: 50.25
@@ -2894,6 +2897,10 @@ PrefabInstance:
     - target: {fileID: 4443622491298140, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
       propertyPath: m_Name
       value: ClassButton4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443622491298140, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 712720933950199928, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
       propertyPath: m_fontSize
@@ -3434,6 +3441,10 @@ PrefabInstance:
     - target: {fileID: 4443622491298140, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
       propertyPath: m_Name
       value: ClassButton6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443622491298140, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 712720933950199928, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
       propertyPath: m_fontSize
@@ -4071,6 +4082,10 @@ PrefabInstance:
     - target: {fileID: 4443622491298140, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
       propertyPath: m_Name
       value: ClassButton5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4443622491298140, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 712720933950199928, guid: cb0d624954dbc654495e11fdb427ed02, type: 3}
       propertyPath: m_fontSize

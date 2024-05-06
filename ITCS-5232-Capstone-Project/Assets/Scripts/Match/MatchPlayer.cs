@@ -377,8 +377,21 @@ public class MatchPlayer : MonoBehaviour
             growDurationSpecial1 = 0.1f;
             pierceSpecial1 = int.MaxValue;
             damageTypeSpecial1 = DamageType.Physical;
-            damageSpecial1 = 2.5f;
+            damageSpecial1 *= 2.5f;
+            stunStackSpecial1 = 1;
+            specialChargeTime = 10;
+            if (HasPerk(PerkId.BSScreechPain))
+            {
 
+            }
+            if (HasPerk(PerkId.BSScreechStun))
+            {
+
+            }
+            if (HasPerk(PerkId.BSScreenStutter))
+            {
+
+            }
         }
 
         // Druid

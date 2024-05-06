@@ -6,7 +6,7 @@ using System;
 [Serializable]
 public class PlayerData
 {
-    public static int CLASS_COUNT = 6;
+    public static int CLASS_COUNT = 1;
     public static int STAGE_COUNT = 3;
 
     public int[] exp = new int[CLASS_COUNT];

@@ -128,7 +128,7 @@ public class GameManager : MonoBehaviour
 
     public void LoadLoadoutData()
     {
-        for (int c = 0; c < classData.Count; c++)
+        for (int c = 0; c < PlayerData.CLASS_COUNT; c++)
         {
             string className = classData[c].className;
             for (int s = 0; s < loadoutSlots.Length; s++)
@@ -394,7 +394,7 @@ public class GameManager : MonoBehaviour
 
     public void UpdateCharacterSelect()
     {
-        for (int i = 0; i < 6; i++)
+        for (int i = 0; i < PlayerData.CLASS_COUNT; i++)
         {
             UpdateCharacterEmblem(characterButtons[i], i);
         }

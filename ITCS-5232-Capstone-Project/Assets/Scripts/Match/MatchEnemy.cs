@@ -244,5 +244,7 @@ public enum Status
     Chill,
     Curse,
     Bleed,
-    Smite
+    Smite,
+    Push,
+    StunVulnerable
 }

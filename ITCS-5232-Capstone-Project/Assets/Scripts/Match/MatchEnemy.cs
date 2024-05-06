@@ -63,7 +63,13 @@ public class MatchEnemy : MonoBehaviour
     public float curseBaseDamage => GameManager.instance.matchPlayer.curseBaseDamage;
     public float curseDamageMult => GameManager.instance.matchPlayer.curseDamageMult;
 
+    public bool pushed => pushForce > 0;
+    public int pushForce;
+    public float pushTimer;
+    public const float pushDuration = 0.5f;
 
+    public bool stunVulnerable => stunVulnerableStacks > 0;
+    public int stunVulnerableStacks;
 
     void FixedUpdate()
     {
@@ -131,7 +137,17 @@ public class MatchEnemy : MonoBehaviour
                 }
             }
         }
-        if (stunned)
+        if (pushed)
+        {
+            pushTimer += Time.fixedDeltaTime;
+            if (pushTimer > pushDuration)
+            {
+                pushTimer -= pushDuration;
+                pushForce--;
+            }
+            rb.velocity = ((Vector2)transform.position - targetPosition).normalized * pushForce;
+        }
+        else if (stunned)
         {
             stunTimer += Time.fixedDeltaTime;
             if (stunTimer > stunDuration)
@@ -164,6 +180,10 @@ public class MatchEnemy : MonoBehaviour
 
     public void Damage(float damage)
     {
+        if (stunVulnerable && stunned)
+        {
+            damage *= 1 + (stunVulnerableStacks / 10f);
+        }
         currentHealth -= damage;
         if (currentHealth < 0)
         {
@@ -192,6 +212,8 @@ public class MatchEnemy : MonoBehaviour
         else if (status == Status.Curse) InflictCurse(stacks);
         else if (status == Status.Bleed) InflictBleed(stacks);
         else if (status == Status.Smite) InflictSmite();
+        else if (status == Status.Push) InflictPush(stacks);
+        else if (status == Status.StunVulnerable) InflictStunVulnerable(stacks);
     }
 
     public void InflictStun(int stacks)
@@ -233,6 +255,16 @@ public class MatchEnemy : MonoBehaviour
     public void InflictSmite()
     {
         if (smiteStacks <= 0) smiteStacks = 1;
+    }
+
+    public void InflictPush(int force)
+    {
+        if (pushForce <= 0) pushForce += force;
+    }
+
+    public void InflictStunVulnerable(int amount)
+    {
+        stunVulnerableStacks += amount;
     }
 }
 

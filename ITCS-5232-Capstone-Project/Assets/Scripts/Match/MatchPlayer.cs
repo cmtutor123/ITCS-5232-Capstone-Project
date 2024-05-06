@@ -39,7 +39,7 @@ public class MatchPlayer : MonoBehaviour
     public float dashSpeed;
 
     public int currentSpecialCharges;
-    public int maxSpecialCharges;
+    public int maxSpecialCharges = 1;
     public float specialChargeTime;
     public float specialChargeTimer;
 
@@ -84,6 +84,8 @@ public class MatchPlayer : MonoBehaviour
 
     public int stunStackNormal1, stunStackSpecial1, stunStackCharged1;
     public int bleedStackNormal1;
+    public int stunVulnerableStackNormal1;
+    public int pushForceNormal1, pushForceSpecial1;
 
     public bool hasDestroyedNormal1;
     public ProjectileShape shapeDestroyedNormal1;
@@ -124,6 +126,9 @@ public class MatchPlayer : MonoBehaviour
 
     public bool setupComplete = false;
     public bool matchComplete = false;
+
+    public bool hurtTriggerSpecial1;
+    public float hurtTriggerAmountSpecial1 = 1;
 
     private void FixedUpdate()
     {
@@ -223,6 +228,105 @@ public class MatchPlayer : MonoBehaviour
         spriteRenderer.sprite = baseStats.playerSprite;
         spriteRenderer.size = new Vector2(1, 2);
         moveSpeed = baseStats.moveSpeed;
+
+        // Passive Perks Pre
+
+        if (HasPerk(PerkId.StunStack))
+        {
+
+        }
+        if (HasPerk(PerkId.Damage))
+        {
+
+        }
+        if (HasPerk(PerkId.Cooldown))
+        {
+
+        }
+        if (HasPerk(PerkId.CritBleed))
+        {
+
+        }
+        if (HasPerk(PerkId.CritChance))
+        {
+
+        }
+        if (HasPerk(PerkId.BleedCritChanceDamage))
+        {
+
+        }
+        if (HasPerk(PerkId.StunDamage))
+        {
+
+        }
+        if (HasPerk(PerkId.LightningStun))
+        {
+
+        }
+        if (HasPerk(PerkId.HurtBarrier))
+        {
+
+        }
+        if (HasPerk(PerkId.CritDamage))
+        {
+
+        }
+        if (HasPerk(PerkId.HurtCharge))
+        {
+
+        }
+        if (HasPerk(PerkId.HitCharge))
+        {
+
+        }
+        if (HasPerk(PerkId.MinusDamageCritChance))
+        {
+
+        }
+        if (HasPerk(PerkId.MinusDamageCritDamage))
+        {
+
+        }
+        if (HasPerk(PerkId.FireBurn))
+        {
+
+        }
+        if (HasPerk(PerkId.LightningCritDamage))
+        {
+
+        }
+        if (HasPerk(PerkId.StunCritChance))
+        {
+
+        }
+        if (HasPerk(PerkId.FireCritChance))
+        {
+
+        }
+        if (HasPerk(PerkId.CritBarrier))
+        {
+
+        }
+        if (HasPerk(PerkId.CritBurn))
+        {
+
+        }
+        if (HasPerk(PerkId.CritCharge))
+        {
+
+        }
+        if (HasPerk(PerkId.CritChanceSelfDamage))
+        {
+
+        }
+        if (HasPerk(PerkId.MaxCharge))
+        {
+
+        }
+        if (HasPerk(PerkId.HurtLightningThorn))
+        {
+
+        }
 
         // Base Temp
 
@@ -340,7 +444,8 @@ public class MatchPlayer : MonoBehaviour
             {
                 sizeXNormal1 = 2;
                 sizeYNormal1 = 2;
-                stunStackNormal1 += 2;
+                stunStackNormal1 += 1;
+                stunVulnerableStackNormal1 = 1;
             }
             if (HasPerk(PerkId.BNWarHeavy))
             {
@@ -348,6 +453,7 @@ public class MatchPlayer : MonoBehaviour
                 stunStackNormal1 -= 1;
                 sizeXNormal1 = 1.75f;
                 sizeYNormal1 = 1.75f;
+                pushForceNormal1 = 2;
             }
         }
 
@@ -380,17 +486,67 @@ public class MatchPlayer : MonoBehaviour
             damageSpecial1 *= 2.5f;
             stunStackSpecial1 = 1;
             specialChargeTime = 10;
+            pushForceSpecial1 = 4;
             if (HasPerk(PerkId.BSScreechPain))
             {
-
+                hurtTriggerSpecial1 = true;
+                hurtTriggerAmountSpecial1 = 0.5f;
             }
             if (HasPerk(PerkId.BSScreechStun))
             {
-
+                specialChargeTime *= 1.5f;
+                stunStackSpecial1 += 3;
             }
             if (HasPerk(PerkId.BSScreenStutter))
             {
+                maxSpecialCharges = 3;
+                specialChargeTime *= 0.75f;
+                sizeXGrowSpecial1 = 4;
+                sizeYGrowSpecial1 = 4;
+            }
+            if (HasPerk(PerkId.BSWhirl))
+            {
+                shapeSpecial1 = ProjectileShape.Rectangle;
+                durationSpecial1 = 3;
+                sizeXSpecial1 = 0.5f;
+                sizeYSpecial1 = 5;
+                growsSpecial1 = false;
+                int rotations = 2 * 360;
+                rotateSpeedSpecial1 = rotations / durationSpecial1;
+                pierceSpecial1 = int.MaxValue;
+                damageTypeSpecial1 = DamageType.Physical;
+                damageSpecial1 *= 1.5f;
+                specialChargeTime = 15;
+                if (HasPerk(PerkId.BSWhirlBig))
+                {
+                    sizeYSpecial1 *= 1.2f;
+                    damageSpecial1 *= 1.2f;
+                    specialChargeTime *= 1.2f;
+                }
+                if (HasPerk(PerkId.BSWhirlSharp))
+                {
 
+                }
+                if (HasPerk(PerkId.BSWhirlMount))
+                {
+
+                }
+            }
+            if (HasPerk(PerkId.BSReck))
+            {
+
+                if (HasPerk(PerkId.BSReckPower))
+                {
+
+                }
+                if (HasPerk(PerkId.BSReckFury))
+                {
+
+                }
+                if (HasPerk(PerkId.BSReckCrit))
+                {
+
+                }
             }
         }
 
@@ -408,6 +564,55 @@ public class MatchPlayer : MonoBehaviour
 
         // Berserker
 
+        if (HasPerk(PerkId.BCRage))
+        {
+
+            if (HasPerk(PerkId.BCRageUncon))
+            {
+
+            }
+            if (HasPerk(PerkId.BCRageFrenzy))
+            {
+
+            }
+            if (HasPerk(PerkId.BCRageCon))
+            {
+
+            }
+        }
+        if (HasPerk(PerkId.BCDefend))
+        {
+
+            if (HasPerk(PerkId.BCDefendBrace))
+            {
+
+            }
+            if (HasPerk(PerkId.BCDefendArmor))
+            {
+
+            }
+            if (HasPerk(PerkId.BCDefendShield))
+            {
+
+            }
+        }
+        if (HasPerk(PerkId.BCElement))
+        {
+
+            if (HasPerk(PerkId.BCElementBlast))
+            {
+
+            }
+            if (HasPerk(PerkId.BCElementAura))
+            {
+
+            }
+            if (HasPerk(PerkId.BCElementBurst))
+            {
+
+            }
+        }
+
         // Druid
 
         // Necromancer
@@ -418,8 +623,104 @@ public class MatchPlayer : MonoBehaviour
 
         // Wizard
 
-        // Passive Perks
+        // Passive Perks Post
 
+        if (HasPerk(PerkId.StunStack))
+        {
+
+        }
+        if (HasPerk(PerkId.Damage))
+        {
+
+        }
+        if (HasPerk(PerkId.Cooldown))
+        {
+
+        }
+        if (HasPerk(PerkId.CritBleed))
+        {
+
+        }
+        if (HasPerk(PerkId.CritChance))
+        {
+
+        }
+        if (HasPerk(PerkId.BleedCritChanceDamage))
+        {
+
+        }
+        if (HasPerk(PerkId.StunDamage))
+        {
+
+        }
+        if (HasPerk(PerkId.LightningStun))
+        {
+
+        }
+        if (HasPerk(PerkId.HurtBarrier))
+        {
+
+        }
+        if (HasPerk(PerkId.CritDamage))
+        {
+
+        }
+        if (HasPerk(PerkId.HurtCharge))
+        {
+
+        }
+        if (HasPerk(PerkId.HitCharge))
+        {
+
+        }
+        if (HasPerk(PerkId.MinusDamageCritChance))
+        {
+
+        }
+        if (HasPerk(PerkId.MinusDamageCritDamage))
+        {
+
+        }
+        if (HasPerk(PerkId.FireBurn))
+        {
+
+        }
+        if (HasPerk(PerkId.LightningCritDamage))
+        {
+
+        }
+        if (HasPerk(PerkId.StunCritChance))
+        {
+
+        }
+        if (HasPerk(PerkId.FireCritChance))
+        {
+
+        }
+        if (HasPerk(PerkId.CritBarrier))
+        {
+
+        }
+        if (HasPerk(PerkId.CritBurn))
+        {
+
+        }
+        if (HasPerk(PerkId.CritCharge))
+        {
+
+        }
+        if (HasPerk(PerkId.CritChanceSelfDamage))
+        {
+
+        }
+        if (HasPerk(PerkId.MaxCharge))
+        {
+
+        }
+        if (HasPerk(PerkId.HurtLightningThorn))
+        {
+
+        }
 
         // Final Setup
 
@@ -570,6 +871,8 @@ public class MatchPlayer : MonoBehaviour
         int burnStacks = 0;
         int curseStacks = 0;
         bool smited = false;
+        int pushForce = 0;
+        int stunVulnerableStacks = 0;
         if (abilityType == AbilityType.Normal)
         {
             if (index == 1)
@@ -578,6 +881,8 @@ public class MatchPlayer : MonoBehaviour
                 critDamage = critDamageNormal1;
                 stunStacks = stunStackNormal1;
                 bleedStacks = bleedStackNormal1;
+                pushForce = pushForceNormal1;
+                stunVulnerableStacks = stunVulnerableStackNormal1;
             }
             else if (index == 2)
             {
@@ -591,6 +896,8 @@ public class MatchPlayer : MonoBehaviour
             {
                 damage = damageSpecial1;
                 critDamage = critDamageSpecial1;
+                stunStacks = stunStackSpecial1;
+                pushForce = pushForceSpecial1;
             }
         }
         else if (abilityType == AbilityType.Charged)
@@ -609,6 +916,8 @@ public class MatchPlayer : MonoBehaviour
         enemy.Damage(damage);
         if (stunStacks > 0) enemy.InflictStatus(Status.Stun, stunStacks);
         if (bleedStacks > 0) enemy.InflictStatus(Status.Bleed, bleedStacks);
+        if (stunVulnerableStacks > 0) enemy.InflictStatus(Status.StunVulnerable, stunVulnerableStacks);
+        if (pushForce > 0) enemy.InflictStatus(Status.Push, pushForce);
         return false;
     }
 
@@ -674,6 +983,22 @@ public class MatchPlayer : MonoBehaviour
         GameManager.instance.UpdatePerkDisplaySpecial(StateAbilityUsable, currentSpecialCharges, maxSpecialCharges, specialChargeTimer, specialChargeTime);
         GameManager.instance.UpdatePerkDisplayCharged(StateAbilityUsable, chargedActive, ChargedAbilityTogglable, chargedMana, chargedMaxMana);
         GameManager.instance.UpdateHealthDisplay(currentHealth, maxHealth, currentBarrier);
+    }
+
+    public void Hurt(MatchEnemy enemy)
+    {
+        if (hurtTriggerSpecial1)
+        {
+            TriggerSpecialAbility(hurtTriggerAmountSpecial1 - 1);
+        }
+        if (enemy = null)
+        {
+
+        }
+        else
+        {
+
+        }
     }
 }
 

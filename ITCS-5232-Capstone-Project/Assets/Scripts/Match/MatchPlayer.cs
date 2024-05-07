@@ -150,6 +150,22 @@ public class MatchPlayer : MonoBehaviour
 
     public bool chargedCancelBlast = false;
 
+    public int bleedStacksCrit;
+
+    public float barrierGainCrit;
+    public int burnStackFire;
+    public int burnStackCrit;
+    public float critChanceFire;
+    public float critDamageLightning;
+    public float hurtBarrierGain;
+    public float hurtLightningThorn;
+    public int manaGainCrit;
+    public float selfDamageNormal;
+    public int stunStackLightning;
+    public int stunStackCrit;
+    public int stunVulnerableStack;
+    public int bleedCritBonusStack;
+
     private void FixedUpdate()
     {
         if (!setupComplete || matchComplete) return;
@@ -252,105 +268,6 @@ public class MatchPlayer : MonoBehaviour
         spriteRenderer.size = new Vector2(1, 2);
         moveSpeed = baseStats.moveSpeed;
 
-        // Passive Perks Pre
-
-        if (HasPerk(PerkId.StunStack))
-        {
-
-        }
-        if (HasPerk(PerkId.Damage))
-        {
-
-        }
-        if (HasPerk(PerkId.Cooldown))
-        {
-
-        }
-        if (HasPerk(PerkId.CritBleed))
-        {
-
-        }
-        if (HasPerk(PerkId.CritChance))
-        {
-
-        }
-        if (HasPerk(PerkId.BleedCritChanceDamage))
-        {
-
-        }
-        if (HasPerk(PerkId.StunDamage))
-        {
-
-        }
-        if (HasPerk(PerkId.LightningStun))
-        {
-
-        }
-        if (HasPerk(PerkId.HurtBarrier))
-        {
-
-        }
-        if (HasPerk(PerkId.CritDamage))
-        {
-
-        }
-        if (HasPerk(PerkId.HurtCharge))
-        {
-
-        }
-        if (HasPerk(PerkId.HitCharge))
-        {
-
-        }
-        if (HasPerk(PerkId.MinusDamageCritChance))
-        {
-
-        }
-        if (HasPerk(PerkId.MinusDamageCritDamage))
-        {
-
-        }
-        if (HasPerk(PerkId.FireBurn))
-        {
-
-        }
-        if (HasPerk(PerkId.LightningCritDamage))
-        {
-
-        }
-        if (HasPerk(PerkId.StunCritChance))
-        {
-
-        }
-        if (HasPerk(PerkId.FireCritChance))
-        {
-
-        }
-        if (HasPerk(PerkId.CritBarrier))
-        {
-
-        }
-        if (HasPerk(PerkId.CritBurn))
-        {
-
-        }
-        if (HasPerk(PerkId.CritCharge))
-        {
-
-        }
-        if (HasPerk(PerkId.CritChanceSelfDamage))
-        {
-
-        }
-        if (HasPerk(PerkId.MaxCharge))
-        {
-
-        }
-        if (HasPerk(PerkId.HurtLightningThorn))
-        {
-
-        }
-
         // Base Temp
 
         float baseDamage = baseStats.damage;
@@ -371,6 +288,39 @@ public class MatchPlayer : MonoBehaviour
         critDamageDestroyedNormal1 = baseCritDamage;
         critDamageSpecial1 = baseCritDamage;
         critDamageCharged1 = baseCritDamage;
+
+        // Passive Perks Pre
+
+        if (HasPerk(PerkId.Damage))
+        {
+            baseDamage *= 1.5f;
+        }
+        if (HasPerk(PerkId.CritChance))
+        {
+            baseCritChance += 0.1f;
+        }
+        if (HasPerk(PerkId.HurtBarrier))
+        {
+            hurtBarrierGain = 1;
+        }
+        if (HasPerk(PerkId.CritDamage))
+        {
+            baseCritDamage += 0.5f;
+        }
+        if (HasPerk(PerkId.MinusDamageCritChance))
+        {
+            baseDamage *= 0.5f;
+            baseCritChance += 0.25f;
+        }
+        if (HasPerk(PerkId.MinusDamageCritDamage))
+        {
+            baseDamage *= 0.5f;
+            baseCritDamage += 1.5f;
+        }
+        if (HasPerk(PerkId.CritChanceSelfDamage))
+        {
+            baseCritChance += 0.4f;
+        }
 
         // Normal Active Perks
 
@@ -729,101 +679,80 @@ public class MatchPlayer : MonoBehaviour
 
         // Passive Perks Post
 
+        if (HasPerk(PerkId.LightningStun))
+        {
+            stunStackLightning = 2;
+        }
         if (HasPerk(PerkId.StunStack))
         {
-
-        }
-        if (HasPerk(PerkId.Damage))
-        {
-
+            stunStackNormal1 *= 2;
+            stunStackSpecial1 *= 2;
+            stunStackCharged1 *= 2;
+            stunStackLightning *= 2;
         }
         if (HasPerk(PerkId.Cooldown))
         {
-
+            specialChargeTime *= 0.75f;
         }
         if (HasPerk(PerkId.CritBleed))
         {
-
-        }
-        if (HasPerk(PerkId.CritChance))
-        {
-
+            bleedStacksCrit = 3;
         }
         if (HasPerk(PerkId.BleedCritChanceDamage))
         {
-
+            bleedCritBonusStack = 1;
         }
         if (HasPerk(PerkId.StunDamage))
         {
-
-        }
-        if (HasPerk(PerkId.LightningStun))
-        {
-
-        }
-        if (HasPerk(PerkId.HurtBarrier))
-        {
-
-        }
-        if (HasPerk(PerkId.CritDamage))
-        {
-
+            stunVulnerableStack = 2;
         }
         if (HasPerk(PerkId.HurtCharge))
         {
-
+            manaGainHurt++;
         }
         if (HasPerk(PerkId.HitCharge))
         {
-
-        }
-        if (HasPerk(PerkId.MinusDamageCritChance))
-        {
-
-        }
-        if (HasPerk(PerkId.MinusDamageCritDamage))
-        {
-
+            manaGainHit += 2;
         }
         if (HasPerk(PerkId.FireBurn))
         {
-
+            burnStackFire = 2;
         }
         if (HasPerk(PerkId.LightningCritDamage))
         {
-
+            critDamageLightning = 1f;
         }
         if (HasPerk(PerkId.StunCritChance))
         {
-
+            stunStackCrit = 2;
         }
         if (HasPerk(PerkId.FireCritChance))
         {
-
+            critChanceFire = 0.25f;
         }
         if (HasPerk(PerkId.CritBarrier))
         {
-
+            barrierGainCrit = 1f;
         }
         if (HasPerk(PerkId.CritBurn))
         {
-
+            burnStackCrit = 2;
         }
         if (HasPerk(PerkId.CritCharge))
         {
-
+            manaGainCrit = 2;
         }
         if (HasPerk(PerkId.CritChanceSelfDamage))
         {
-
+            selfDamageNormal = baseDamage * 0.1f;
         }
         if (HasPerk(PerkId.MaxCharge))
         {
-
+            chargedMaxMana *= 1.2f;
         }
         if (HasPerk(PerkId.HurtLightningThorn))
         {
-
+            hurtLightningThorn = baseDamage;
         }
 
         // Final Setup
@@ -889,6 +818,10 @@ public class MatchPlayer : MonoBehaviour
     public void TriggerNormalAbility(float chargePercent = 0)
     {
         SpawnProjectile(shapeNormal1, durationNormal1, sizeXNormal1, sizeYNormal1, growsNormal1 ? sizeXGrowNormal1 : sizeXNormal1, growsNormal1 ? sizeYGrowNormal1 : sizeYNormal1, growDurationNormal1, projectileSpeedNormal1, homingStrengthNormal1, rotateSpeedNormal1, periodLengthNormal1, pierceNormal1, bounceNormal1, followPlayerNormal1, returningNormal1, false, AbilityType.Normal, aimDirection, spriteNormal1, chargedActive, 1, 1 + chargePercent);
+        if (selfDamageNormal > 0)
+        {
+            Hurt(null, selfDamageNormal);
+        }
     }
 
     public void TriggerSpecialAbility(float chargePercent = 0)
@@ -1011,7 +944,9 @@ public class MatchPlayer : MonoBehaviour
         int curseStacks = 0;
         bool smited = false;
         int pushForce = 0;
-        int stunVulnerableStacks = 0;
+        int stunVulnerableStacks = stunVulnerableStack;
+        int bleedCritBonusStacks = bleedCritBonusStack;
+        DamageType currentDamageType = DamageType.Physical;
         if (abilityType == AbilityType.Normal)
         {
             if (index == 1)
@@ -1022,11 +957,13 @@ public class MatchPlayer : MonoBehaviour
                 bleedStacks = bleedStackNormal1;
                 pushForce = pushForceNormal1;
                 stunVulnerableStacks = stunVulnerableStackNormal1;
+                currentDamageType = damageTypeNormal1;
             }
             else if (index == 2)
             {
                 damage = damageDestroyedNormal1;
                 critDamage = critDamageDestroyedNormal1;
+                currentDamageType = damageTypeDestroyedNormal1;
             }
         }
         else if (abilityType == AbilityType.Special)
@@ -1038,6 +975,7 @@ public class MatchPlayer : MonoBehaviour
                 stunStacks = stunStackSpecial1;
                 pushForce = pushForceSpecial1;
                 bleedStacks = bleedStackSpecial1;
+                currentDamageType = damageTypeSpecial1;
             }
         }
         else if (abilityType == AbilityType.Charged)
@@ -1046,6 +984,7 @@ public class MatchPlayer : MonoBehaviour
             {
                 damage = damageCharged1;
                 critDamage = critDamageCharged1;
+                currentDamageType = damageTypeCharged1;
             }
         }
         if (overchargeStacks > 0)
@@ -1059,9 +998,27 @@ public class MatchPlayer : MonoBehaviour
             damage *= 1 + damageGainCharged;
             critDamage += critDamageGainCharged;
         }
+        if (currentDamageType == DamageType.Fire)
+        {
+            burnStacks += burnStackFire;
+        }
+        if (currentDamageType == DamageType.Lightning)
+        {
+            critDamage += critDamageLightning;
+            stunStacks += stunStackLightning;
+        }
+        if (enemy.bleedCritBonusStacks > 0)
+        {
+            critDamage += enemy.bleedCritBonusStacks / 10f;
+        }
         if (hitCrit)
         {
             damage *= 1 + critDamage;
+            bleedStacks += bleedStacksCrit;
+            burnStacks += burnStackCrit;
+            currentBarrier = Mathf.Clamp(currentBarrier + barrierGainCrit, 0, currentHealth);
+            chargedMana += manaGainCrit;
+            stunStacks += stunStackCrit;
         }
         damage *= damageMult;
         enemy.Damage(damage);
@@ -1069,6 +1026,7 @@ public class MatchPlayer : MonoBehaviour
         if (bleedStacks > 0) enemy.InflictStatus(Status.Bleed, bleedStacks);
         if (stunVulnerableStacks > 0) enemy.InflictStatus(Status.StunVulnerable, stunVulnerableStacks);
         if (pushForce > 0) enemy.InflictStatus(Status.Push, pushForce);
+        if (bleedCritBonusStacks > 0) enemy.InflictStatus(Status.BleedCritBonus, bleedCritBonusStacks);
         return false;
     }
 
@@ -1080,37 +1038,45 @@ public class MatchPlayer : MonoBehaviour
         }
     }
 
-    public void TriggerCrit(MatchEnemy enemy, AbilityType abilityType, int index, bool chargeActive)
-    {
-
-    }
-
     public bool TriggeredCrit(MatchEnemy enemy, AbilityType abilityType, int index, bool chargeActive)
     {
         float critChance = 0;
+        DamageType currentDamageType = DamageType.Physical;
         if (abilityType == AbilityType.Normal)
         {
             if (index == 1)
             {
                 critChance = critChanceNormal1;
+                currentDamageType = damageTypeNormal1;
             }
             else if (index == 2)
             {
                 critChance = critChanceDestroyedNormal1;
+                currentDamageType = damageTypeDestroyedNormal1;
             }
         }
         else if (abilityType == AbilityType.Special)
         {
             critChance = critChanceSpecial1;
+            currentDamageType = damageTypeSpecial1;
         }
         else if (abilityType == AbilityType.Charged)
         {
             critChance = critChanceCharged1;
+            currentDamageType = damageTypeCharged1;
         }
         if (overchargeStacks > 0) critChance += overchargeCritChanceGain;
         if (chargeActive)
         {
             critChance += critChanceGainCharged;
+        }
+        if (currentDamageType == DamageType.Fire)
+        {
+            critChance += critChanceFire;
+        }
+        if (enemy.bleedCritBonusStacks > 0)
+        {
+            critChance += enemy.bleedCritBonusStacks / 10f;
         }
         float randChance = Random.value;
         return randChance > critChance;
@@ -1144,22 +1110,22 @@ public class MatchPlayer : MonoBehaviour
         GameManager.instance.UpdateHealthDisplay(currentHealth, maxHealth, currentBarrier);
     }
 
-    public void Hurt(MatchEnemy enemy)
+    public void Hurt(MatchEnemy enemy, float damage = 0)
     {
+        if (enemy != null)
+        {
+            damage = enemy.damage;
+            if (hurtLightningThorn > 0) enemy.Damage(hurtLightningThorn);
+        }
         chargedMana = Mathf.Clamp(chargedMana + manaGainHurt, 0, chargedMaxMana);
         if (hurtTriggerSpecial1)
         {
             TriggerSpecialAbility(hurtTriggerAmountSpecial1 - 1);
         }
-        float damage = enemy.damage;
         if (vulnerableStacks > 0)
         {
             damage *= 1 + vulnerableStacks / 10f;
             vulnerableStacks--;
-        }
-        if (enemy != null)
-        {
-
         }
         if (currentBarrier > 0)
         {
@@ -1168,6 +1134,7 @@ public class MatchPlayer : MonoBehaviour
             currentBarrier -= damageReduction;
         }
         currentHealth -= damage;
+        currentBarrier = Mathf.Clamp(currentBarrier + hurtBarrierGain, 0, currentHealth);
     }
 }
 

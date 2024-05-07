@@ -70,6 +70,7 @@ public class MatchEnemy : MonoBehaviour
 
     public bool stunVulnerable => stunVulnerableStacks > 0;
     public int stunVulnerableStacks;
+    public int bleedCritBonusStacks;
 
     void FixedUpdate()
     {
@@ -266,6 +267,11 @@ public class MatchEnemy : MonoBehaviour
     {
         stunVulnerableStacks += amount;
     }
+
+    public void InflictBleedCritBonus(int amount)
+    {
+        bleedCritBonusStacks += amount;
+    }
 }
 
 public enum Status
@@ -278,5 +284,6 @@ public enum Status
     Bleed,
     Smite,
     Push,
-    StunVulnerable
+    StunVulnerable,
+    BleedCritBonus
 }

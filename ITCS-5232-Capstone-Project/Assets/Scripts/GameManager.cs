@@ -1031,9 +1031,12 @@ public class GameManager : MonoBehaviour
             room.DestroyRoom();
         }
         matchRooms.Clear();
-        foreach (MatchEnemy enemy in matchEnemies)
+        for (int i = matchEnemies.Count - 1; i >= 0; i--)
         {
-            enemy.DestroyEnemy();
+            if (matchEnemies.Count > i && matchEnemies[i] != null)
+            {
+                matchEnemies[i].DestroyEnemy();
+            }
         }
         matchEnemies.Clear();
         int oldExp = playerData.exp[currentCharacter];

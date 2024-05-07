@@ -927,7 +927,7 @@ public class MatchPlayer : MonoBehaviour
 
     public bool TriggerHit(MatchEnemy enemy, AbilityType abilityType, int index, bool chargeActive, float damageMult = 1)
     {
-        if (enemy != null)
+        if (enemy != null) 
         {
             bool invincibilityFrames = enemy.HasInvincibilityFrames();
             if (invincibilityFrames) return true;
@@ -1021,12 +1021,12 @@ public class MatchPlayer : MonoBehaviour
             stunStacks += stunStackCrit;
         }
         damage *= damageMult;
-        enemy.Damage(damage);
-        if (stunStacks > 0) enemy.InflictStatus(Status.Stun, stunStacks);
-        if (bleedStacks > 0) enemy.InflictStatus(Status.Bleed, bleedStacks);
-        if (stunVulnerableStacks > 0) enemy.InflictStatus(Status.StunVulnerable, stunVulnerableStacks);
-        if (pushForce > 0) enemy.InflictStatus(Status.Push, pushForce);
-        if (bleedCritBonusStacks > 0) enemy.InflictStatus(Status.BleedCritBonus, bleedCritBonusStacks);
+        if (enemy != null) enemy.Damage(damage);
+        if (stunStacks > 0 && enemy != null) enemy.InflictStatus(Status.Stun, stunStacks);
+        if (bleedStacks > 0 && enemy != null) enemy.InflictStatus(Status.Bleed, bleedStacks);
+        if (stunVulnerableStacks > 0 && enemy != null) enemy.InflictStatus(Status.StunVulnerable, stunVulnerableStacks);
+        if (pushForce > 0 && enemy != null) enemy.InflictStatus(Status.Push, pushForce);
+        if (bleedCritBonusStacks > 0 && enemy != null) enemy.InflictStatus(Status.BleedCritBonus, bleedCritBonusStacks);
         return false;
     }
 

@@ -72,8 +72,11 @@ public class MatchEnemy : MonoBehaviour
     public int stunVulnerableStacks;
     public int bleedCritBonusStacks;
 
+    public bool disabled = false;
+
     void FixedUpdate()
     {
+        if (disabled) return;
         float currentMoveSpeed = moveSpeed;
         if (poisoned)
         {
@@ -194,12 +197,14 @@ public class MatchEnemy : MonoBehaviour
 
     public void TriggerDeath()
     {
+        disabled = true;
         GameManager.instance.matchEnemies.Remove(this);
         Destroy(gameObject);
     }
 
     public void DestroyEnemy()
     {
+        disabled = true;
         GameManager.instance.matchEnemies.Remove(this);
         Destroy(gameObject);
     }

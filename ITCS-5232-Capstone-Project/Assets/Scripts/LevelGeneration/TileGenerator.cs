@@ -5,7 +5,7 @@ using UnityEngine;
 public class TileGenerator : MonoBehaviour
 {
     public GameObject tileObjectPrefab, floorPrefab, wallPrefab, doorPrefab;
-    public static float tileSize = 30;
+    public static float tileSize = 10;
 
     public TileObject GenerateTile(TileData tileData)
     {
@@ -22,14 +22,14 @@ public class TileGenerator : MonoBehaviour
         if (tileData.wallLeft)
         {
             GameObject wall = Instantiate(wallPrefab, tileObject.transform, true);
-            wall.transform.localScale = new Vector3(1, tileSize, 1);
+            wall.transform.localScale = new Vector3(1, tileSize + 1, 1);
             wall.transform.localPosition = new Vector3(-tileSize / 2, 0, 0);
             tileObject.walls.Add(wall);
         }
         if (tileData.wallRight)
         {
             GameObject wall = Instantiate(wallPrefab, tileObject.transform, true);
-            wall.transform.localScale = new Vector3(1, tileSize, 1);
+            wall.transform.localScale = new Vector3(1, tileSize + 1, 1);
             wall.transform.localPosition = new Vector3(tileSize / 2, 0, 0);
             tileObject.walls.Add(wall);
         }
@@ -38,7 +38,7 @@ public class TileGenerator : MonoBehaviour
             if (!tileData.hasEntrance)
             {
                 GameObject wall = Instantiate(wallPrefab, tileObject.transform, true);
-                wall.transform.localScale = new Vector3(tileSize, 1, 1);
+                wall.transform.localScale = new Vector3(tileSize + 1, 1, 1);
                 wall.transform.localPosition = new Vector3(0, -tileSize / 2, 0);
                 tileObject.walls.Add(wall);
             }
@@ -59,7 +59,7 @@ public class TileGenerator : MonoBehaviour
             if (!tileData.hasExit)
             {
                 GameObject wall = Instantiate(wallPrefab, tileObject.transform, true);
-                wall.transform.localScale = new Vector3(tileSize, 1, 1);
+                wall.transform.localScale = new Vector3(tileSize + 1, 1, 1);
                 wall.transform.localPosition = new Vector3(0, tileSize / 2, 0);
                 tileObject.walls.Add(wall);
             }

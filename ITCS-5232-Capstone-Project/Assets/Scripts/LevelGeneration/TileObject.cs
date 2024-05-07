@@ -56,5 +56,6 @@ public class TileObject : MonoBehaviour
         {
             Destroy(door);
         }
+        Destroy(gameObject);
     }
 }

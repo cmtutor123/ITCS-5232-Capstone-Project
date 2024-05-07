@@ -44,7 +44,7 @@ public class MatchPlayer : MonoBehaviour
     public float specialChargeTimer;
 
     public bool ChargedAbilityTogglable => chargedActive ? chargedCancelable : (chargedActivatibleEarly ? chargedMana > 0 : chargedMana >= chargedMaxMana);
-    public bool chargedActivatibleEarly, chargedCancelable, chargedActive;
+    public bool chargedActivatibleEarly, chargedCancelable, chargedActive, chargedAutoActivates;
     public float chargedMana, chargedMaxMana;
 
     public bool chargeAbilityNormal, chargeAbilitySpecial;
@@ -83,7 +83,7 @@ public class MatchPlayer : MonoBehaviour
     public float critDamageNormal1, critDamageSpecial1, critDamageCharged1;
 
     public int stunStackNormal1, stunStackSpecial1, stunStackCharged1;
-    public int bleedStackNormal1;
+    public int bleedStackNormal1, bleedStackSpecial1;
     public int stunVulnerableStackNormal1;
     public int pushForceNormal1, pushForceSpecial1;
 
@@ -130,6 +130,26 @@ public class MatchPlayer : MonoBehaviour
     public bool hurtTriggerSpecial1;
     public float hurtTriggerAmountSpecial1 = 1;
 
+    public bool noProjectileSpecial = false;
+    public int overchargeGainSpecial, overchargeMaxSpecial, vulnerableGainSpecial, vulnerableMaxSpecial;
+    public float overchargeCritChanceGain = 0;
+    public float overchargeCritDamageGain = 0;
+    public float overchargeStacks, vulnerableStacks;
+
+    public bool noProjectileCharged = false;
+    public float chargedBarrierGain;
+    public bool chargedEndBarrierDeplete = false;
+    public bool chargedStartBarrierDeplete = false;
+    public bool chargedFullDeplete = false;
+
+    public float damageGainCharged;
+    public float critChanceGainCharged;
+    public float critDamageGainCharged;
+
+    public int manaGainHit, manaGainHurt;
+
+    public bool chargedCancelBlast = false;
+
     private void FixedUpdate()
     {
         if (!setupComplete || matchComplete) return;
@@ -156,7 +176,10 @@ public class MatchPlayer : MonoBehaviour
                 }
             }
         }
-
+        if (chargedMana >= chargedMaxMana && chargedAutoActivates && !chargedActive)
+        {
+            ToggleChargedAbility();
+        }
         if (currentState == PlayerState.Charging)
         {
             chargeAbilityTimer += Time.fixedDeltaTime;
@@ -504,49 +527,63 @@ public class MatchPlayer : MonoBehaviour
                 sizeXGrowSpecial1 = 4;
                 sizeYGrowSpecial1 = 4;
             }
-            if (HasPerk(PerkId.BSWhirl))
+        }
+        if (HasPerk(PerkId.BSWhirl))
+        {
+            shapeSpecial1 = ProjectileShape.Rectangle;
+            durationSpecial1 = 3;
+            sizeXSpecial1 = 0.5f;
+            sizeYSpecial1 = 5;
+            growsSpecial1 = false;
+            int rotations = 2 * 360;
+            rotateSpeedSpecial1 = rotations / durationSpecial1;
+            pierceSpecial1 = int.MaxValue;
+            damageTypeSpecial1 = DamageType.Physical;
+            damageSpecial1 *= 1.5f;
+            specialChargeTime = 15;
+            followPlayerSpecial1 = true;
+            if (HasPerk(PerkId.BSWhirlBig))
             {
-                shapeSpecial1 = ProjectileShape.Rectangle;
-                durationSpecial1 = 3;
-                sizeXSpecial1 = 0.5f;
-                sizeYSpecial1 = 5;
-                growsSpecial1 = false;
-                int rotations = 2 * 360;
-                rotateSpeedSpecial1 = rotations / durationSpecial1;
-                pierceSpecial1 = int.MaxValue;
-                damageTypeSpecial1 = DamageType.Physical;
-                damageSpecial1 *= 1.5f;
-                specialChargeTime = 15;
-                if (HasPerk(PerkId.BSWhirlBig))
-                {
-                    sizeYSpecial1 *= 1.2f;
-                    damageSpecial1 *= 1.2f;
-                    specialChargeTime *= 1.2f;
-                }
-                if (HasPerk(PerkId.BSWhirlSharp))
-                {
-
-                }
-                if (HasPerk(PerkId.BSWhirlMount))
-                {
-
-                }
+                sizeYSpecial1 *= 1.2f;
+                damageSpecial1 *= 1.2f;
+                specialChargeTime *= 1.2f;
             }
-            if (HasPerk(PerkId.BSReck))
+            if (HasPerk(PerkId.BSWhirlSharp))
             {
-
-                if (HasPerk(PerkId.BSReckPower))
-                {
-
-                }
-                if (HasPerk(PerkId.BSReckFury))
-                {
-
-                }
-                if (HasPerk(PerkId.BSReckCrit))
-                {
-
-                }
+                bleedStackSpecial1 = 3;
+                critChanceSpecial1 += 0.2f;
+            }
+            if (HasPerk(PerkId.BSWhirlMount))
+            {
+                followPlayerSpecial1 = false;
+                rotateSpeedSpecial1 *= 1.5f;
+                sizeYSpecial1 *= 0.75f;
+                damageSpecial1 *= 1.2f;
+            }
+        }
+        if (HasPerk(PerkId.BSReck))
+        {
+            noProjectileSpecial = true;
+            overchargeGainSpecial = 1;
+            overchargeMaxSpecial = 1;
+            vulnerableGainSpecial = 5;
+            vulnerableMaxSpecial = 3;
+            specialChargeTime = 3;
+            if (HasPerk(PerkId.BSReckPower))
+            {
+                overchargeGainSpecial = 3;
+                overchargeMaxSpecial = 3;
+                vulnerableGainSpecial = 3;
+                vulnerableMaxSpecial = 3;
+            }
+            if (HasPerk(PerkId.BSReckFury))
+            {
+                overchargeMaxSpecial = 10;
+            }
+            if (HasPerk(PerkId.BSReckCrit))
+            {
+                overchargeCritChanceGain = 0.15f;
+                overchargeCritDamageGain = 1;
             }
         }
 
@@ -566,50 +603,117 @@ public class MatchPlayer : MonoBehaviour
 
         if (HasPerk(PerkId.BCRage))
         {
-
+            noProjectileCharged = true;
+            manaGainHit = 2;
+            manaGainHurt = 4;
+            damageGainCharged = 1f;
+            chargedCancelable = false;
+            chargedActivatibleEarly = false;
+            chargedAutoActivates = false;
+            chargedFullDeplete = false;
+            chargedMaxMana = 30;
             if (HasPerk(PerkId.BCRageUncon))
             {
-
+                manaGainHit++;
+                manaGainHurt++;
+                chargedMaxMana = 15;
+                chargedAutoActivates = true;
             }
             if (HasPerk(PerkId.BCRageFrenzy))
             {
-
+                damageGainCharged = 0;
+                critChanceGainCharged = 0.25f;
+                critDamageGainCharged = 1f;
             }
             if (HasPerk(PerkId.BCRageCon))
             {
-
+                chargedCancelable = true;
+                chargedMaxMana = 40;
             }
         }
         if (HasPerk(PerkId.BCDefend))
         {
-
+            noProjectileCharged = true;
+            manaGainHit = 2;
+            manaGainHurt = 4;
+            chargedCancelable = false;
+            chargedActivatibleEarly = false;
+            chargedAutoActivates = false;
+            chargedFullDeplete = true;
+            chargedBarrierGain = .15f;
+            chargedMaxMana = 50;
             if (HasPerk(PerkId.BCDefendBrace))
             {
-
+                chargedMaxMana = 25;
+                chargedAutoActivates = true;
+                chargedBarrierGain = 0.05f;
             }
             if (HasPerk(PerkId.BCDefendArmor))
             {
-
+                chargedBarrierGain = 1;
+                chargedFullDeplete = false;
+                chargedEndBarrierDeplete = true;
+                chargedMaxMana = 20;
             }
             if (HasPerk(PerkId.BCDefendShield))
             {
-
+                chargedBarrierGain = 0.2f;
+                chargedStartBarrierDeplete = true;
+                noProjectileCharged = false;
+                shapeCharged1 = ProjectileShape.Circle;
+                durationCharged1 = 0.5f;
+                sizeXCharged1 = 0.5f;
+                sizeYCharged1 = 0.5f;
+                growsCharged1 = true;
+                sizeXGrowCharged1 = 4;
+                sizeYGrowCharged1 = 4;
+                growDurationCharged1 = 0.25f;
+                followPlayerCharged1 = true;
+                pierceCharged1 = int.MaxValue;
+                damageTypeCharged1 = DamageType.Physical;
+                damageCharged1 = baseDamage * 2;
+                critChanceCharged1 = baseCritChance;
+                critDamageCharged1 = baseCritDamage;
             }
         }
         if (HasPerk(PerkId.BCElement))
         {
-
+            manaGainHit = 2;
+            manaGainHurt = 4;
+            chargedCancelable = false;
+            chargedActivatibleEarly = false;
+            chargedAutoActivates = false;
+            chargedFullDeplete = false;
+            shapeCharged1 = ProjectileShape.Circle;
+            sizeXCharged1 = 6;
+            sizeYCharged1 = 6;
+            growsCharged1 = false;
+            followPlayerCharged1 = true;
+            pierceCharged1 = int.MaxValue;
+            damageTypeCharged1 = DamageType.Fire;
+            damageCharged1 = baseDamage * 1.5f;
+            critChanceCharged1 = baseCritChance;
+            critDamageCharged1 = baseCritDamage;
+            periodLengthCharged1 = 0.5f;
+            chargedMaxMana = 20;
             if (HasPerk(PerkId.BCElementBlast))
             {
-
+                chargedCancelable = true;
+                chargedCancelBlast = true;
             }
             if (HasPerk(PerkId.BCElementAura))
             {
-
+                damageTypeCharged1 = DamageType.Lightning;
+                damageCharged1 *= 1.5f;
+                periodLengthCharged1 = 0.75f;
             }
             if (HasPerk(PerkId.BCElementBurst))
             {
-
+                manaGainHit--;
+                manaGainHurt --;
+                chargedMaxMana = 10;
+                chargedAutoActivates = true;
+                damageCharged1 *= 0.75f;
             }
         }
 
@@ -790,7 +894,12 @@ public class MatchPlayer : MonoBehaviour
     public void TriggerSpecialAbility(float chargePercent = 0)
     {
         currentSpecialCharges--;
-        SpawnProjectile(shapeSpecial1, durationSpecial1, sizeXSpecial1, sizeYSpecial1, growsSpecial1 ? sizeXGrowSpecial1 : sizeXSpecial1, growsSpecial1 ? sizeYGrowSpecial1 : sizeYSpecial1, growDurationSpecial1, projectileSpeedSpecial1, homingStrengthSpecial1, rotateSpeedSpecial1, periodLengthSpecial1, pierceSpecial1, bounceSpecial1, followPlayerSpecial1, returningSpecial1, false, AbilityType.Special, aimDirection, spriteSpecial1, chargedActive, 1, 1 + chargePercent);
+        if (noProjectileSpecial)
+        {
+            overchargeStacks = Mathf.Clamp(overchargeStacks + overchargeGainSpecial, 0, overchargeMaxSpecial);
+            vulnerableStacks = Mathf.Clamp(vulnerableStacks + vulnerableGainSpecial, 0, vulnerableMaxSpecial);
+        }
+        else SpawnProjectile(shapeSpecial1, durationSpecial1, sizeXSpecial1, sizeYSpecial1, growsSpecial1 ? sizeXGrowSpecial1 : sizeXSpecial1, growsSpecial1 ? sizeYGrowSpecial1 : sizeYSpecial1, growDurationSpecial1, projectileSpeedSpecial1, homingStrengthSpecial1, rotateSpeedSpecial1, periodLengthSpecial1, pierceSpecial1, bounceSpecial1, followPlayerSpecial1, returningSpecial1, false, AbilityType.Special, aimDirection, spriteSpecial1, chargedActive, 1, 1 + chargePercent);
     }
 
     public void ToggleChargedAbility()
@@ -798,11 +907,40 @@ public class MatchPlayer : MonoBehaviour
         if (chargedActive)
         {
             chargedActive = false;
+            if (chargedEndBarrierDeplete)
+            {
+                currentBarrier = 0;
+            }
+            if (chargedCancelBlast)
+            {
+                float damageMult = 2;
+                damageMult *= chargedMana / chargedMaxMana;
+                chargedMana = 0;
+                SpawnProjectile(shapeCharged1, durationCharged1, sizeXCharged1, sizeYCharged1, growsCharged1 ? sizeXGrowCharged1 : sizeXCharged1, growsCharged1 ? sizeYGrowCharged1 : sizeYCharged1, growDurationCharged1, projectileSpeedCharged1, homingStrengthCharged1, rotateSpeedCharged1, periodLengthCharged1, pierceCharged1, bounceCharged1, followPlayerCharged1, returningCharged1, true, AbilityType.Charged, aimDirection, spriteCharged1, chargedActive, 1, 1 + damageMult);
+            }
         }
         else
         {
             chargedActive = true;
-            SpawnProjectile(shapeCharged1, durationCharged1, sizeXCharged1, sizeYCharged1, growsCharged1 ? sizeXGrowCharged1 : sizeXCharged1, growsCharged1 ? sizeYGrowCharged1 : sizeYCharged1, growDurationCharged1, projectileSpeedCharged1, homingStrengthCharged1, rotateSpeedCharged1, periodLengthCharged1, pierceCharged1, bounceCharged1, followPlayerCharged1, returningCharged1, true, AbilityType.Charged, aimDirection, spriteCharged1, chargedActive, 1, 1);
+            float damageMult = 0;
+            if (chargedStartBarrierDeplete)
+            {
+                damageMult = currentBarrier;
+                currentBarrier = 0;
+            }
+            if (chargedBarrierGain > 0)
+            {
+                currentBarrier = Mathf.Clamp(currentBarrier + chargedBarrierGain, 0, currentHealth);
+            }
+            if (chargedFullDeplete)
+            {
+                chargedMana = 0;
+            }
+            if (noProjectileCharged)
+            {
+
+            }
+            else SpawnProjectile(shapeCharged1, durationCharged1, sizeXCharged1, sizeYCharged1, growsCharged1 ? sizeXGrowCharged1 : sizeXCharged1, growsCharged1 ? sizeYGrowCharged1 : sizeYCharged1, growDurationCharged1, projectileSpeedCharged1, homingStrengthCharged1, rotateSpeedCharged1, periodLengthCharged1, pierceCharged1, bounceCharged1, followPlayerCharged1, returningCharged1, true, AbilityType.Charged, aimDirection, spriteCharged1, chargedActive, 1, chargedStartBarrierDeplete ? damageMult : 1);
         }
     }
 
@@ -861,6 +999,7 @@ public class MatchPlayer : MonoBehaviour
             bool invincibilityFrames = enemy.HasInvincibilityFrames();
             if (invincibilityFrames) return true;
         }
+        chargedMana = Mathf.Clamp(chargedMana + manaGainHit, 0, chargedMaxMana);
         bool hitCrit = TriggeredCrit(enemy, abilityType, index, chargeActive);
         float damage = 0;
         float critDamage = 0;
@@ -898,6 +1037,7 @@ public class MatchPlayer : MonoBehaviour
                 critDamage = critDamageSpecial1;
                 stunStacks = stunStackSpecial1;
                 pushForce = pushForceSpecial1;
+                bleedStacks = bleedStackSpecial1;
             }
         }
         else if (abilityType == AbilityType.Charged)
@@ -907,6 +1047,17 @@ public class MatchPlayer : MonoBehaviour
                 damage = damageCharged1;
                 critDamage = critDamageCharged1;
             }
+        }
+        if (overchargeStacks > 0)
+        {
+            damage *= 1 + 2 * overchargeStacks / 10;
+            overchargeStacks--;
+            critDamage += overchargeCritDamageGain;
+        }
+        if (chargedActive)
+        {
+            damage *= 1 + damageGainCharged;
+            critDamage += critDamageGainCharged;
         }
         if (hitCrit)
         {
@@ -923,7 +1074,10 @@ public class MatchPlayer : MonoBehaviour
 
     public void TriggerPeriodic(List<MatchEnemy> enemies, AbilityType abilityType, int index, bool chargeActive)
     {
-
+        foreach (MatchEnemy enemy in enemies)
+        {
+            TriggerHit(enemy, abilityType, index, chargeActive);
+        }
     }
 
     public void TriggerCrit(MatchEnemy enemy, AbilityType abilityType, int index, bool chargeActive)
@@ -952,6 +1106,11 @@ public class MatchPlayer : MonoBehaviour
         else if (abilityType == AbilityType.Charged)
         {
             critChance = critChanceCharged1;
+        }
+        if (overchargeStacks > 0) critChance += overchargeCritChanceGain;
+        if (chargeActive)
+        {
+            critChance += critChanceGainCharged;
         }
         float randChance = Random.value;
         return randChance > critChance;
@@ -987,18 +1146,28 @@ public class MatchPlayer : MonoBehaviour
 
     public void Hurt(MatchEnemy enemy)
     {
+        chargedMana = Mathf.Clamp(chargedMana + manaGainHurt, 0, chargedMaxMana);
         if (hurtTriggerSpecial1)
         {
             TriggerSpecialAbility(hurtTriggerAmountSpecial1 - 1);
         }
-        if (enemy = null)
+        float damage = enemy.damage;
+        if (vulnerableStacks > 0)
+        {
+            damage *= 1 + vulnerableStacks / 10f;
+            vulnerableStacks--;
+        }
+        if (enemy != null)
         {
 
         }
-        else
+        if (currentBarrier > 0)
         {
-
+            float damageReduction = Mathf.Clamp(damage * 0.5f, 0, currentBarrier);
+            damage -= damageReduction;
+            currentBarrier -= damageReduction;
         }
+        currentHealth -= damage;
     }
 }
 

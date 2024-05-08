@@ -16,5 +16,5 @@ MonoBehaviour:
   perkName: 'Defender: Braced'
   perkDescription: You gain less barrier, you gain mana faster, the ability auto
     activates when ready.
-  cost: 0
-  perkIcon: {fileID: 0}
+  cost: 1
+  perkIcon: {fileID: 21300000, guid: 4b2a1d5b1b77f7d42bd004955ce96689, type: 3}

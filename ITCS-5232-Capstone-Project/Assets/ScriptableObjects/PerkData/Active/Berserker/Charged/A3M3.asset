@@ -15,5 +15,5 @@ MonoBehaviour:
   perkId: 36
   perkName: 'Elemental Aura: Burst'
   perkDescription: Your ability auto activates when ready and charges faster.
-  cost: 0
-  perkIcon: {fileID: 0}
+  cost: 1
+  perkIcon: {fileID: 21300000, guid: bd79e871f8493b74fb4ee732959a0fe5, type: 3}

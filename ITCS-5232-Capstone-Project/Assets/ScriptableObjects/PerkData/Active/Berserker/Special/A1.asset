@@ -16,4 +16,4 @@ MonoBehaviour:
   perkName: Warcry
   perkDescription: Damage nearby enemies and push them away.
   cost: 0
-  perkIcon: {fileID: 0}
+  perkIcon: {fileID: 21300000, guid: 8cb6be564f1e5da428540e4f8d7b3878, type: 3}

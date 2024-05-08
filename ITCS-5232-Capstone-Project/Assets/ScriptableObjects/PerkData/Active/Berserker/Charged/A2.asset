@@ -16,4 +16,4 @@ MonoBehaviour:
   perkName: Defender
   perkDescription: Gain barrier when used, fully depleting your mana.
   cost: 0
-  perkIcon: {fileID: 0}
+  perkIcon: {fileID: 21300000, guid: 1866679008b151b499bb7b246c695432, type: 3}

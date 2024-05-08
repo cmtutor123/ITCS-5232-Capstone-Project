@@ -15,5 +15,5 @@ MonoBehaviour:
   perkId: 11
   perkName: 'Hammer Smash: Shockwave'
   perkDescription: Enemies hit by this attack will take more damage while stunned.
-  cost: 0
-  perkIcon: {fileID: 0}
+  cost: 2
+  perkIcon: {fileID: 21300000, guid: a6e291e2906269e4aa928570411c5fe7, type: 3}

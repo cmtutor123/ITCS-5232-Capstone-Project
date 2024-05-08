@@ -16,5 +16,5 @@ MonoBehaviour:
   perkName: 'Whirling Blades: Blade Trap'
   perkDescription: The blades no longer stay with you, instead spinning faster in
     a smaller radius.
-  cost: 0
-  perkIcon: {fileID: 0}
+  cost: 3
+  perkIcon: {fileID: 21300000, guid: 88dd9b1caec0dfa4f84f214e08ac9f07, type: 3}

@@ -15,5 +15,5 @@ MonoBehaviour:
   perkId: 18
   perkName: 'Whirling Blades: Bigger Blades'
   perkDescription: Increases the size and damage of the blades.
-  cost: 0
-  perkIcon: {fileID: 0}
+  cost: 1
+  perkIcon: {fileID: 21300000, guid: 6405013f926009c4f867a276a06a9c9d, type: 3}

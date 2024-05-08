@@ -1052,6 +1052,17 @@ public class GameManager : MonoBehaviour
         int matchExp = (int)(Mathf.Sqrt(diff * diff * 10 * Mathf.Clamp(currentWave, 1, 10)) * (won ? 10 : 1));
         int newExp = oldExp + matchExp;
         playerData.exp[currentCharacter] = newExp;
+        if (won)
+        {
+            if (currentStage < PlayerData.STAGE_COUNT - 1 && playerData.stages[currentCharacter, currentStage + 1] < 0)
+            {
+                playerData.stages[currentCharacter, currentStage + 1] = 0;
+            }
+            if (currentStage < PlayerData.STAGE_COUNT && playerData.stages[currentCharacter, currentStage] == currentDifficulty && currentDifficulty < 4)
+            {
+                playerData.stages[currentCharacter, currentStage]++;
+            }
+        }
         FileManager.SavePlayerData(playerData);
         SetResultsUI(won, oldExp, newExp);
     }

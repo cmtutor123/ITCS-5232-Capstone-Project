@@ -180,6 +180,7 @@ public class MatchEnemy : MonoBehaviour
         moveSpeed = enemyData.moveSpeed;
         damage = enemyData.flatDamage + enemyData.scaledDamage * difficultyLevel;
         spriteRenderer.sprite = enemyData.sprite;
+        transform.localScale = new Vector2(enemyData.sizeX, enemyData.sizeY);
         if (enemyData.isBoss) GameManager.instance.bossActive = true;
     }
 

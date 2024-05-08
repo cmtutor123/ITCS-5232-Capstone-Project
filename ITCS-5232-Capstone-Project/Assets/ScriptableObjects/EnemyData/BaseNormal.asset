@@ -20,6 +20,8 @@ MonoBehaviour:
   scaledDamage: 1
   moveSpeed: 3
   sprite: {fileID: 21300000, guid: 26e5bab22d7ecad4c9754541c1bf5ee9, type: 3}
+  sizeX: 1
+  sizeY: 1
   spawnX:
   - 0
   spawnY:

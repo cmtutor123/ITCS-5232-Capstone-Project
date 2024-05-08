@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e2e245015cf142a0d50656bd73810, type: 3}
+  m_Name: Slime
+  m_EditorClassIdentifier: 
+  stageName: Slime Dungeon
+  roomCount: 10
+  powerLevels: 2800000037000000460000005500000064000000
+  enemyLevels: 0100000002000000030000000400000005000000
+  normalEnemies:
+  - {fileID: 11400000, guid: f8bb7410467e0134a802528f39a5e243, type: 2}
+  - {fileID: 11400000, guid: 56c70ba6ac2fa294c8fb9103a6080578, type: 2}
+  - {fileID: 11400000, guid: beb535a81eb50a248824171413c3d6d4, type: 2}
+  - {fileID: 11400000, guid: cc62d2575f7ed3144a7912df707ce315, type: 2}
+  - {fileID: 11400000, guid: 5a354af4f6543a14990adac6767b877e, type: 2}
+  - {fileID: 11400000, guid: 2188e9d5aec266d42bcd5d18af558324, type: 2}
+  strongEnemies:
+  - {fileID: 11400000, guid: 01c6622ab0c01834ca16f333ede3c986, type: 2}
+  - {fileID: 11400000, guid: 18361c488fabae144a9b1c71f72d1e33, type: 2}
+  - {fileID: 11400000, guid: 8109a52fe63f303409a1d7fca6d2ebe6, type: 2}
+  minibossEnemies:
+  - {fileID: 11400000, guid: 3e5d4038d89c7b84482b412068a8545e, type: 2}
+  - {fileID: 11400000, guid: 8d5cd8882d49df04b83e60a2beeef29f, type: 2}
+  bossEnemies:
+  - {fileID: 11400000, guid: b1909d36802170148976068da72e6f7f, type: 2}

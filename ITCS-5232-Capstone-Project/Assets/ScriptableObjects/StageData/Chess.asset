@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e2e245015cf142a0d50656bd73810, type: 3}
+  m_Name: Chess
+  m_EditorClassIdentifier: 
+  stageName: King's Castle
+  roomCount: 10
+  powerLevels: 2800000037000000460000005500000064000000
+  enemyLevels: 0100000003000000060000000a0000000f000000
+  normalEnemies:
+  - {fileID: 11400000, guid: ccb9bd6b8d0ebac4f89354c422379de5, type: 2}
+  - {fileID: 11400000, guid: 57c671fade6a5184796bb4b04d4308e9, type: 2}
+  - {fileID: 11400000, guid: 09193a70ad3ee4244b964cd78781a41d, type: 2}
+  - {fileID: 11400000, guid: 2cb2f23d9d3665646ab57c137c1e6b28, type: 2}
+  strongEnemies:
+  - {fileID: 11400000, guid: 274836a9394516c4f952be409bf223e8, type: 2}
+  - {fileID: 11400000, guid: 98f0ca38523e57d4a93aa6db6386f487, type: 2}
+  - {fileID: 11400000, guid: 55b49a9140c69b347918408329f28a3a, type: 2}
+  - {fileID: 11400000, guid: d7c6db0dc9cd3af4e916189b6b5d20ea, type: 2}
+  - {fileID: 11400000, guid: c247bc4402abc1b4a8f8f561fe38e790, type: 2}
+  - {fileID: 11400000, guid: 60613c5d501fee348a2ca6d61c2d3670, type: 2}
+  minibossEnemies:
+  - {fileID: 11400000, guid: bfe17039c44ed464ca812c32d9d87a50, type: 2}
+  - {fileID: 11400000, guid: 9848e36b09a5c444c8d5b14fbbe67d09, type: 2}
+  bossEnemies:
+  - {fileID: 11400000, guid: 9da82ce41c0be4945808b18702c95fef, type: 2}
+  - {fileID: 11400000, guid: 0cdcca3c35dc39b4d8b20fc06bdb8391, type: 2}

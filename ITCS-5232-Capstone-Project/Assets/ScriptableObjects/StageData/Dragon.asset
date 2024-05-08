@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e4e2e245015cf142a0d50656bd73810, type: 3}
+  m_Name: Dragon
+  m_EditorClassIdentifier: 
+  stageName: Dragon Tower
+  roomCount: 10
+  powerLevels: 2800000037000000460000005500000064000000
+  enemyLevels: 02000000050000000a0000000f00000014000000
+  normalEnemies:
+  - {fileID: 11400000, guid: 19f0521cee2cada4d9ff14b1d344e096, type: 2}
+  - {fileID: 11400000, guid: 36d905a782c97c949862f3730d391689, type: 2}
+  - {fileID: 11400000, guid: f4c70445769cec545b5fbc7cac33d1cb, type: 2}
+  - {fileID: 11400000, guid: 56e208c14013a9b488a94bc41b970e13, type: 2}
+  - {fileID: 11400000, guid: 0853e8f35a328094bb5a524e12c997e8, type: 2}
+  - {fileID: 11400000, guid: d67f4978f6ecfc04899d8f786ffafe92, type: 2}
+  strongEnemies:
+  - {fileID: 11400000, guid: 9e3628b81509f1846bf22923b5e2bffd, type: 2}
+  - {fileID: 11400000, guid: ade4c8891fa76334e84fd34847c0560e, type: 2}
+  minibossEnemies:
+  - {fileID: 11400000, guid: 3e43940a718f40648923ef3314906486, type: 2}
+  - {fileID: 11400000, guid: 1375b41a8192be643825ceb0720e5c5c, type: 2}
+  bossEnemies:
+  - {fileID: 11400000, guid: 16048baf39b2d2e46b16c27c45e930aa, type: 2}
+  - {fileID: 11400000, guid: fc46e27dacee7f34eb4d744129d66fc6, type: 2}
+  - {fileID: 11400000, guid: e2b86f01c8350504fb914b92180153ec, type: 2}
+  - {fileID: 11400000, guid: fb1c601c39b617b4388bab826e08d6be, type: 2}

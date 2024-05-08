@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32b7f982f938cf74b9e8f1f1a7b8875c, type: 3}
+  m_Name: BlackKing
+  m_EditorClassIdentifier: 
+  enemyName: King
+  enemyLevel: 10
+  flatHealth: 200
+  scaledHealth: 20
+  flatDamage: 25
+  scaledDamage: 5
+  moveSpeed: 1
+  sprite: {fileID: 21300000, guid: 4a5f00ccb10f4db499425f67a65c26a8, type: 3}
+  sizeX: 4
+  sizeY: 4
+  spawnX:
+  - 0
+  spawnY:
+  - 0
+  isBoss: 1

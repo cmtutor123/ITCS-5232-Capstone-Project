@@ -11,6 +11,7 @@ public class EnemyData : ScriptableObject
     public float flatDamage, scaledDamage;
     public float moveSpeed;
     public Sprite sprite;
+    public float sizeX, sizeY;
     public List<(float, float)> spawnPattern => GetSpawnPattern();
     public List<float> spawnX, spawnY;
     public List<(float, float)> spawnXY;

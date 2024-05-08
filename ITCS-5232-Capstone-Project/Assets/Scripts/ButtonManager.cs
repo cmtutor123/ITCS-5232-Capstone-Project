@@ -127,4 +127,10 @@ public class ButtonManager : MonoBehaviour
     {
         GameManager.instance.TryPause();
     }
+
+    public void ButtonResetData()
+    {
+        GameManager.instance.playerData = new PlayerData();
+        FileManager.SavePlayerData(GameManager.instance.playerData);
+    }
 }

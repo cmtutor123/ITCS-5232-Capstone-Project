@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BlackQueen
   m_EditorClassIdentifier: 
   enemyName: Queen
-  enemyLevel: 1
+  enemyLevel: 4
   flatHealth: 100
   scaledHealth: 10
   flatDamage: 20

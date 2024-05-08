@@ -10,20 +10,28 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32b7f982f938cf74b9e8f1f1a7b8875c, type: 3}
-  m_Name: BaseData 3
+  m_Name: BlackPawn1
   m_EditorClassIdentifier: 
-  enemyName: Base
+  enemyName: Pawn
   enemyLevel: 1
-  flatHealth: 30
-  scaledHealth: 10
-  flatDamage: 5
-  scaledDamage: 1
+  flatHealth: 20
+  scaledHealth: 5
+  flatDamage: 3
+  scaledDamage: 2
   moveSpeed: 2
-  sprite: {fileID: 21300000, guid: 5b57df82ce934294896866b84581dee4, type: 3}
-  sizeX: 1
-  sizeY: 1
+  sprite: {fileID: 21300000, guid: 5ac6fac5dcc2c684894528c1471a982f, type: 3}
+  sizeX: 0.75
+  sizeY: 0.75
   spawnX:
   - 0
+  - 1
+  - 1
+  - -1
+  - -1
   spawnY:
   - 0
+  - 1
+  - -1
+  - -1
+  - 1
   isBoss: 0

@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32b7f982f938cf74b9e8f1f1a7b8875c, type: 3}
-  m_Name: BaseData 1
+  m_Name: RadiantDragon
   m_EditorClassIdentifier: 
-  enemyName: Base
-  enemyLevel: 1
-  flatHealth: 30
-  scaledHealth: 10
-  flatDamage: 5
-  scaledDamage: 1
+  enemyName: Dragon
+  enemyLevel: 10
+  flatHealth: 800
+  scaledHealth: 30
+  flatDamage: 20
+  scaledDamage: 4
   moveSpeed: 2
-  sprite: {fileID: 21300000, guid: 5b57df82ce934294896866b84581dee4, type: 3}
-  sizeX: 1
-  sizeY: 1
+  sprite: {fileID: 21300000, guid: b56ba1b2d6ed1b64798ae17e4db7123f, type: 3}
+  sizeX: 5
+  sizeY: 5
   spawnX:
   - 0
   spawnY:
   - 0
-  isBoss: 0
+  isBoss: 1

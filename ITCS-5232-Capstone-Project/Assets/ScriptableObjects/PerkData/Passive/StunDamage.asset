@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StunDamage
   m_EditorClassIdentifier: 
   perkId: 224
-  perkName: Stun Damage
-  perkDescription: 
+  perkName: Opportunistic Stun
+  perkDescription: You deal more damage to stunned enemies.
   cost: 0
   perkIcon: {fileID: 0}

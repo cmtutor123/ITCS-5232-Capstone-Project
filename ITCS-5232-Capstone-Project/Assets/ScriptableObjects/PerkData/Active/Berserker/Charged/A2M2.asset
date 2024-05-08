@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: A2M2
   m_EditorClassIdentifier: 
   perkId: 31
-  perkName: 
-  perkDescription: 
+  perkName: 'Defender: Armored'
+  perkDescription: Gain maximum barrier, no longer depletes mana when used, loose
+    all barrier when mana runs out.
   cost: 0
   perkIcon: {fileID: 0}

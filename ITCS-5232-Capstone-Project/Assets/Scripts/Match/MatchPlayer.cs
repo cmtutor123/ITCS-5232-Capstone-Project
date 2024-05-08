@@ -519,8 +519,8 @@ public class MatchPlayer : MonoBehaviour
             noProjectileSpecial = true;
             overchargeGainSpecial = 1;
             overchargeMaxSpecial = 1;
-            vulnerableGainSpecial = 5;
-            vulnerableMaxSpecial = 3;
+            vulnerableGainSpecial = 1;
+            vulnerableMaxSpecial = 5;
             specialChargeTime = 3;
             if (HasPerk(PerkId.BSReckPower))
             {
@@ -532,6 +532,7 @@ public class MatchPlayer : MonoBehaviour
             if (HasPerk(PerkId.BSReckFury))
             {
                 overchargeMaxSpecial = 10;
+                specialChargeTime *= 0.75f;
             }
             if (HasPerk(PerkId.BSReckCrit))
             {

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A3M3
   m_EditorClassIdentifier: 
   perkId: 36
-  perkName: 
-  perkDescription: 
+  perkName: 'Elemental Aura: Burst'
+  perkDescription: Your ability auto activates when ready and charges faster.
   cost: 0
   perkIcon: {fileID: 0}

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: A3M1
   m_EditorClassIdentifier: 
   perkId: 34
-  perkName: 
-  perkDescription: 
+  perkName: 'Elemental Aura: Blast'
+  perkDescription: When you cancel this ability, deal damage proportional to your
+    remaining mana, depleting your remaining mana.
   cost: 0
   perkIcon: {fileID: 0}

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: A2M2
   m_EditorClassIdentifier: 
   perkId: 19
-  perkName: 
-  perkDescription: 
+  perkName: 'Whirling Blades: Sharper Blades'
+  perkDescription: The blades have an increases critical chance and can cause enemies
+    to bleed.
   cost: 0
   perkIcon: {fileID: 0}

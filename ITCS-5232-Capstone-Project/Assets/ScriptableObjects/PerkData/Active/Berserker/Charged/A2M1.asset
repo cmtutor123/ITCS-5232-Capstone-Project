@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: A2M1
   m_EditorClassIdentifier: 
   perkId: 30
-  perkName: 
-  perkDescription: 
+  perkName: 'Defender: Braced'
+  perkDescription: You gain less barrier, you gain mana faster, the ability auto
+    activates when ready.
   cost: 0
   perkIcon: {fileID: 0}

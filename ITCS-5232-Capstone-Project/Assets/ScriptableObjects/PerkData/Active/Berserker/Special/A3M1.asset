@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: A3M1
   m_EditorClassIdentifier: 
   perkId: 22
-  perkName: 
-  perkDescription: 
+  perkName: 'Reckless Strike: Powerful'
+  perkDescription: Gain 3 stacks of overcharge (maximum of 3) and 3 stacks of vulnerable
+    (maximum of 3).
   cost: 0
   perkIcon: {fileID: 0}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HurtBarrier
   m_EditorClassIdentifier: 
   perkId: 226
-  perkName: Hurt Barrier
-  perkDescription: 
+  perkName: Armored Skin
+  perkDescription: Gain barrier when hurt.
   cost: 0
   perkIcon: {fileID: 0}

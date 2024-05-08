@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A3M3
   m_EditorClassIdentifier: 
   perkId: 12
-  perkName: 
-  perkDescription: 
+  perkName: 'Hammer Smash: Heavy'
+  perkDescription: Push enemies away with your attack.
   cost: 0
   perkIcon: {fileID: 0}

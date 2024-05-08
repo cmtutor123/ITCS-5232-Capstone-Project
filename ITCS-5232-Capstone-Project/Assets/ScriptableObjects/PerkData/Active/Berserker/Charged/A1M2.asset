@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: A1M2
   m_EditorClassIdentifier: 
   perkId: 27
-  perkName: 
-  perkDescription: 
+  perkName: 'Rage: Frenzy'
+  perkDescription: You don't gain any bonus damage, you instead gain bonus critical
+    chance and critical damage.
   cost: 0
   perkIcon: {fileID: 0}

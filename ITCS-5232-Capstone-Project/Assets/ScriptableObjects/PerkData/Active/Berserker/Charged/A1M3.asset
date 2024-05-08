@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A1M3
   m_EditorClassIdentifier: 
   perkId: 28
-  perkName: 
-  perkDescription: 
+  perkName: 'Rage: Controlled'
+  perkDescription: You can rage for longer and can cancel your rage early.
   cost: 0
   perkIcon: {fileID: 0}

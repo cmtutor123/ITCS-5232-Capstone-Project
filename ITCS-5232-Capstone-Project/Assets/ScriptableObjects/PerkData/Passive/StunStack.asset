@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StunStack
   m_EditorClassIdentifier: 
   perkId: 217
-  perkName: Stun Stack
-  perkDescription: 
+  perkName: Better Stun
+  perkDescription: When you inflict stun, inflict it for longer.
   cost: 0
   perkIcon: {fileID: 0}

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: A1M3
   m_EditorClassIdentifier: 
   perkId: 4
-  perkName: 
-  perkDescription: 
+  perkName: 'Sword Throw: Returning'
+  perkDescription: The sword can pierce through multiple enemies and returning to
+    you after reaching the end of its range.
   cost: 0
   perkIcon: {fileID: 0}

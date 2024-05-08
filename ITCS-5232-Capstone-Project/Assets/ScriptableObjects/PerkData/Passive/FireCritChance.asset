@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireCritChance
   m_EditorClassIdentifier: 
   perkId: 250
-  perkName: Fire Crit Chance
-  perkDescription: 
+  perkName: Better Burn
+  perkDescription: Burn has increased critical chance and damage.
   cost: 0
   perkIcon: {fileID: 0}

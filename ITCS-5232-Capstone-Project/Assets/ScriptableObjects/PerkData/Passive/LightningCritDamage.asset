@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LightningCritDamage
   m_EditorClassIdentifier: 
   perkId: 238
-  perkName: Lightning Crit Damage
-  perkDescription: 
+  perkName: Powerful Shock
+  perkDescription: Lightning damage has increased critical damage.
   cost: 0
   perkIcon: {fileID: 0}

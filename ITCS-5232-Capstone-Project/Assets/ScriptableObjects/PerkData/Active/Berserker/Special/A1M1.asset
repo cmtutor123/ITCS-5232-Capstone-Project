@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: A1M1
   m_EditorClassIdentifier: 
   perkId: 14
-  perkName: 
-  perkDescription: 
+  perkName: 'Warcry: Pain'
+  perkDescription: When hurt, automatically trigger a weaker version of the attack
+    with a shorter cooldown.
   cost: 0
   perkIcon: {fileID: 0}

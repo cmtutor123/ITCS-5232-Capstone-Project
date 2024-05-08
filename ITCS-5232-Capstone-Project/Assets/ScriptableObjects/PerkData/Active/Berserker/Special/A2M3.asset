@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: A2M3
   m_EditorClassIdentifier: 
   perkId: 20
-  perkName: 
-  perkDescription: 
+  perkName: 'Whirling Blades: Blade Trap'
+  perkDescription: The blades no longer stay with you, instead spinning faster in
+    a smaller radius.
   cost: 0
   perkIcon: {fileID: 0}

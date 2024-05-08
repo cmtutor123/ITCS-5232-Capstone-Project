@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CritBleed
   m_EditorClassIdentifier: 
   perkId: 221
-  perkName: Crit Bleed
-  perkDescription: 
+  perkName: Fatal Wound
+  perkDescription: When you land a critical hit on an enemy, inflict bleed.
   cost: 0
   perkIcon: {fileID: 0}

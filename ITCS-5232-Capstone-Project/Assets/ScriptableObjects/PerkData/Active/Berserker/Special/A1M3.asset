@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A1M3
   m_EditorClassIdentifier: 
   perkId: 16
-  perkName: 
-  perkDescription: 
+  perkName: 'Warcry: Stutter'
+  perkDescription: Can hold up to 3 charges of the ability.
   cost: 0
   perkIcon: {fileID: 0}

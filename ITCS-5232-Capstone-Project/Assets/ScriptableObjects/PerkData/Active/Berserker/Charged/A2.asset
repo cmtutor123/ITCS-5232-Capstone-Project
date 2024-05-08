@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A2
   m_EditorClassIdentifier: 
   perkId: 29
-  perkName: 
-  perkDescription: 
+  perkName: Defender
+  perkDescription: Gain barrier when used, fully depleting your mana.
   cost: 0
   perkIcon: {fileID: 0}

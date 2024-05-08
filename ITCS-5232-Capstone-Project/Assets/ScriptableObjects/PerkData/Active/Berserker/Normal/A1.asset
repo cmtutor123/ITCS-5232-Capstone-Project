@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A1
   m_EditorClassIdentifier: 
   perkId: 1
-  perkName: 
-  perkDescription: 
+  perkName: Sword Throw
+  perkDescription: Throw your sword forward, damaging and stunning enemies.
   cost: 0
   perkIcon: {fileID: 0}

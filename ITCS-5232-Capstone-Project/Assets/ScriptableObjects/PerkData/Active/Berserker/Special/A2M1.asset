@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A2M1
   m_EditorClassIdentifier: 
   perkId: 18
-  perkName: 
-  perkDescription: 
+  perkName: 'Whirling Blades: Bigger Blades'
+  perkDescription: Increases the size and damage of the blades.
   cost: 0
   perkIcon: {fileID: 0}

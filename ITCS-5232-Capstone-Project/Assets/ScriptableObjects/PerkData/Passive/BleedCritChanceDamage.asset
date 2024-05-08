@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BleedCritChanceDamage
   m_EditorClassIdentifier: 
   perkId: 223
-  perkName: Bleed Crit Chance Damage
-  perkDescription: 
+  perkName: Better Bleed
+  perkDescription: You are more likely to land a critical hit on bleeding enemies.
   cost: 0
   perkIcon: {fileID: 0}

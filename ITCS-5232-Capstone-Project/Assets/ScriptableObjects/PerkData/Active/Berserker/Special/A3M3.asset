@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: A3M3
   m_EditorClassIdentifier: 
   perkId: 24
-  perkName: 
-  perkDescription: 
+  perkName: 'Reckless Strike: Lucky'
+  perkDescription: Overcharge also increases the critical chance and critical damage
+    of your next attack.
   cost: 0
   perkIcon: {fileID: 0}

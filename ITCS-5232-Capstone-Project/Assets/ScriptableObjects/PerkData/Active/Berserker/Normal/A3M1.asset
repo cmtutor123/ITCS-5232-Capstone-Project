@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A3M1
   m_EditorClassIdentifier: 
   perkId: 10
-  perkName: 
-  perkDescription: 
+  perkName: 'Hammer Smash: Electric'
+  perkDescription: Your attack deals increased lightning damage.
   cost: 0
   perkIcon: {fileID: 0}

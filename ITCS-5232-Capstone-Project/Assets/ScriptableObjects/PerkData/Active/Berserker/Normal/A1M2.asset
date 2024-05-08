@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: A1M2
   m_EditorClassIdentifier: 
   perkId: 3
-  perkName: 
-  perkDescription: 
+  perkName: 'Sword Throw: Explosive'
+  perkDescription: Your sword explodes on contact with an enemy, dealing fire damage
+    to nearby enemies.
   cost: 0
   perkIcon: {fileID: 0}

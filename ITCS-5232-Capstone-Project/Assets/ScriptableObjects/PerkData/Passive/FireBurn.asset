@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FireBurn
   m_EditorClassIdentifier: 
   perkId: 237
-  perkName: Fire Burn
-  perkDescription: 
+  perkName: Searing Strike
+  perkDescription: When you deal fire damage, inflict burn.
   cost: 0
   perkIcon: {fileID: 0}

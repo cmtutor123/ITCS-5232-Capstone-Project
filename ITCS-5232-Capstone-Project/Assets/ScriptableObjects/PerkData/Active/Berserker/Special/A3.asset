@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: A3
   m_EditorClassIdentifier: 
   perkId: 21
-  perkName: 
-  perkDescription: 
+  perkName: Reckless Strike
+  perkDescription: Gives you one stack of overcharge (maximum of 1), which increases
+    the damage of your next attack, and 1 stack of vulnerable (maximum of 5), which
+    increases the next instance of damage you take from an enemy.
   cost: 0
   perkIcon: {fileID: 0}

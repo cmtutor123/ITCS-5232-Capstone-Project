@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CritDamage
   m_EditorClassIdentifier: 
   perkId: 227
-  perkName: Crit Damage
-  perkDescription: 
+  perkName: Crit Damage Boost
+  perkDescription: Increases critical damage.
   cost: 0
   perkIcon: {fileID: 0}

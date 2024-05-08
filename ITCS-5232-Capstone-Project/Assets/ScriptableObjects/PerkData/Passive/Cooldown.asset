@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Cooldown
   m_EditorClassIdentifier: 
   perkId: 220
-  perkName: Cooldown
-  perkDescription: 
+  perkName: Decreased Cooldown
+  perkDescription: Your special ability is ready faster.
   cost: 0
   perkIcon: {fileID: 0}

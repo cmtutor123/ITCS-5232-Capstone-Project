@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: A2M2
   m_EditorClassIdentifier: 
   perkId: 7
-  perkName: 
-  perkDescription: 
+  perkName: 'Axe Slash: Brutal'
+  perkDescription: The axe has an increased chance to land a critical hit and deals
+    more critical damage.
   cost: 0
   perkIcon: {fileID: 0}

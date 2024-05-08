@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MaxCharge
   m_EditorClassIdentifier: 
   perkId: 255
-  perkName: Max Charge
-  perkDescription: 
+  perkName: Max Mana Boost
+  perkDescription: Increases your maximum mana.
   cost: 0
   perkIcon: {fileID: 0}

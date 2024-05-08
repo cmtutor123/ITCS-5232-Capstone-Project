@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: A2M3
   m_EditorClassIdentifier: 
   perkId: 32
-  perkName: 
-  perkDescription: 
+  perkName: 'Defender: Shield Burst'
+  perkDescription: When activated, lose all barrier and deal damage to surrounding
+    enemies based on the barrier lost.
   cost: 0
   perkIcon: {fileID: 0}

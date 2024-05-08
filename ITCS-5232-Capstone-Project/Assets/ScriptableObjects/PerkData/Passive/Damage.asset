@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Damage
   m_EditorClassIdentifier: 
   perkId: 218
-  perkName: Damage
-  perkDescription: 
+  perkName: Damage Boost
+  perkDescription: Deal more damage.
   cost: 0
   perkIcon: {fileID: 0}

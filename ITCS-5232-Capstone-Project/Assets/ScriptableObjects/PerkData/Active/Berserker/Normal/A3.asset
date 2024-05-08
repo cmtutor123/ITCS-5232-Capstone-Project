@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A3
   m_EditorClassIdentifier: 
   perkId: 9
-  perkName: 
-  perkDescription: 
+  perkName: Hammer Smash
+  perkDescription: Deal damage in an area infront of you, stunning enemies.
   cost: 0
   perkIcon: {fileID: 0}

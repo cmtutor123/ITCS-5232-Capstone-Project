@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HurtLightningThorn
   m_EditorClassIdentifier: 
   perkId: 256
-  perkName: Hurt Lightning Thorn
-  perkDescription: 
+  perkName: Shocking Touch
+  perkDescription: When you are hurt by an enemy, deal lightning damage to your attacker.
   cost: 0
   perkIcon: {fileID: 0}

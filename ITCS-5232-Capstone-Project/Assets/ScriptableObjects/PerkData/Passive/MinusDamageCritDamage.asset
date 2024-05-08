@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MinusDamageCritDamage
   m_EditorClassIdentifier: 
   perkId: 236
-  perkName: Minus Damage Crit Damage
-  perkDescription: 
+  perkName: Precision
+  perkDescription: Decrease damage dealt, but greatly increase critical damage.
   cost: 0
   perkIcon: {fileID: 0}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CritCharge
   m_EditorClassIdentifier: 
   perkId: 253
-  perkName: Crit Charge
-  perkDescription: 
+  perkName: Energy Drain
+  perkDescription: When you land a critical hit, gain mana.
   cost: 0
   perkIcon: {fileID: 0}

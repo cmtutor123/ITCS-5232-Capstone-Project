@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A3M2
   m_EditorClassIdentifier: 
   perkId: 35
-  perkName: 
-  perkDescription: 
+  perkName: 'Elemental Aura: Static'
+  perkDescription: Deals increased lightning damage.
   cost: 0
   perkIcon: {fileID: 0}

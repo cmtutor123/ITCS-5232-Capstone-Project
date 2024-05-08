@@ -15,6 +15,10 @@ public class TileObject : MonoBehaviour
 
     public float spawnTimer;
 
+    bool setOffset = false;
+
+    Vector3 offset = new Vector3(0, 0, 0);
+
     void FixedUpdate()
     {
         if (enemyQueue.Count > 0)
@@ -25,10 +29,16 @@ public class TileObject : MonoBehaviour
                 spawnTimer = 0;
                 EnemyData enemy = enemyQueue[0];
                 enemyQueue.RemoveAt(0);
+                if (!setOffset)
+                {
+                    SpriteRenderer sr = floors[0].GetComponentInChildren<SpriteRenderer>();
+                    offset = new Vector3(sr.size.x / 2, -sr.size.y / 2);
+                    setOffset = true;
+                }
                 foreach ((float, float) position in enemy.spawnPattern)
                 {
                     GameObject matchEnemyObject = Instantiate(prefabMatchEnemy);
-                    matchEnemyObject.transform.position = floors[0].transform.position + new Vector3(0, 0, -2) + new Vector3(position.Item1, position.Item2, 0);
+                    matchEnemyObject.transform.position = floors[0].transform.position + new Vector3(0, 0, -2) + new Vector3(position.Item1, position.Item2, 0) + offset;
                     MatchEnemy matchEnemy = matchEnemyObject.GetComponent<MatchEnemy>();
                     matchEnemy.SetEnemy(enemy);
                     GameManager.instance.RegisterEnemy(matchEnemy);

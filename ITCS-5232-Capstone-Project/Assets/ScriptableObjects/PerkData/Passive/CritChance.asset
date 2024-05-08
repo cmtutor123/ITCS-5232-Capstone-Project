@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CritChance
   m_EditorClassIdentifier: 
   perkId: 222
-  perkName: Crit Chance
-  perkDescription: 
+  perkName: Crit Chance Boost
+  perkDescription: Increase your critical chance.
   cost: 0
   perkIcon: {fileID: 0}

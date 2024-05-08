@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A3M2
   m_EditorClassIdentifier: 
   perkId: 11
-  perkName: 
-  perkDescription: 
+  perkName: 'Hammer Smash: Shockwave'
+  perkDescription: Enemies hit by this attack will take more damage while stunned.
   cost: 0
   perkIcon: {fileID: 0}

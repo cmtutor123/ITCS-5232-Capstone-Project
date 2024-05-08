@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: A1M1
   m_EditorClassIdentifier: 
   perkId: 2
-  perkName: 
-  perkDescription: 
+  perkName: 'Sword Throw: Wind Up'
+  perkDescription: You can hold down the ability button to charge your attack, increasing
+    the damage dealt.
   cost: 0
   perkIcon: {fileID: 0}

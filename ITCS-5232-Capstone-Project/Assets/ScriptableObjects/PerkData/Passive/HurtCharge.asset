@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HurtCharge
   m_EditorClassIdentifier: 
   perkId: 228
-  perkName: Hurt Charge
-  perkDescription: 
+  perkName: Braced
+  perkDescription: Gain more mana when taking damage.
   cost: 0
   perkIcon: {fileID: 0}

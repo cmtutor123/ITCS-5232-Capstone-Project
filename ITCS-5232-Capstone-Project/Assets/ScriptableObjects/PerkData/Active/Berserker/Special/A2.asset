@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: A2
   m_EditorClassIdentifier: 
   perkId: 17
-  perkName: 
-  perkDescription: 
+  perkName: Whirling Blades
+  perkDescription: Create a set of spinning blades that follow you, damaging nearby
+    enemies.
   cost: 0
   perkIcon: {fileID: 0}

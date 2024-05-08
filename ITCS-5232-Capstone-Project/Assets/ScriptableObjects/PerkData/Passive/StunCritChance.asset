@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: StunCritChance
   m_EditorClassIdentifier: 
   perkId: 239
-  perkName: Stun Crit Chance
-  perkDescription: 
+  perkName: Critical Stun
+  perkDescription: Increased critical chance when damaging stunned enemies.
   cost: 0
   perkIcon: {fileID: 0}

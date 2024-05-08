@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CritBurn
   m_EditorClassIdentifier: 
   perkId: 252
-  perkName: Crit Burn
-  perkDescription: 
+  perkName: Cauterize
+  perkDescription: When you land a critical hit, inflict burn.
   cost: 0
   perkIcon: {fileID: 0}

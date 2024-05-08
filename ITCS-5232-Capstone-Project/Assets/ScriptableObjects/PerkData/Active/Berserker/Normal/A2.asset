@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A2
   m_EditorClassIdentifier: 
   perkId: 5
-  perkName: 
-  perkDescription: 
+  perkName: Axe Slash
+  perkDescription: Melee attack that damages nearby enemies.
   cost: 0
   perkIcon: {fileID: 0}

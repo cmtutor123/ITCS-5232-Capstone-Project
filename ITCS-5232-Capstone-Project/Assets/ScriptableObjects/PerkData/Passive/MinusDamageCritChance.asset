@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MinusDamageCritChance
   m_EditorClassIdentifier: 
   perkId: 235
-  perkName: Minus Damage Crit Chance
-  perkDescription: 
+  perkName: Accuracy
+  perkDescription: Decrease damage dealt, but greatly increase critical chance.
   cost: 0
   perkIcon: {fileID: 0}

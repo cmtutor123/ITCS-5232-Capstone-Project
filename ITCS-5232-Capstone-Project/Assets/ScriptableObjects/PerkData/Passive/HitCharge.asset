@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: HitCharge
   m_EditorClassIdentifier: 
   perkId: 234
-  perkName: Hit Charge
-  perkDescription: 
+  perkName: Draining Strike
+  perkDescription: Gain more mana when damaging enemies.
   cost: 0
   perkIcon: {fileID: 0}

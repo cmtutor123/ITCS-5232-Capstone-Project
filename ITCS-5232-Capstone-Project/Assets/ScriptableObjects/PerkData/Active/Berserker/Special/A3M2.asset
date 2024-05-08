@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: A3M2
   m_EditorClassIdentifier: 
   perkId: 23
-  perkName: 
-  perkDescription: 
+  perkName: 'Reckless Strike: Flurry'
+  perkDescription: Has a shorter cooldown, grants you 1 stack of overcharge (maximum
+    of 10) and 1 stack of vulnerable (maximum of 5).
   cost: 0
   perkIcon: {fileID: 0}

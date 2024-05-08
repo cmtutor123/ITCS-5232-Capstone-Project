@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: CritChanceSelfDamage
   m_EditorClassIdentifier: 
   perkId: 254
-  perkName: Crit Chance Self Damage
-  perkDescription: 
+  perkName: Unprotected Lunge
+  perkDescription: Greatly increase your critical chance, but take damage when using
+    your normal ability.
   cost: 0
   perkIcon: {fileID: 0}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: CritBarrier
   m_EditorClassIdentifier: 
   perkId: 251
-  perkName: Crit Barrier
-  perkDescription: 
+  perkName: Stolen Protection
+  perkDescription: When you land a critical hit, gain barrier.
   cost: 0
   perkIcon: {fileID: 0}

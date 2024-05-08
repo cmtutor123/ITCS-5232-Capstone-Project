@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: A3
   m_EditorClassIdentifier: 
   perkId: 33
-  perkName: 
-  perkDescription: 
+  perkName: Elemental Aura
+  perkDescription: Periodically deal fire damage to nearby enemies while active.
   cost: 0
   perkIcon: {fileID: 0}

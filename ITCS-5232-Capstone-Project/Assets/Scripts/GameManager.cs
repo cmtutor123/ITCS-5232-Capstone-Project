@@ -1069,18 +1069,19 @@ public class GameManager : MonoBehaviour
         oldExpBar.SetExp(oldExp, PlayerData.GetExpNextLevel(oldLevel));
         newExpBar.SetExp(newExp, PlayerData.GetExpNextLevel(newLevel));
         int perkGain = levelGain * 3;
-        resultsText.text = GetResultsText(expGain, levelGain, perkGain);
+        resultsText.text = GetResultsText(won, expGain, levelGain, perkGain);
     }
 
-    public string GetResultsText(int expGain, int levelGain, int perkGain)
+    public string GetResultsText(bool won, int expGain, int levelGain, int perkGain)
     {
+        string end = won ? "Victory!" : "Defeat";
         string exp = "";
         string level = "";
         string perk = "";
         if (expGain > 0) exp = "+ " + expGain.ToString() + " exp";
         if (levelGain > 0) level = "+ " + levelGain.ToString() + " level";
         if (perkGain > 0) perk = "+ " + perkGain.ToString() + " unlocks";
-        string text = exp + "\n" + level + "\n" + perk;
+        string text = end + "\n" + exp + "\n" + level + "\n" + perk;
         return text;
     }
 }

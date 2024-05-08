@@ -12,6 +12,7 @@ public class AbilityDisplay : MonoBehaviour
     public Image cooldown;
     public Image manaBar;
     public GameObject manaBackground;
+    public Image grayImage;
 
     public void SetPerk(PerkData perk)
     {
@@ -31,7 +32,7 @@ public class AbilityDisplay : MonoBehaviour
 
     public void SetGrayed(bool grayed)
     {
-        perkIcon.GetComponent<SpriteRenderer>().color = grayed ? grayedColor : whiteColor;
+        grayImage.color = grayed ? grayedColor : whiteColor;
     }
 
     public void UpdateNormal(bool available)
@@ -44,12 +45,12 @@ public class AbilityDisplay : MonoBehaviour
         if (maxCharge > 1 && currentCharge > 0) charges.text = currentCharge.ToString();
         if (currentCharge == 0) cooldown.fillAmount = Mathf.Clamp(1 - (currentTime / maxTime), 0, 1);
         else cooldown.fillAmount = 0;
-        SetGrayed(available && currentCharge > 0);
+        SetGrayed(!(available && currentCharge > 0));
     }
 
     public void UpdateCharged(bool available, bool chargedActive, bool chargedTogglable, float currentMana, float maxMana)
     {
         manaBar.fillAmount = Mathf.Clamp(currentMana / maxMana, 0, 1);
-        SetGrayed((available && chargedTogglable) || chargedActive);
+        SetGrayed(!(available && chargedTogglable));
     }
 }

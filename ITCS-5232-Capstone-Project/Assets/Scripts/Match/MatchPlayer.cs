@@ -250,6 +250,7 @@ public class MatchPlayer : MonoBehaviour
         {
             rb.velocity = Vector2.zero;
         }
+        UpdatePerkDisplay();
     }
 
     public void ProcessPerks()
@@ -288,6 +289,8 @@ public class MatchPlayer : MonoBehaviour
         critDamageDestroyedNormal1 = baseCritDamage;
         critDamageSpecial1 = baseCritDamage;
         critDamageCharged1 = baseCritDamage;
+
+        maxSpecialCharges = 1;
 
         // Passive Perks Pre
 
@@ -758,6 +761,7 @@ public class MatchPlayer : MonoBehaviour
         // Final Setup
 
         currentHealth = maxHealth;
+        chargedMana = 0;
         transform.position = new Vector3(transform.position.x, transform.position.y, -1);
 
         setupComplete = true;
@@ -1114,6 +1118,8 @@ public class MatchPlayer : MonoBehaviour
     {
         if (enemy != null)
         {
+            enemy.TriggerAttackCooldown();
+            enemy.InflictStatus(Status.Push, 2);
             damage = enemy.damage;
             if (hurtLightningThorn > 0) enemy.Damage(hurtLightningThorn);
         }
@@ -1135,6 +1141,11 @@ public class MatchPlayer : MonoBehaviour
         }
         currentHealth -= damage;
         currentBarrier = Mathf.Clamp(currentBarrier + hurtBarrierGain, 0, currentHealth);
+    }
+
+    public void FullHeal()
+    {
+        currentHealth = maxHealth;
     }
 }
 

@@ -995,8 +995,14 @@ public class GameManager : MonoBehaviour
 
     public void TriggerWave(int wave)
     {
+        TriggerFullHeal();
         matchRooms[wave].SpawnWave(wave);
         currentWave = wave;
+    }
+
+    public void TriggerFullHeal()
+    {
+        if (matchPlayer != null) matchPlayer.FullHeal();
     }
 
     public void RegisterEnemy(MatchEnemy enemy)

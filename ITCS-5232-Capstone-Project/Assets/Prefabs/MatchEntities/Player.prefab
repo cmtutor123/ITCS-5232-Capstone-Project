@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3351973428165635316}
   - component: {fileID: 6539499732885196818}
   - component: {fileID: 1569999890466891155}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -86,6 +86,9 @@ MonoBehaviour:
   castTimer: 0
   windDownTimer: 0
   currentMoveSpeed: 0
+  currentHealth: 0
+  maxHealth: 0
+  currentBarrier: 0
   aimDirection: {x: 0, y: 0}
   newDirection: {x: 0, y: 0}
   inputMoving: 0
@@ -101,6 +104,7 @@ MonoBehaviour:
   chargedActivatibleEarly: 0
   chargedCancelable: 0
   chargedActive: 0
+  chargedAutoActivates: 0
   chargedMana: 0
   chargedMaxMana: 0
   chargeAbilityNormal: 0
@@ -181,6 +185,11 @@ MonoBehaviour:
   stunStackNormal1: 0
   stunStackSpecial1: 0
   stunStackCharged1: 0
+  bleedStackNormal1: 0
+  bleedStackSpecial1: 0
+  stunVulnerableStackNormal1: 0
+  pushForceNormal1: 0
+  pushForceSpecial1: 0
   hasDestroyedNormal1: 0
   shapeDestroyedNormal1: 0
   durationDestroyedNormal1: 0
@@ -203,6 +212,54 @@ MonoBehaviour:
   returningDestroyedNormal1: 0
   rotateSpeedDestroyedNormal1: 0
   spriteDestroyedNormal1: {fileID: 0}
+  poisonDamage: 5
+  chillSlowMin: 0.3
+  chillSlowIncrease: 0.05
+  burnDamage: 10
+  burnCrit: 0
+  burnCritChance: 0.2
+  burnCritDamage: 1
+  curseBaseDamage: 10
+  curseDamageMult: 1.5
+  invisible: 0
+  setupComplete: 0
+  matchComplete: 0
+  hurtTriggerSpecial1: 0
+  hurtTriggerAmountSpecial1: 1
+  noProjectileSpecial: 0
+  overchargeGainSpecial: 0
+  overchargeMaxSpecial: 0
+  vulnerableGainSpecial: 0
+  vulnerableMaxSpecial: 0
+  overchargeCritChanceGain: 0
+  overchargeCritDamageGain: 0
+  overchargeStacks: 0
+  vulnerableStacks: 0
+  noProjectileCharged: 0
+  chargedBarrierGain: 0
+  chargedEndBarrierDeplete: 0
+  chargedStartBarrierDeplete: 0
+  chargedFullDeplete: 0
+  damageGainCharged: 0
+  critChanceGainCharged: 0
+  critDamageGainCharged: 0
+  manaGainHit: 0
+  manaGainHurt: 0
+  chargedCancelBlast: 0
+  bleedStacksCrit: 0
+  barrierGainCrit: 0
+  burnStackFire: 0
+  burnStackCrit: 0
+  critChanceFire: 0
+  critDamageLightning: 0
+  hurtBarrierGain: 0
+  hurtLightningThorn: 0
+  manaGainCrit: 0
+  selfDamageNormal: 0
+  stunStackLightning: 0
+  stunStackCrit: 0
+  stunVulnerableStack: 0
+  bleedCritBonusStack: 0
 --- !u!212 &6539499732885196818
 SpriteRenderer:
   m_ObjectHideFlags: 0

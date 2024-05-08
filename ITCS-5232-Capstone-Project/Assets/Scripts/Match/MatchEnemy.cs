@@ -74,6 +74,8 @@ public class MatchEnemy : MonoBehaviour
 
     public bool disabled = false;
 
+    public float attackCooldown = 0;
+
     void FixedUpdate()
     {
         if (disabled) return;
@@ -164,6 +166,10 @@ public class MatchEnemy : MonoBehaviour
         {
             targetMove = targetPosition;
             rb.velocity = (targetMove - (Vector2)transform.position).normalized * currentMoveSpeed;
+        }
+        if (attackCooldown > 0)
+        {
+            attackCooldown -= Time.fixedDeltaTime;
         }
     }
 
@@ -276,6 +282,19 @@ public class MatchEnemy : MonoBehaviour
     public void InflictBleedCritBonus(int amount)
     {
         bleedCritBonusStacks += amount;
+    }
+
+    public void TriggerAttackCooldown()
+    {
+        attackCooldown = 0.5f;
+    }
+
+    public void OnCollisionStay2D(Collision2D collision)
+    {
+        if (attackCooldown > 0) return;
+        if (collision.collider.tag != "Player") return;
+        attackCooldown = 0.25f;
+        GameManager.instance.matchPlayer.Hurt(this);
     }
 }
 

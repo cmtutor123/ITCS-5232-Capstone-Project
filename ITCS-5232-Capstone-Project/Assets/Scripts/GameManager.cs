@@ -1065,6 +1065,7 @@ public class GameManager : MonoBehaviour
                 playerData.stages[currentStage]++;
             }
         }
+        playerData.UpdatePoints();
         FileManager.SavePlayerData(playerData);
         SetResultsUI(won, oldExp, newExp);
     }

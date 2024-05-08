@@ -166,6 +166,8 @@ public class MatchPlayer : MonoBehaviour
     public int stunVulnerableStack;
     public int bleedCritBonusStack;
 
+    public float manaLossTimer = 0.5f;
+
     private void FixedUpdate()
     {
         if (!setupComplete || matchComplete) return;
@@ -192,65 +194,78 @@ public class MatchPlayer : MonoBehaviour
                 }
             }
         }
-        if (chargedMana >= chargedMaxMana && chargedAutoActivates && !chargedActive)
+        if (chargedActive)
         {
-            ToggleChargedAbility();
-        }
-        if (currentState == PlayerState.Charging)
-        {
-            chargeAbilityTimer += Time.fixedDeltaTime;
-        }
-        else if (currentState == PlayerState.Dashing)
-        {
-            rb.velocity = aimDirection * dashSpeed;
-            dashTimer -= Time.fixedDeltaTime;
-            if (dashTimer <= 0)
+            manaLossTimer -= Time.fixedDeltaTime;
+            if (manaLossTimer <= 0)
             {
-                currentMoveSpeed = 0;
-                currentState = PlayerState.Idle;
+                manaLossTimer = 0.5f;
+                chargedMana = Mathf.Clamp(chargedMana - 1, 0, chargedMaxMana);
+                if (chargedMana <= 0)
+                {
+                    ToggleChargedAbility();
+                }
             }
-        }
-        else if (currentState == PlayerState.WindingUp)
-        {
-            windUpTimer -= Time.fixedDeltaTime;
-            if (windUpTimer <= 0)
+            if (chargedMana >= chargedMaxMana && chargedAutoActivates && !chargedActive)
             {
-                TriggerCast(currentAbilityType);
+                ToggleChargedAbility();
             }
-        }
-        else if (currentState == PlayerState.WindingDown)
-        {
-            windDownTimer -= Time.fixedDeltaTime;
-            if (windDownTimer <= 0)
+            if (currentState == PlayerState.Charging)
             {
-                currentState = PlayerState.Idle;
+                chargeAbilityTimer += Time.fixedDeltaTime;
             }
-        }
-        else if (currentState == PlayerState.Casting)
-        {
-            castTimer -= Time.fixedDeltaTime;
-            if (castTimer <= 0)
+            else if (currentState == PlayerState.Dashing)
             {
-                TriggerWindDown();
+                rb.velocity = aimDirection * dashSpeed;
+                dashTimer -= Time.fixedDeltaTime;
+                if (dashTimer <= 0)
+                {
+                    currentMoveSpeed = 0;
+                    currentState = PlayerState.Idle;
+                }
             }
+            else if (currentState == PlayerState.WindingUp)
+            {
+                windUpTimer -= Time.fixedDeltaTime;
+                if (windUpTimer <= 0)
+                {
+                    TriggerCast(currentAbilityType);
+                }
+            }
+            else if (currentState == PlayerState.WindingDown)
+            {
+                windDownTimer -= Time.fixedDeltaTime;
+                if (windDownTimer <= 0)
+                {
+                    currentState = PlayerState.Idle;
+                }
+            }
+            else if (currentState == PlayerState.Casting)
+            {
+                castTimer -= Time.fixedDeltaTime;
+                if (castTimer <= 0)
+                {
+                    TriggerWindDown();
+                }
+            }
+            if (StateAimChangable)
+            {
+                aimDirection = newDirection;
+            }
+            if (currentState == PlayerState.Idle && inputMoving)
+            {
+                currentState = PlayerState.Moving;
+            }
+            if (currentState == PlayerState.Moving && inputMoving)
+            {
+                rb.velocity = aimDirection * moveSpeed;
+            }
+            if (currentState != PlayerState.Moving && currentState != PlayerState.Dashing && !lunging)
+            {
+                rb.velocity = Vector2.zero;
+            }
+            UpdatePerkDisplay();
         }
-        if (StateAimChangable)
-        {
-            aimDirection = newDirection;
-        }
-        if (currentState == PlayerState.Idle && inputMoving)
-        {
-            currentState = PlayerState.Moving;
-        }
-        if (currentState == PlayerState.Moving && inputMoving)
-        {
-            rb.velocity = aimDirection * moveSpeed;
-        }
-        if (currentState != PlayerState.Moving && currentState != PlayerState.Dashing && !lunging)
-        {
-            rb.velocity = Vector2.zero;
-        }
-        UpdatePerkDisplay();
     }
 
     public void ProcessPerks()
@@ -340,7 +355,7 @@ public class MatchPlayer : MonoBehaviour
             projectileSpeedNormal1 = range / durationNormal1;
             damageTypeNormal1 = DamageType.Physical;
             stunStackNormal1 = 1;
-            spriteNormal1 = ProjectileSprite.rectangleTemp;
+            spriteNormal1 = ProjectileSprite.Sword;
 
             if (HasPerk(PerkId.BNThrowWind))
             {
@@ -364,7 +379,7 @@ public class MatchPlayer : MonoBehaviour
                 damageTypeDestroyedNormal1 = DamageType.Fire;
                 damageDestroyedNormal1 *= 0.6f;
                 pierceDestroyedNormal1 = int.MaxValue;
-                spriteDestroyedNormal1 = ProjectileSprite.circleTemp;
+                spriteDestroyedNormal1 = ProjectileSprite.Fire;
             }
 
             if (HasPerk(PerkId.BNThrowReturn))
@@ -384,6 +399,7 @@ public class MatchPlayer : MonoBehaviour
             pierceNormal1 = int.MaxValue;
             damageTypeNormal1 = DamageType.Physical;
             damageNormal1 *= 1.2f;
+            spriteNormal1 = ProjectileSprite.Slash;
             if (HasPerk(PerkId.BNGreatBlood))
             {
                 bleedStackNormal1 = 1;
@@ -410,9 +426,11 @@ public class MatchPlayer : MonoBehaviour
             pierceNormal1 = int.MaxValue;
             damageTypeNormal1 = DamageType.Physical;
             stunStackNormal1 = 2;
+            spriteNormal1 = ProjectileSprite.Smash;
             if (HasPerk(PerkId.BNWarElec))
             {
                 damageTypeNormal1 = DamageType.Lightning;
+                spriteNormal1 = ProjectileSprite.Lightning;
                 stunStackNormal1 += 1;
                 damageNormal1 *= 1.2f;
             }
@@ -463,6 +481,7 @@ public class MatchPlayer : MonoBehaviour
             stunStackSpecial1 = 1;
             specialChargeTime = 10;
             pushForceSpecial1 = 4;
+            spriteSpecial1 = ProjectileSprite.Ring;
             if (HasPerk(PerkId.BSScreechPain))
             {
                 hurtTriggerSpecial1 = true;
@@ -495,6 +514,7 @@ public class MatchPlayer : MonoBehaviour
             damageSpecial1 *= 1.5f;
             specialChargeTime = 15;
             followPlayerSpecial1 = true;
+            spriteSpecial1 = ProjectileSprite.Knife;
             if (HasPerk(PerkId.BSWhirlBig))
             {
                 sizeYSpecial1 *= 1.2f;
@@ -628,6 +648,7 @@ public class MatchPlayer : MonoBehaviour
                 damageCharged1 = baseDamage * 2;
                 critChanceCharged1 = baseCritChance;
                 critDamageCharged1 = baseCritDamage;
+                spriteCharged1 = ProjectileSprite.Ring;
             }
         }
         if (HasPerk(PerkId.BCElement))
@@ -650,6 +671,7 @@ public class MatchPlayer : MonoBehaviour
             critDamageCharged1 = baseCritDamage;
             periodLengthCharged1 = 0.5f;
             chargedMaxMana = 20;
+            spriteCharged1 = ProjectileSprite.Fire;
             if (HasPerk(PerkId.BCElementBlast))
             {
                 chargedCancelable = true;
@@ -660,6 +682,7 @@ public class MatchPlayer : MonoBehaviour
                 damageTypeCharged1 = DamageType.Lightning;
                 damageCharged1 *= 1.5f;
                 periodLengthCharged1 = 0.75f;
+                spriteCharged1 = ProjectileSprite.Lightning;
             }
             if (HasPerk(PerkId.BCElementBurst))
             {

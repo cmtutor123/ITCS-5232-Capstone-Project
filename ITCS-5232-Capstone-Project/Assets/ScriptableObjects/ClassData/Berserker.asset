@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: Berserker
   m_EditorClassIdentifier: 
   className: Berserker
-  classDescription: Needs Description.
+  classDescription: Cursed with an incredible rage, the berserker throws himself
+    into battle with little regards for his own safety.
   classColorLight: {r: 0.6039216, g: 0, b: 0, a: 1}
   classColorDark: {r: 0.3207547, g: 0, b: 0, a: 1}
-  classSprite: {fileID: 0}
+  classSprite: {fileID: 21300000, guid: 613888c96e82c7845846904b1ae83f8a, type: 3}
   normalAbility:
   - {fileID: 11400000, guid: 72e7c9324382dd1488cfdc9a8069bf34, type: 2}
   - {fileID: 11400000, guid: 451465f1fc5f11348a2cbbc140ae02c9, type: 2}

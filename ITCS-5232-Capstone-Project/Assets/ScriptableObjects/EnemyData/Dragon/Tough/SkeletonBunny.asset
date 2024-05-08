@@ -12,18 +12,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32b7f982f938cf74b9e8f1f1a7b8875c, type: 3}
   m_Name: SkeletonBunny
   m_EditorClassIdentifier: 
-  enemyName: Base
+  enemyName: Bunny
   enemyLevel: 4
-  flatHealth: 30
-  scaledHealth: 10
+  flatHealth: 10
+  scaledHealth: 5
   flatDamage: 5
-  scaledDamage: 1
-  moveSpeed: 2
-  sprite: {fileID: 21300000, guid: 5b57df82ce934294896866b84581dee4, type: 3}
-  sizeX: 1
-  sizeY: 1
+  scaledDamage: 2
+  moveSpeed: 4
+  sprite: {fileID: 21300000, guid: 23650aaa72ade9d4398640170230958e, type: 3}
+  sizeX: 0.75
+  sizeY: 0.75
   spawnX:
   - 0
+  - 0
+  - 0
+  - 1
+  - -1
+  - 1
+  - 1
+  - -1
+  - -1
   spawnY:
   - 0
+  - 1
+  - -1
+  - 0
+  - 0
+  - 1
+  - -1
+  - -1
+  - 1
   isBoss: 0

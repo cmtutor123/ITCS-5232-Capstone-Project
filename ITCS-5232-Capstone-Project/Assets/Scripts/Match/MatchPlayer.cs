@@ -477,7 +477,7 @@ public class MatchPlayer : MonoBehaviour
             growDurationSpecial1 = 0.15f;
             pierceSpecial1 = int.MaxValue;
             damageTypeSpecial1 = DamageType.Physical;
-            damageSpecial1 *= 2.5f;
+            damageSpecial1 *= 1.5f;
             stunStackSpecial1 = 1;
             specialChargeTime = 10;
             pushForceSpecial1 = 4;

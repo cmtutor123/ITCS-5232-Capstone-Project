@@ -1079,8 +1079,8 @@ public class GameManager : MonoBehaviour
         Color colorDark = classData[currentCharacter].classColorDark;
         oldExpBar.SetEmblem(colorLight, colorDark, oldLevel);
         newExpBar.SetEmblem(colorLight, colorDark, newLevel);
-        oldExpBar.SetExp(oldExp, PlayerData.GetExpNextLevel(oldLevel));
-        newExpBar.SetExp(newExp, PlayerData.GetExpNextLevel(newLevel));
+        oldExpBar.SetExp(oldExp - PlayerData.GetExpFromLevel(oldLevel), PlayerData.GetExpNextLevel(oldLevel));
+        newExpBar.SetExp(newExp - PlayerData.GetExpFromLevel(newLevel), PlayerData.GetExpNextLevel(newLevel));
         int perkGain = levelGain * 3;
         resultsText.text = GetResultsText(won, expGain, levelGain, perkGain);
     }

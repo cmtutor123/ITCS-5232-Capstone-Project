@@ -18,7 +18,7 @@ public class ExpBar : MonoBehaviour
 
     public void SetExp(int current, int max)
     {
-        expBar.fillAmount = Mathf.Clamp(current / max, 0, 1);
+        expBar.fillAmount = Mathf.Clamp((float)current / (float)max, 0, 1);
         expText.text = current.ToString() + "/" + max.ToString();
     }
 }

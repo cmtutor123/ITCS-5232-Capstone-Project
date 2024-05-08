@@ -138,4 +138,20 @@ public class PlayerData
     {
         return level * level * 100;
     }
+
+    public void UpdatePoints()
+    {
+        int count = 0;
+        for (int i = 0; i < CLASS_COUNT; i++)
+        {
+            foreach (int perk in perks)
+            {
+                if (perk == 1)
+                {
+                    count++;
+                }
+            }
+            points[i] = level[i] * 3 - count;
+        }
+    }
 }

@@ -1049,9 +1049,10 @@ public class GameManager : MonoBehaviour
         Destroy(matchPlayer.gameObject);
         int oldExp = playerData.exp[currentCharacter];
         int diff = stageData[currentStage].enemyLevels[currentDifficulty];
-        int matchExp = (int)(Mathf.Sqrt(diff * diff * 10 * Mathf.Clamp(currentWave, 1, 10)) * (won ? 10 : 1));
-        int newExp = oldExp + matchExp;
-        playerData.exp[currentCharacter] += newExp;
+        int matchExp = (int)(Mathf.Sqrt(diff * diff * 10 * Mathf.Clamp(currentWave, 1, 10))) * 10;
+        if (won) matchExp *= 10;
+        playerData.exp[currentCharacter] += matchExp;
+        int newExp = playerData.exp[currentCharacter];
         playerData.level[currentCharacter] = PlayerData.GetLevelFromExp(playerData.exp[currentCharacter]);
         if (won)
         {

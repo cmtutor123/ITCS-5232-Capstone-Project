@@ -468,13 +468,13 @@ public class MatchPlayer : MonoBehaviour
         if (HasPerk(PerkId.BSScreech))
         {
             shapeSpecial1 = ProjectileShape.Circle;
-            durationSpecial1 = 0.5f;
+            durationSpecial1 = 0.3f;
             sizeXSpecial1 = 1;
             sizeYSpecial1 = 1;
             growsSpecial1 = true;
             sizeXGrowSpecial1 = 5;
             sizeYGrowSpecial1 = 5;
-            growDurationSpecial1 = 0.2f;
+            growDurationSpecial1 = 0.15f;
             pierceSpecial1 = int.MaxValue;
             damageTypeSpecial1 = DamageType.Physical;
             damageSpecial1 *= 2.5f;

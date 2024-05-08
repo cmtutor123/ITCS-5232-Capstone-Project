@@ -53,14 +53,14 @@ public class ButtonManager : MonoBehaviour
 
     public void ButtonSelectStage(int stage)
     {
-        if (GameManager.instance.playerData.stages[GameManager.instance.currentCharacter, stage] < 0) return;
+        if (GameManager.instance.playerData.stages[stage] < 0) return;
         GameManager.instance.SetCurrentStage(stage);
     }
 
     public void ButtonSelectDifficulty(int difficulty)
     {
         if (!TryScreenChange()) return;
-        if (GameManager.instance.playerData.stages[GameManager.instance.currentCharacter, GameManager.instance.currentStage] < difficulty) return;
+        if (GameManager.instance.playerData.stages[GameManager.instance.currentStage] < difficulty) return;
         GameManager.instance.SetCurrentDifficulty(difficulty);
         GameManager.instance.SwitchMenu(MenuState.PerkSelect);
         GameManager.instance.UpdatePerkLoadout();

@@ -12,8 +12,8 @@ public class PlayerData
     public int[] exp = new int[CLASS_COUNT];
     public int[] level = new int[CLASS_COUNT];
     public int[] points = new int[CLASS_COUNT];
-    public int[,] perks = new int[CLASS_COUNT, 60];
-    public int[,] stages = new int[CLASS_COUNT, STAGE_COUNT];
+    public int[] perks = new int[60];
+    public int[] stages = new int[STAGE_COUNT];
 
     public PlayerData()
     {
@@ -24,14 +24,14 @@ public class PlayerData
             {
                 if (j == 0 || j == 12 || j == 24)
                 {
-                    perks[i, j] = 1;
+                    perks[j] = 1;
                 }
             }
             for (int j = 0; j < STAGE_COUNT; j++)
             {
-                stages[i, j] = -1;
+                stages[j] = -1;
             }
-            stages[i, 0] = 0;
+            stages[0] = 0;
         }
     }
 
@@ -46,15 +46,12 @@ public class PlayerData
             }
             level[i] = GetLevelFromExp(exp[i]);
             points[i] = inputData.points[i];
-            for (int j = 0; j < 60; j++)
-            {
-                perks[i, j] = inputData.perks[i, j];
-            }
+            perks = inputData.perks;
             int levelPoints = level[i] * 3;
             int perkCount = 0;
             for (int j = 0; j < 60; j++)
             {
-                if (perks[i, j] == 1)
+                if (perks[j] == 1)
                 {
                     perkCount++;
                 }
@@ -77,25 +74,25 @@ public class PlayerData
                         {
                             if (j == 0 || j == 12 || j == 24)
                             {
-                                perks[i, j] = 1;
+                                perks[j] = 1;
                             }
                             else
                             {
-                                perks[i, j] = 0;
+                                perks[j] = 0;
                             }
                         }
                         points[i] = levelPoints - 3;
                     }
                 }
             }
-            if (perks[i, 0] == 0 || perks[i, 12] == 0 || perks[i, 24] == 0)
+            if (perks[0] == 0 || perks[12] == 0 || perks[24] == 0)
             {
-                int missing = (perks[i, 0] == 0 ? 1 : 0) + (perks[i, 12] == 0 ? 1 : 0) + (perks[i, 24] == 0 ? 1 : 0);
+                int missing = (perks[0] == 0 ? 1 : 0) + (perks[12] == 0 ? 1 : 0) + (perks[24] == 0 ? 1 : 0);
                 if (missing <= points[i])
                 {
-                    perks[i, 0] = 1;
-                    perks[i, 12] = 1;
-                    perks[i, 24] = 1;
+                    perks[0] = 1;
+                    perks[12] = 1;
+                    perks[24] = 1;
                     points[i] -= missing;
                 }
                 else
@@ -104,20 +101,17 @@ public class PlayerData
                     {
                         if (j == 0 || j == 12 || j == 24)
                         {
-                            perks[i, j] = 1;
+                            perks[j] = 1;
                         }
                         else
                         {
-                            perks[i, j] = 0;
+                            perks[j] = 0;
                         }
                     }
                     points[i] = levelPoints - 3;
                 }
             }
-            for (int j = 0; j < STAGE_COUNT; j++)
-            {
-                stages[i, j] = inputData.stages[i, j];
-            }
+            stages = inputData.stages;
         }
     }
 

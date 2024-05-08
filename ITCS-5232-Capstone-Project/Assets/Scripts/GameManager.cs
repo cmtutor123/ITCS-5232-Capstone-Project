@@ -178,7 +178,7 @@ public class GameManager : MonoBehaviour
                 loadoutData[cIndex, sIndex] = 0;
             }
         }
-        else if (playerData.perks[cIndex, pIndex + pOffset] != 1)
+        else if (playerData.perks[pIndex + pOffset] != 1)
         {
             loadoutData[cIndex, sIndex] = canBeEmpty ? -1 : 0;
         }
@@ -451,7 +451,7 @@ public class GameManager : MonoBehaviour
                 button.gameObject.SetActive(false);
                 return;
             }
-            int diffIndex = playerData.stages[currentCharacter, stageIndex];
+            int diffIndex = playerData.stages[stageIndex];
             if (diffIndex > -1)
             {
                 button.SetUnlocked(stageData[stageIndex].stageName);
@@ -481,7 +481,7 @@ public class GameManager : MonoBehaviour
         }
         difficultyBack.gameObject.SetActive(true);
         stageBack.gameObject.SetActive(false);
-        int diffIndex = playerData.stages[currentCharacter, currentStage];
+        int diffIndex = playerData.stages[currentStage];
         foreach (LockableButton button in difficultyButtons)
         {
             button.gameObject.SetActive(true);
@@ -631,7 +631,7 @@ public class GameManager : MonoBehaviour
             perkSelection.perkButtons[i].ChangeColor(classData[currentCharacter].classColorDark);
             perkSelection.perkButtons[i].SetPerk(slotPerks[i]);
             perkSelection.perkButtons[i].GetComponent<PerkTooltip>().UpdatePerk(slotPerks[i]);
-            if (playerData.perks[currentCharacter, perkOffset + i] != 1)
+            if (playerData.perks[perkOffset + i] != 1)
             {
                 perkSelection.perkButtons[i].ChangeIcon(perkLocked);
             }
@@ -657,13 +657,13 @@ public class GameManager : MonoBehaviour
     public bool PerkLocked(int slot, int index)
     {
         int pIndex = 12 * (slot / 2) + index;
-        return playerData.perks[currentCharacter, pIndex] != 1;
+        return playerData.perks[pIndex] != 1;
     }
 
     public void UnlockPerk(int slot, int index)
     {
         int pIndex = 12 * (slot / 2) + index;
-        playerData.perks[currentCharacter, pIndex] = 1;
+        playerData.perks[pIndex] = 1;
         FileManager.SavePlayerData(playerData);
         UpdatePowerMeter();
     }
@@ -1051,16 +1051,17 @@ public class GameManager : MonoBehaviour
         int diff = stageData[currentStage].enemyLevels[currentDifficulty];
         int matchExp = (int)(Mathf.Sqrt(diff * diff * 10 * Mathf.Clamp(currentWave, 1, 10)) * (won ? 10 : 1));
         int newExp = oldExp + matchExp;
-        playerData.exp[currentCharacter] = newExp;
+        playerData.exp[currentCharacter] += newExp;
+        playerData.level[currentCharacter] = PlayerData.GetLevelFromExp(playerData.exp[currentCharacter]);
         if (won)
         {
-            if (currentStage < PlayerData.STAGE_COUNT - 1 && playerData.stages[currentCharacter, currentStage + 1] < 0)
+            if (currentStage < PlayerData.STAGE_COUNT - 1 && playerData.stages[currentStage + 1] < 0)
             {
-                playerData.stages[currentCharacter, currentStage + 1] = 0;
+                playerData.stages[currentStage + 1] = 0;
             }
-            if (currentStage < PlayerData.STAGE_COUNT && playerData.stages[currentCharacter, currentStage] == currentDifficulty && currentDifficulty < 4)
+            if (currentStage < PlayerData.STAGE_COUNT && playerData.stages[currentStage] == currentDifficulty && currentDifficulty < 4)
             {
-                playerData.stages[currentCharacter, currentStage]++;
+                playerData.stages[currentStage]++;
             }
         }
         FileManager.SavePlayerData(playerData);

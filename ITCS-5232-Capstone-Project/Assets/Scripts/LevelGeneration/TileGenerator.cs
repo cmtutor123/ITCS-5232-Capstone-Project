@@ -75,6 +75,7 @@ public class TileGenerator : MonoBehaviour
                 GameObject door = SpawnStageObject(doorPrefab, size, center);
                 door.GetComponent<MatchDoor>().index = tileData.index;
                 door.transform.position += new Vector3(size.x / 2, -size.y / 2, 0);
+                door.GetComponent<BoxCollider2D>().offset = new Vector2(0, 0);
                 tileObject.doors.Add(door);
             }
         }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27e11a669ba06c945890ec5d051b9a3d, type: 3}
   m_Name: Berserker
   m_EditorClassIdentifier: 
-  playerSprite: {fileID: 21300000, guid: 9c328bc426e69524b9e8b0822f1ffd93, type: 3}
+  playerSprite: {fileID: 21300000, guid: 613888c96e82c7845846904b1ae83f8a, type: 3}
   maxHealth: 100
   damage: 50
   critChance: 0.05

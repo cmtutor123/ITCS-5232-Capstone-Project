@@ -27,6 +27,8 @@ public class PlayerProjectile : MonoBehaviour
 
     public MatchPlayer matchPlayer => GameManager.instance.matchPlayer;
 
+    public GameObject collider;
+
 
     void FixedUpdate()
     {
@@ -61,9 +63,9 @@ public class PlayerProjectile : MonoBehaviour
             }
             if (grow)
             {
-                float xSize = Mathf.Lerp(sizeX, sizeXGrow, Mathf.Clamp(activeTime / growDuration, 0, 1));
-                float ySize = Mathf.Lerp(sizeY, sizeYGrow, Mathf.Clamp(activeTime / growDuration, 0, 1));
-                transform.localScale = new Vector3(xSize, ySize, transform.localScale.z);
+                float x = Mathf.Lerp(sizeX, sizeXGrow, Mathf.Clamp(activeTime / growDuration, 0, 1));
+                float y = Mathf.Lerp(sizeY, sizeYGrow, Mathf.Clamp(activeTime / growDuration, 0, 1));
+                SetProjectileSize(x, y);
             }
             if (isReturning)
             {
@@ -151,17 +153,16 @@ public class PlayerProjectile : MonoBehaviour
         this.initialMoveDirection = initialMoveDirection;
         moveDirection = initialMoveDirection;
 
+        this.sprite = sprite;
+
         GameObject colliderPrefab = GameManager.instance.GetProjectilePrefab(shape);
-        GameObject collider = Instantiate(colliderPrefab, transform);
+        collider = Instantiate(colliderPrefab, transform);
         rb = collider.GetComponent<Rigidbody2D>();
         projectileCollider = collider.GetComponent<ProjectileCollider>();
-        collider.transform.localScale = new Vector3(sizeX / collider.transform.localScale.x, sizeY / collider.transform.localScale.y);
         collider.transform.position = matchPlayer.transform.position + new Vector3(0, 0, -1);
         collider.transform.Rotate(matchPlayer.transform.forward, Vector2.SignedAngle(collider.transform.up, initialMoveDirection));
-
+        SetProjectileSize(sizeX, sizeY);
         projectileCollider.playerProjectile = this;
-
-        this.sprite = sprite;
 
         this.chargeActive = chargeActive;
 
@@ -170,8 +171,18 @@ public class PlayerProjectile : MonoBehaviour
 
     public void StartProjectile()
     {
-        projectileCollider.GetComponent<SpriteRenderer>().sprite = sprite;
         active = true;
+    }
+
+    public void SetProjectileSize(float x, float y)
+    {
+        SpriteRenderer sr = projectileCollider.GetComponent<SpriteRenderer>();
+        sr.sprite = sprite;
+        sr.size = new Vector2(x, y);
+        BoxCollider2D box = collider.GetComponent<BoxCollider2D>();
+        if (box != null) box.size = new Vector2(x, y);
+        CircleCollider2D circle = collider.GetComponent<CircleCollider2D>();
+        if (circle != null && x == y) circle.radius = x;
     }
 
     public void TriggerCollision(MatchEnemy enemy)

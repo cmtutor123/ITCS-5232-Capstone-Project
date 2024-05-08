@@ -206,66 +206,66 @@ public class MatchPlayer : MonoBehaviour
                     ToggleChargedAbility();
                 }
             }
-            if (chargedMana >= chargedMaxMana && chargedAutoActivates && !chargedActive)
-            {
-                ToggleChargedAbility();
-            }
-            if (currentState == PlayerState.Charging)
-            {
-                chargeAbilityTimer += Time.fixedDeltaTime;
-            }
-            else if (currentState == PlayerState.Dashing)
-            {
-                rb.velocity = aimDirection * dashSpeed;
-                dashTimer -= Time.fixedDeltaTime;
-                if (dashTimer <= 0)
-                {
-                    currentMoveSpeed = 0;
-                    currentState = PlayerState.Idle;
-                }
-            }
-            else if (currentState == PlayerState.WindingUp)
-            {
-                windUpTimer -= Time.fixedDeltaTime;
-                if (windUpTimer <= 0)
-                {
-                    TriggerCast(currentAbilityType);
-                }
-            }
-            else if (currentState == PlayerState.WindingDown)
-            {
-                windDownTimer -= Time.fixedDeltaTime;
-                if (windDownTimer <= 0)
-                {
-                    currentState = PlayerState.Idle;
-                }
-            }
-            else if (currentState == PlayerState.Casting)
-            {
-                castTimer -= Time.fixedDeltaTime;
-                if (castTimer <= 0)
-                {
-                    TriggerWindDown();
-                }
-            }
-            if (StateAimChangable)
-            {
-                aimDirection = newDirection;
-            }
-            if (currentState == PlayerState.Idle && inputMoving)
-            {
-                currentState = PlayerState.Moving;
-            }
-            if (currentState == PlayerState.Moving && inputMoving)
-            {
-                rb.velocity = aimDirection * moveSpeed;
-            }
-            if (currentState != PlayerState.Moving && currentState != PlayerState.Dashing && !lunging)
-            {
-                rb.velocity = Vector2.zero;
-            }
-            UpdatePerkDisplay();
         }
+        if (chargedMana >= chargedMaxMana && chargedAutoActivates && !chargedActive)
+        {
+            ToggleChargedAbility();
+        }
+        if (currentState == PlayerState.Charging)
+        {
+            chargeAbilityTimer += Time.fixedDeltaTime;
+        }
+        else if (currentState == PlayerState.Dashing)
+        {
+            rb.velocity = aimDirection * dashSpeed;
+            dashTimer -= Time.fixedDeltaTime;
+            if (dashTimer <= 0)
+            {
+                currentMoveSpeed = 0;
+                currentState = PlayerState.Idle;
+            }
+        }
+        else if (currentState == PlayerState.WindingUp)
+        {
+            windUpTimer -= Time.fixedDeltaTime;
+            if (windUpTimer <= 0)
+            {
+                TriggerCast(currentAbilityType);
+            }
+        }
+        else if (currentState == PlayerState.WindingDown)
+        {
+            windDownTimer -= Time.fixedDeltaTime;
+            if (windDownTimer <= 0)
+            {
+                currentState = PlayerState.Idle;
+            }
+        }
+        else if (currentState == PlayerState.Casting)
+        {
+            castTimer -= Time.fixedDeltaTime;
+            if (castTimer <= 0)
+            {
+                TriggerWindDown();
+            }
+        }
+        if (StateAimChangable)
+        {
+            aimDirection = newDirection;
+        }
+        if (currentState == PlayerState.Idle && inputMoving)
+        {
+            currentState = PlayerState.Moving;
+        }
+        if (currentState == PlayerState.Moving && inputMoving)
+        {
+            rb.velocity = aimDirection * moveSpeed;
+        }
+        if (currentState != PlayerState.Moving && currentState != PlayerState.Dashing && !lunging)
+        {
+            rb.velocity = Vector2.zero;
+        }
+        UpdatePerkDisplay();
     }
 
     public void ProcessPerks()
@@ -468,13 +468,13 @@ public class MatchPlayer : MonoBehaviour
         if (HasPerk(PerkId.BSScreech))
         {
             shapeSpecial1 = ProjectileShape.Circle;
-            durationSpecial1 = 0.2f;
+            durationSpecial1 = 0.5f;
             sizeXSpecial1 = 1;
             sizeYSpecial1 = 1;
             growsSpecial1 = true;
             sizeXGrowSpecial1 = 5;
             sizeYGrowSpecial1 = 5;
-            growDurationSpecial1 = 0.1f;
+            growDurationSpecial1 = 0.2f;
             pierceSpecial1 = int.MaxValue;
             damageTypeSpecial1 = DamageType.Physical;
             damageSpecial1 *= 2.5f;
@@ -503,7 +503,7 @@ public class MatchPlayer : MonoBehaviour
         if (HasPerk(PerkId.BSWhirl))
         {
             shapeSpecial1 = ProjectileShape.Rectangle;
-            durationSpecial1 = 3;
+            durationSpecial1 = 4;
             sizeXSpecial1 = 0.5f;
             sizeYSpecial1 = 5;
             growsSpecial1 = false;

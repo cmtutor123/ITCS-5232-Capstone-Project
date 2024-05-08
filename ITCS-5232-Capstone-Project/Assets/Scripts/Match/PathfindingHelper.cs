@@ -15,6 +15,11 @@ public class PathfindingHelper : MonoBehaviour
     {
         return grid.FindPathToPlayer(currentPosition);
     }
+
+    public void ResetGrid()
+    {
+        grid = new TileGrid();
+    }
 }
 
 class TileGrid

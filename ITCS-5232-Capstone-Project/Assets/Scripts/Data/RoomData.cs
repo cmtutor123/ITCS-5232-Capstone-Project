@@ -76,6 +76,7 @@ public class RoomData
 
     public void SetBossRoom()
     {
+        index = 11;
         for (int x = -2; x <= 2; x++)
         {
             for (int y = 0; y < 5; y++)

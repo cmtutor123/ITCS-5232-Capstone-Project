@@ -10,7 +10,8 @@ public class ProjectileCollider : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            playerProjectile.TriggerCollision(other.gameObject.GetComponent<MatchEnemy>());
+            MatchEnemy matchEnemy = other.gameObject.GetComponent<MatchEnemy>();
+            if (matchEnemy != null) playerProjectile.TriggerCollision(matchEnemy);
         }
     }
 

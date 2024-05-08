@@ -16,7 +16,7 @@ public class MatchDoor : MonoBehaviour
 
     public void TriggerDoor()
     {
-        GameManager.instance.TriggerWave(index);
+        GameManager.instance.TriggerWave(index + 1);
         Destroy(gameObject);
     }
 }

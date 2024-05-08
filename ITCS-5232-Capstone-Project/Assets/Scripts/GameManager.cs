@@ -732,7 +732,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < roomCount; i++)
         {
             RoomData currentRoomData = new RoomData();
-            currentRoomData.index = i;
+            currentRoomData.index = i + 1;
             currentRoomData.SetRoomShape(rooms[i]);
             currentRoomData.SetRoomEnemies(roomEnemies[i]);
             roomData[i + 1] = currentRoomData;
@@ -764,6 +764,7 @@ public class GameManager : MonoBehaviour
         {
             matchRooms.Add(new MatchRoom(data, generator));
         }
+        pathfindingHelper.ResetGrid();
         foreach (MatchRoom room in matchRooms)
         {
             room.GenerateRoom();
@@ -994,7 +995,7 @@ public class GameManager : MonoBehaviour
 
     public void TriggerWave(int wave)
     {
-        matchRooms[wave + 1].SpawnWave(wave);
+        matchRooms[wave].SpawnWave(wave);
         currentWave = wave;
     }
 
@@ -1039,6 +1040,7 @@ public class GameManager : MonoBehaviour
             }
         }
         matchEnemies.Clear();
+        Destroy(matchPlayer.gameObject);
         int oldExp = playerData.exp[currentCharacter];
         int diff = stageData[currentStage].enemyLevels[currentDifficulty];
         int matchExp = (int)(Mathf.Sqrt(diff * diff * 10 * Mathf.Clamp(currentWave, 1, 10)) * (won ? 10 : 1));

@@ -10,20 +10,36 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32b7f982f938cf74b9e8f1f1a7b8875c, type: 3}
-  m_Name: BaseData 2
+  m_Name: FireSlime
   m_EditorClassIdentifier: 
-  enemyName: Base
-  enemyLevel: 1
-  flatHealth: 30
+  enemyName: Slime
+  enemyLevel: 4
+  flatHealth: 50
   scaledHealth: 10
-  flatDamage: 5
-  scaledDamage: 1
-  moveSpeed: 2
-  sprite: {fileID: 21300000, guid: 5b57df82ce934294896866b84581dee4, type: 3}
-  sizeX: 1
-  sizeY: 1
+  flatDamage: 15
+  scaledDamage: 4
+  moveSpeed: 5
+  sprite: {fileID: 21300000, guid: 0df3b98cc3c31ca4f97d8e6fa6a2f8d2, type: 3}
+  sizeX: 0.5
+  sizeY: 0.5
   spawnX:
+  - -1
   - 0
+  - 1
+  - -1
+  - 0
+  - 1
+  - -1
+  - 0
+  - 1
   spawnY:
+  - 1
+  - 1
+  - 1
   - 0
+  - 0
+  - 0
+  - -1
+  - -1
+  - -1
   isBoss: 0

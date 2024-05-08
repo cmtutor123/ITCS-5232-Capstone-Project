@@ -10,20 +10,20 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32b7f982f938cf74b9e8f1f1a7b8875c, type: 3}
-  m_Name: BaseData
+  m_Name: KingSlime
   m_EditorClassIdentifier: 
-  enemyName: Base
-  enemyLevel: 1
-  flatHealth: 30
-  scaledHealth: 10
-  flatDamage: 5
-  scaledDamage: 1
-  moveSpeed: 2
-  sprite: {fileID: 21300000, guid: 5b57df82ce934294896866b84581dee4, type: 3}
-  sizeX: 1
-  sizeY: 1
+  enemyName: King Slime
+  enemyLevel: 10
+  flatHealth: 100
+  scaledHealth: 50
+  flatDamage: 20
+  scaledDamage: 5
+  moveSpeed: 3.5
+  sprite: {fileID: 21300000, guid: 9216de1a321cecc4c8ecfb47729ffbbf, type: 3}
+  sizeX: 4
+  sizeY: 4
   spawnX:
   - 0
   spawnY:
   - 0
-  isBoss: 0
+  isBoss: 1

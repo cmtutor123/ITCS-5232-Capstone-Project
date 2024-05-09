@@ -163,9 +163,21 @@ public class ButtonManager : MonoBehaviour
         GameManager.instance.TryPause();
     }
 
+    public void UpdateLoadout(int sIndex, int pIndex) => GameManager.instance.UpdateLoadoutPerk(sIndex, pIndex);
+
     public void ButtonResetData()
     {
         GameManager.instance.playerData = new PlayerData();
         FileManager.SavePlayerData(GameManager.instance.playerData);
+        UpdateLoadout(0, 0);
+        UpdateLoadout(1, -1);
+        UpdateLoadout(2, 12);
+        UpdateLoadout(3, -1);
+        UpdateLoadout(4, 24);
+        UpdateLoadout(5, -1);
+        UpdateLoadout(6, -1);
+        UpdateLoadout(7, -1);
+        UpdateLoadout(8, -1);
+        UpdateLoadout(9, -1);
     }
 }

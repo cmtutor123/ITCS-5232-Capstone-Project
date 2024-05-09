@@ -15,5 +15,5 @@ MonoBehaviour:
   perkId: 225
   perkName: Shocking Strikes
   perkDescription: When dealing lightning damage inflict stun.
-  cost: 0
+  cost: 1
   perkIcon: {fileID: 21300000, guid: b0e8243af2c903e429c1623c3d7bb91f, type: 3}

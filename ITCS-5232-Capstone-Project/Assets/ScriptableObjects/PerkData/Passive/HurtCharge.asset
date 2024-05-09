@@ -15,5 +15,5 @@ MonoBehaviour:
   perkId: 228
   perkName: Braced
   perkDescription: Gain more mana when taking damage.
-  cost: 0
+  cost: 2
   perkIcon: {fileID: 21300000, guid: 8f71376116676b444885f5530e410b07, type: 3}

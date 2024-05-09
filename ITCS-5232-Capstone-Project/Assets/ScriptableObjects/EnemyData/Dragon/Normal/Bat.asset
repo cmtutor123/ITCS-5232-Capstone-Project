@@ -24,6 +24,14 @@ MonoBehaviour:
   sizeY: 1.25
   spawnX:
   - 0
+  - 1
+  - 1
+  - -1
+  - -1
   spawnY:
   - 0
+  - 1
+  - -1
+  - -1
+  - 1
   isBoss: 0

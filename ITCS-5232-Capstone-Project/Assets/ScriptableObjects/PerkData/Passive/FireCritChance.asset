@@ -15,5 +15,5 @@ MonoBehaviour:
   perkId: 250
   perkName: Stronger Flame
   perkDescription: When dealing fire damage you have an increased critical chance.
-  cost: 0
+  cost: 2
   perkIcon: {fileID: 21300000, guid: dcf56e2587b327c47becb24b98554dea, type: 3}

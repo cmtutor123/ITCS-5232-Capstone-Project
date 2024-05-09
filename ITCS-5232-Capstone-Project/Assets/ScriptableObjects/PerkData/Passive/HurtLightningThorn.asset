@@ -15,5 +15,5 @@ MonoBehaviour:
   perkId: 256
   perkName: Shocking Touch
   perkDescription: When you are hurt by an enemy, deal lightning damage to your attacker.
-  cost: 0
+  cost: 1
   perkIcon: {fileID: 21300000, guid: cfc2d94ee973f444ea311f930c7acad7, type: 3}

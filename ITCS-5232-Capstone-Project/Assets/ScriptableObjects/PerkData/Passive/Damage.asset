@@ -15,5 +15,5 @@ MonoBehaviour:
   perkId: 218
   perkName: Damage Boost
   perkDescription: Deal more damage.
-  cost: 0
+  cost: 3
   perkIcon: {fileID: 21300000, guid: 3c1b267335d08d24297bb1904db2ef1d, type: 3}

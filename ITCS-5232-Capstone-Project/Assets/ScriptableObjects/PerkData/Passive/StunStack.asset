@@ -15,5 +15,5 @@ MonoBehaviour:
   perkId: 217
   perkName: Better Stun
   perkDescription: When you inflict stun, inflict it for longer.
-  cost: 0
+  cost: 2
   perkIcon: {fileID: 21300000, guid: 5ddc12c5c044f7741bf496e3d25e9c02, type: 3}

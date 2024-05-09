@@ -15,5 +15,5 @@ MonoBehaviour:
   perkId: 226
   perkName: Armored Skin
   perkDescription: Gain barrier when hurt.
-  cost: 0
+  cost: 2
   perkIcon: {fileID: 21300000, guid: 72ebd93c0b942fb49a43092b49aceb62, type: 3}

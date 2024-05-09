@@ -19,7 +19,7 @@ MonoBehaviour:
   flatDamage: 5
   scaledDamage: 2
   moveSpeed: 3.5
-  sprite: {fileID: 21300000, guid: 5b57df82ce934294896866b84581dee4, type: 3}
+  sprite: {fileID: 21300000, guid: a54369f632e9fec48a2fd3a18b8f0bf9, type: 3}
   sizeX: 1
   sizeY: 1
   spawnX:

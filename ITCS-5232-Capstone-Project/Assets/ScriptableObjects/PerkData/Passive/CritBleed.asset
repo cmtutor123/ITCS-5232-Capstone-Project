@@ -15,5 +15,5 @@ MonoBehaviour:
   perkId: 221
   perkName: Fatal Wound
   perkDescription: When you land a critical hit on an enemy, inflict bleed.
-  cost: 0
+  cost: 1
   perkIcon: {fileID: 21300000, guid: 27688076a26581040a5d57c52a994037, type: 3}

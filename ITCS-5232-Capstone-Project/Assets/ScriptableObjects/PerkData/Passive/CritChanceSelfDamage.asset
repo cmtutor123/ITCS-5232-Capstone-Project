@@ -16,5 +16,5 @@ MonoBehaviour:
   perkName: Unprotected Lunge
   perkDescription: Greatly increase your critical chance, but take damage when using
     your normal ability.
-  cost: 0
+  cost: 3
   perkIcon: {fileID: 21300000, guid: ae8cf64bf14f6ab4d93c74ff297eab9e, type: 3}

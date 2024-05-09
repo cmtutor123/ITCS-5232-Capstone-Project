@@ -15,5 +15,5 @@ MonoBehaviour:
   perkId: 224
   perkName: Opportunistic Stun
   perkDescription: You deal more damage to stunned enemies.
-  cost: 0
+  cost: 4
   perkIcon: {fileID: 21300000, guid: 06581b36ad50be64cb074a9797b6fa58, type: 3}

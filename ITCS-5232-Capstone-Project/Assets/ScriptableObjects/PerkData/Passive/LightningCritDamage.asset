@@ -15,5 +15,5 @@ MonoBehaviour:
   perkId: 238
   perkName: Powerful Shock
   perkDescription: Lightning damage has increased critical damage.
-  cost: 0
+  cost: 2
   perkIcon: {fileID: 21300000, guid: a392d5ece4f771147b3dff7bb712f963, type: 3}

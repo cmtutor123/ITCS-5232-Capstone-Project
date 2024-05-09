@@ -15,5 +15,5 @@ MonoBehaviour:
   perkId: 252
   perkName: Cauterize
   perkDescription: When you land a critical hit, inflict burn.
-  cost: 0
+  cost: 1
   perkIcon: {fileID: 21300000, guid: 6aea8666f857d0745a3f989d70f321d5, type: 3}

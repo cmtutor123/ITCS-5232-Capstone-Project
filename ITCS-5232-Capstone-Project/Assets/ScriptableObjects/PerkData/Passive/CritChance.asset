@@ -15,5 +15,5 @@ MonoBehaviour:
   perkId: 222
   perkName: Crit Chance Boost
   perkDescription: Increase your critical chance.
-  cost: 0
+  cost: 2
   perkIcon: {fileID: 21300000, guid: b0f6e1b2fc6f1a94e9f4d8d221693d83, type: 3}

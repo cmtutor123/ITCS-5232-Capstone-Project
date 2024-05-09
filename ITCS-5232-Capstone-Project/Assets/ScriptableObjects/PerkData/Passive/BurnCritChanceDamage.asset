@@ -15,5 +15,5 @@ MonoBehaviour:
   perkId: 241
   perkName: Better Burn
   perkDescription: Burn has increased critical chance and damage.
-  cost: 0
+  cost: 2
   perkIcon: {fileID: 21300000, guid: 05e285e384056fe46879bba4598349fa, type: 3}

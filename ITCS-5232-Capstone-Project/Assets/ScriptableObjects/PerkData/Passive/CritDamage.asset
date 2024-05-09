@@ -15,5 +15,5 @@ MonoBehaviour:
   perkId: 227
   perkName: Crit Damage Boost
   perkDescription: Increases critical damage.
-  cost: 0
+  cost: 2
   perkIcon: {fileID: 21300000, guid: 8727b5cb65942d14f9e06445e8b2e980, type: 3}

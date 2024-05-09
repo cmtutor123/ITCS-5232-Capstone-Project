@@ -15,5 +15,5 @@ MonoBehaviour:
   perkId: 255
   perkName: Max Mana Boost
   perkDescription: Increases your maximum mana.
-  cost: 0
+  cost: 1
   perkIcon: {fileID: 21300000, guid: b48be12b0b4605a49ba587dd6e85d051, type: 3}

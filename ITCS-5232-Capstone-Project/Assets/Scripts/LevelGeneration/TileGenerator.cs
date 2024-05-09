@@ -79,6 +79,21 @@ public class TileGenerator : MonoBehaviour
                 tileObject.doors.Add(door);
             }
         }
+        foreach (GameObject floor in tileObject.floors)
+        {
+            Vector2 pos = floor.transform.position;
+            floor.transform.position = new Vector3(pos.x, pos.y, 10);
+        }
+        foreach (GameObject wall in tileObject.walls)
+        {
+            Vector2 pos = wall.transform.position;
+            wall.transform.position = new Vector3(pos.x, pos.y, 8);
+        }
+        foreach (GameObject door in tileObject.doors)
+        {
+            Vector2 pos = door.transform.position;
+            door.transform.position = new Vector3(pos.x, pos.y, 6);
+        }
         return tileObject;
     }
 }

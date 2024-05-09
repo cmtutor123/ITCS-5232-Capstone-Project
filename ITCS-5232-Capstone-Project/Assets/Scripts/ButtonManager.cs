@@ -85,36 +85,71 @@ public class ButtonManager : MonoBehaviour
     
     public void ButtonPerkSelection(int index)
     {
-        if (GameManager.instance.PerkLocked(GameManager.instance.currentSlot, index))
+        int slot = GameManager.instance.currentSlot;
+        int pIndex = GameManager.instance.GetPerkIndex(slot, index);
+        if (GameManager.instance.PerkLocked(pIndex))
         {
-            if (GameManager.instance.GetPoints() > 0)
+            if (GameManager.instance.HasUnlockPoints())
             {
-                if (GameManager.instance.currentSlot >= 0 || GameManager.instance.currentSlot <= 5)
+                if (slot < 6)
                 {
-                    int main = index / 4;
-                    if (main == index)
+                    int pIndexBase = pIndex - (pIndex % 4);
+                    if (pIndexBase == pIndex)
                     {
-                        GameManager.instance.UnlockPerk(GameManager.instance.currentSlot, index);
+                        GameManager.instance.UnlockPerk(pIndex);
                     }
-                    else if (!GameManager.instance.PerkLocked(GameManager.instance.currentSlot, main))
+                    else
                     {
-                        GameManager.instance.UnlockPerk(GameManager.instance.currentSlot, index);
+                        if (!GameManager.instance.PerkLocked(pIndexBase))
+                        {
+                            GameManager.instance.UnlockPerk(pIndex);
+                        }
                     }
                 }
                 else
                 {
-                    GameManager.instance.UnlockPerk(GameManager.instance.currentSlot, index);
+                    GameManager.instance.UnlockPerk(pIndex);
                 }
             }
-            return;
         }
-        if (GameManager.instance.currentSlot >= 6 && GameManager.instance.currentSlot <= 9 && GameManager.instance.loadoutData[GameManager.instance.currentCharacter, GameManager.instance.currentSlot] == index)
+        else
         {
-            GameManager.instance.UpdateLoadoutPerk(GameManager.instance.currentSlot, -1);
-            GameManager.instance.UpdatePerkLoadout();
+            int slotMod = slot % 2;
+            if (slot < 6)
+            {
+                int pIndexBase = pIndex - (pIndex % 4);
+                int baseSlot = slot - slotMod;
+                int modSlot = baseSlot + 1;
+                if (pIndexBase == pIndex)
+                {
+                    GameManager.instance.UpdateLoadoutPerk(baseSlot, pIndex);
+                    GameManager.instance.UpdateLoadoutPerk(modSlot, -1);
+                }
+                else
+                {
+                    GameManager.instance.UpdateLoadoutPerk(baseSlot, pIndexBase);
+                    GameManager.instance.UpdateLoadoutPerk(modSlot, pIndex);
+                }
+            }
+            else
+            {
+                int slotOther = slot + ((slotMod == 0) ? 1 : -1);
+                if (pIndex == GameManager.instance.GetLoadoutIndex(slot))
+                {
+                    GameManager.instance.UpdateLoadoutPerk(slot, -1);
+                }
+                else if (pIndex == GameManager.instance.GetLoadoutIndex(slotOther))
+                {
+                    GameManager.instance.UpdateLoadoutPerk(slotOther, -1);
+                    GameManager.instance.UpdateLoadoutPerk(slot, pIndex);
+                }
+                else
+                {
+                    GameManager.instance.UpdateLoadoutPerk(slot, pIndex);
+                }
+            }
         }
-        GameManager.instance.UpdateLoadoutPerk(GameManager.instance.currentSlot, index);
-        GameManager.instance.UpdatePerkLoadout();
+        GameManager.instance.UpdatePowerMeter();
     }
 
     public void ButtonMatchStart()

@@ -36,7 +36,7 @@ public class PlayerProjectile : MonoBehaviour
         {
             if (rotate)
             {
-                transform.Rotate(transform.forward, rotateSpeed * Time.fixedDeltaTime);
+                collider.transform.Rotate(transform.forward, rotateSpeed * Time.fixedDeltaTime);
             }
             if (homing)
             {
@@ -78,7 +78,7 @@ public class PlayerProjectile : MonoBehaviour
             }
             if (followPlayer)
             {
-                transform.position = matchPlayer.transform.position - new Vector3(0, 0, -1);
+                collider.transform.position = matchPlayer.transform.position - new Vector3(0, 0, -1);
             }
             if (periodic)
             {
@@ -96,7 +96,7 @@ public class PlayerProjectile : MonoBehaviour
                 {
                     if (isReturning)
                     {
-                        float playerDistance = (matchPlayer.transform.position - transform.position).magnitude;
+                        float playerDistance = (matchPlayer.transform.position - collider.transform.position).magnitude;
                         if (playerDistance < moveSpeed * 0.25f)
                         {
                             TriggerDestroy();
@@ -165,6 +165,7 @@ public class PlayerProjectile : MonoBehaviour
         projectileCollider.playerProjectile = this;
 
         this.chargeActive = chargeActive;
+        if (index == 2) collider.transform.position = matchPlayer.lastDestroyedPosition;
 
         this.index = index;
     }
@@ -231,7 +232,7 @@ public class PlayerProjectile : MonoBehaviour
 
     public void TriggerDestroy()
     {
-        active = false;
+        matchPlayer.lastDestroyedPosition = collider.transform.position;
         matchPlayer.TriggerDestroy(transform.position, transform.up, abilityType, index, chargeActive);
         Destroy(gameObject);
     }

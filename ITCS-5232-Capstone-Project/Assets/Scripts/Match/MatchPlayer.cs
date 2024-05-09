@@ -168,6 +168,8 @@ public class MatchPlayer : MonoBehaviour
 
     public float manaLossTimer = 0.5f;
 
+    public Vector3 lastDestroyedPosition = new Vector3();
+
     private void FixedUpdate()
     {
         if (!setupComplete || matchComplete) return;
@@ -370,11 +372,13 @@ public class MatchPlayer : MonoBehaviour
                 damageNormal1 *= 0.2f;
                 hasDestroyedNormal1 = true;
                 shapeDestroyedNormal1 = ProjectileShape.Circle;
-                durationDestroyedNormal1 = 2;
+                durationDestroyedNormal1 = 0.5f;
                 growsDestroyedNormal1 = true;
-                sizeXDestroyedNormal1 = 3;
-                sizeYDestroyedNormal1 = 3;
-                growDurationDestroyedNormal1 = 1;
+                sizeXDestroyedNormal1 = 0.5f;
+                sizeYDestroyedNormal1 = 0.5f;
+                sizeXGrowDestroyedNormal1 = 3;
+                sizeYGrowDestroyedNormal1 = 3;
+                growDurationDestroyedNormal1 = 0.2f;
                 projectileSpeedDestroyedNormal1 = 0;
                 damageTypeDestroyedNormal1 = DamageType.Fire;
                 damageDestroyedNormal1 *= 0.6f;
@@ -504,6 +508,7 @@ public class MatchPlayer : MonoBehaviour
         {
             shapeSpecial1 = ProjectileShape.Rectangle;
             durationSpecial1 = 4;
+            projectileSpeedSpecial1 = 0;
             sizeXSpecial1 = 0.5f;
             sizeYSpecial1 = 5;
             growsSpecial1 = false;
@@ -614,24 +619,24 @@ public class MatchPlayer : MonoBehaviour
             chargedActivatibleEarly = false;
             chargedAutoActivates = false;
             chargedFullDeplete = true;
-            chargedBarrierGain = .15f;
+            chargedBarrierGain = 15f;
             chargedMaxMana = 50;
             if (HasPerk(PerkId.BCDefendBrace))
             {
                 chargedMaxMana = 25;
                 chargedAutoActivates = true;
-                chargedBarrierGain = 0.05f;
+                chargedBarrierGain = 5f;
             }
             if (HasPerk(PerkId.BCDefendArmor))
             {
-                chargedBarrierGain = 1;
+                chargedBarrierGain = 100;
                 chargedFullDeplete = false;
                 chargedEndBarrierDeplete = true;
                 chargedMaxMana = 20;
             }
             if (HasPerk(PerkId.BCDefendShield))
             {
-                chargedBarrierGain = 0.2f;
+                chargedBarrierGain = 20f;
                 chargedStartBarrierDeplete = true;
                 noProjectileCharged = false;
                 shapeCharged1 = ProjectileShape.Circle;
@@ -896,6 +901,7 @@ public class MatchPlayer : MonoBehaviour
             if (chargedFullDeplete)
             {
                 chargedMana = 0;
+                ToggleChargedAbility();
             }
             if (noProjectileCharged)
             {
@@ -1112,7 +1118,7 @@ public class MatchPlayer : MonoBehaviour
 
     public void TriggerDestroy(Vector2 position, Vector2 direction, AbilityType abilityType, int index, bool chargeActive)
     {
-        if (index == 1 && hasDestroyedNormal1)
+        if (index == 1 && abilityType == AbilityType.Normal && hasDestroyedNormal1)
         {
             SpawnProjectile(shapeDestroyedNormal1, durationDestroyedNormal1, sizeXDestroyedNormal1, sizeYDestroyedNormal1, growsDestroyedNormal1, sizeXGrowDestroyedNormal1, sizeYGrowDestroyedNormal1, growDurationDestroyedNormal1, projectileSpeedDestroyedNormal1, homingStrengthDestroyedNormal1, rotateSpeedDestroyedNormal1, periodLengthDestroyedNormal1, pierceDestroyedNormal1, bounceDestroyedNormal1, followPlayerDestroyedNormal1, returningDestroyedNormal1, false, abilityType, direction, spriteDestroyedNormal1, chargeActive, 2, 1);
         }

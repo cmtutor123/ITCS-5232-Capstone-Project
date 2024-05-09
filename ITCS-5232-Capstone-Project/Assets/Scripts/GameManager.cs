@@ -141,7 +141,7 @@ public class GameManager : MonoBehaviour
 
     public void SaveLoadoutData()
     {
-        CheckLoadoutData();
+        //CheckLoadoutData();
         for (int c = 0; c < classData.Count; c++)
         {
             string className = classData[c].className;
@@ -202,6 +202,10 @@ public class GameManager : MonoBehaviour
 
     public void UpdateLoadoutPerk(int loadoutIndex, int perkIndex)
     {
+        loadoutData[currentCharacter, loadoutIndex] = perkIndex;
+        SaveLoadoutData();
+        UpdatePerkLoadout();
+        return;
         if (loadoutIndex >= 0 && loadoutIndex <= 5)
         {
             UpdateLoadoutAbility(loadoutIndex, perkIndex);
@@ -544,7 +548,7 @@ public class GameManager : MonoBehaviour
                         slotPerks = classData[currentCharacter].passiveAbilityB;
                         break;
                 }
-                total += slotPerks[pIndex].cost;
+                total += slotPerks[pIndex % 12].cost;
             }
         }
         if (total <= playerData.level[currentCharacter])
@@ -591,8 +595,8 @@ public class GameManager : MonoBehaviour
             }
             else
             {
-                perkLoadout.perkButtons[i].SetPerk(slotPerks[loadoutData[currentCharacter, i]]);
-                perkLoadout.perkButtons[i].GetComponent<PerkTooltip>().UpdatePerk(slotPerks[loadoutData[currentCharacter, i]]);
+                perkLoadout.perkButtons[i].SetPerk(slotPerks[loadoutData[currentCharacter, i] % 12]);
+                perkLoadout.perkButtons[i].GetComponent<PerkTooltip>().UpdatePerk(slotPerks[loadoutData[currentCharacter, i] % 12]);
             }
         }
     }
@@ -656,8 +660,23 @@ public class GameManager : MonoBehaviour
 
     public bool PerkLocked(int slot, int index)
     {
-        int pIndex = 12 * (slot / 2) + index;
+        int pIndex = GetPerkIndex(slot, index);
         return playerData.perks[pIndex] != 1;
+    }
+
+    public bool PerkLocked(int pIndex)
+    {
+        return playerData.perks[pIndex] != 1;
+    }
+
+    public int GetPerkIndex(int slot, int index)
+    {
+        return 12 * (slot / 2) + index;
+    }
+
+    public int GetLoadoutIndex(int slot)
+    {
+        return loadoutData[currentCharacter, slot];
     }
 
     public void UnlockPerk(int slot, int index)
@@ -680,9 +699,9 @@ public class GameManager : MonoBehaviour
         perkDisplayCharged.SetColor(lightColor);
         perkDisplayCharged.ShowManaBar(darkColor);
         healthBarDisplay.SetColor(lightColor, darkColor);
-        perkDisplayNormal.SetPerk(classData[currentCharacter].normalAbility[loadoutData[currentCharacter, 0]]);
-        perkDisplaySpecial.SetPerk(classData[currentCharacter].specialAbility[loadoutData[currentCharacter, 2]]);
-        perkDisplayCharged.SetPerk(classData[currentCharacter].chargedAbility[loadoutData[currentCharacter, 4]]);
+        perkDisplayNormal.SetPerk(classData[currentCharacter].normalAbility[loadoutData[currentCharacter, 0] % 12]);
+        perkDisplaySpecial.SetPerk(classData[currentCharacter].specialAbility[loadoutData[currentCharacter, 2] % 12]);
+        perkDisplayCharged.SetPerk(classData[currentCharacter].chargedAbility[loadoutData[currentCharacter, 4] % 12]);
         SetMenu(MenuState.Match);
     }
 
@@ -864,7 +883,7 @@ public class GameManager : MonoBehaviour
             }
             if (loadoutData[currentCharacter, i] != -1)
             {
-                matchPlayer.AddPerk(slotPerks[loadoutData[currentCharacter, i]].perkId);
+                matchPlayer.AddPerk(slotPerks[loadoutData[currentCharacter, i] % 12].perkId);
             }
         }
         matchPlayer.ProcessPerks();
@@ -1097,6 +1116,19 @@ public class GameManager : MonoBehaviour
         if (perkGain > 0) perk = "+ " + perkGain.ToString() + " unlocks";
         string text = end + "\n" + exp + "\n" + level + "\n" + perk;
         return text;
+    }
+
+    public bool HasUnlockPoints()
+    {
+        return playerData.points[currentCharacter] > 0;
+    }
+
+    public void UnlockPerk(int pIndex)
+    {
+        playerData.perks[pIndex] = 1;
+        playerData.points[currentCharacter]--;
+        FileManager.SavePlayerData(playerData);
+        UpdatePerkSelection(currentSlot);
     }
 }
 
